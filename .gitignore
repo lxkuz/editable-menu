@@ -1,0 +1,74 @@
+# scm revert files
+**.orig
+
+# Mac finder artifacts
+.DS_Store
+
+# Netbeans project directory
+/nbproject/
+
+# RubyMine project files
+.idea
+
+# Textmate project files
+/*.tmproj
+
+# vim artifacts
+**.swp
+
+# Ignore application configuration
+/config/application.yml
+/config/deploy.yml
+
+.ruby-gemset*
+.ruby-version*
+/spec/screenshots/*
+
+REVISION
+
+# bundler state
+/.bundle
+/vendor/bundle/
+/vendor/ruby/
+
+# minimal Rails specific artifacts
+db/*.sqlite3
+/log/*
+/tmp/*
+
+# various artifacts
+**.war
+*.rbc
+*.sassc
+.rspec
+.rspec_parallel~
+.redcar/
+.sass-cache
+/config/config.yml
+/config/database.yml
+/coverage.data
+/coverage/
+/db/*.javadb/
+/db/*.sqlite3
+/doc/api/
+/doc/app/
+/doc/features.html
+/doc/specs.html
+/public/cache
+/public/stylesheets/compiled
+/public/system/*
+/public/attachments/*
+/public/avatars/*
+/public/assets/*
+/spec/tmp/*
+/cache
+/capybara*
+/capybara-*.html
+/gems
+/specifications
+rerun.txt
+pickle-email-*.html
+.zeus.sock
+/.vagrant
+Vagrantfile
+config/secrets.yml
