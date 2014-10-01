@@ -1,0 +1,100 @@
+.navigation-trigger.js-nav-trigger
+  = image_tag "logo.png", class: 'img-response'
+.navigation-back.js-nav
+.navigation.js-nav
+  = link_to('#', class: :logo) do
+    = image_tag "logo.png"
+  = link_to('#', class: 'logo-text') do
+    = image_tag "logo-text.png"
+
+  .nav-location в Ростове-на-Дону
+  .nav-section
+    ul.menu.main
+      li
+        = link_to 'Купить лестницу', '#'
+      li
+        = link_to 'On-line заказ', '#'
+      li
+        = link_to 'Доставка', '#'
+      li
+        = link_to 'Монтаж', '#'
+      li
+        = link_to 'О компании', '#'
+      li
+        = link_to 'Контакты', '#'
+  .nav-section
+    .nav-head Типы лестниц
+    ul.menu
+      li
+        = link_to 'Маршевые лестницы', '#'
+      li
+        = link_to 'Г-образные лестницы', '#'
+      li
+        = link_to 'Винтовые лестницы', '#'
+      li
+        = link_to 'П-образные лестницы', '#'
+  .nav-section
+    .nav-head Виды лестницы
+    ul.menu
+      li
+        = link_to 'Модульные лестницы', '#'
+      li
+        = link_to 'Деревянные лестницы', '#'
+      li
+        = link_to 'На монокосоуре', '#'
+      li
+        = link_to 'Из нержавейки', '#'
+  .nav-section
+    .nav-head В помещение
+    ul.menu
+      li
+        = link_to 'Для дома', '#'
+      li
+        = link_to 'Для дачи', '#'
+      li
+        = link_to ' В квартиру', '#'
+      li
+        = link_to 'Для бани', '#'
+  .nav-section
+    .nav-head Ещё
+    ul.menu
+      li
+        = link_to 'Ограждения', '#'
+      li
+        = link_to 'Облицовка лестницы', '#'
+  .nav-section
+    .nav-head.gray Дилерам
+    ul.menu
+      li
+        = link_to 'Личный кабинет', '#'
+      li
+        = link_to 'Франшиза', '#'
+  .nav-section
+    ul.menu.main
+      li
+        = link_to 'Техподдержка', '#'
+      li
+        = link_to 'Написать письмо', '#'
+  .nav-section
+    ul.menu.main
+      li
+        = link_to 'О лестницах', '#'
+      li
+        = link_to 'Рейтинг лестниц', '#'
+  form.nav-search action=""
+    input.search-field placeholder="Поиск" type="text"
+      .search-icn
+        .this-active
+  .social-caption
+    | Более 15 000 подписчиков,
+    br
+    | вступай в наши ряды!
+  .social-set.in-nav
+    = link_to '', '#', class: ['social-icon', 'fb']
+    = link_to '', '#', class: ['social-icon', 'tw']
+    = link_to '', '#', class: ['social-icon', 'vk']
+    = link_to '', '#', class: ['social-icon', 'insta']
+  .copyright
+    | Московские Лестницы
+    br
+    | &copy; 2014
