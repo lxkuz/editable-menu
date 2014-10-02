@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930184149) do
+ActiveRecord::Schema.define(version: 20141002171242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,25 @@ ActiveRecord::Schema.define(version: 20140930184149) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "news_items", force: true do |t|
+    t.string   "title"
+    t.string   "site"
+    t.text     "description"
+    t.text     "keywords"
+    t.boolean  "noindex",        default: false
+    t.string   "noindex_bot"
+    t.boolean  "nofollow",       default: false
+    t.string   "nofollow_bot"
+    t.string   "canonical_url"
+    t.string   "author_link"
+    t.string   "publisher_link"
+    t.string   "name"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "offices", force: true do |t|
     t.string   "name"

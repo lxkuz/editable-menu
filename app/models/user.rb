@@ -3,7 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  ROLES = %w[admin seo]
+
+  has_many :news_items
+
+  ROLES = %w[admin seo user]
 
   def admin?
     self.role == 'admin'
