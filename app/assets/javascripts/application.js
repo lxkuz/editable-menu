@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require modernizr-2.6.2-respond-1.1.0.min
+//= require jquery.royalslider.min
+//= require owl.carousel-min
+//= require common
+//= require page-index
+//= require page-all
