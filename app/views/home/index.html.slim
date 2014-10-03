@@ -22,7 +22,7 @@
           a.cell-phone-add href='callto:84952230423'  8 800 100 54 18
           .cell-order-call Заказать звонок
           .cell-location.this
-            | Ростов-на-Дону
+            = @nearest_office.try(:city) || 'Ростов-на-Дону'
             span.loc-arrow
               span.this-hover
           .cell-adr Строителей, 23 строение 9

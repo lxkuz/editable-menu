@@ -22,8 +22,22 @@ gem 'jquery-rails'
 gem 'cancancan'
 gem 'devise'
 
+# geolocation
+gem 'geocoder'
+
 group :development, :test do
+    # Console
+  gem 'pry-rails'
+  gem 'hirb-unicode'
+  gem 'awesome_print'
+
+  gem 'meta_request', '~> 0.3.4'
   gem 'better_errors'
+  gem 'binding_of_caller'
+
   gem 'spring'
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'capybara'
+  gem 'rspec-rails', '~> 3.1.0'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end

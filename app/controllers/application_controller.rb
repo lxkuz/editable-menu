@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_action :auto_select_office
 
   def authenticate_admin_user!
     authenticate_user!
@@ -14,5 +15,14 @@ class ApplicationController < ActionController::Base
   def current_admin_user
     return nil if user_signed_in? && !current_user.admin?
     current_user
+  end
+
+  def auto_select_office
+    unless session[:office_id]
+      nearest_office = Geocoding::NearestOfficeFinder.new(request.remote_ip).nearest_office
+      session[:office_id] = nearest_office.try(:id)
+    end
+
+    @nearest_office = nearest_office || Office.find_by(id: session[:office_id])
   end
 end
