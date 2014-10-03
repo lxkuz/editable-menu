@@ -8,6 +8,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'activeadmin', github: 'activeadmin'
 gem 'carrierwave'
+gem 'meta-tags'
+gem 'inherited_resources'
 
 # views
 gem 'slim-rails'

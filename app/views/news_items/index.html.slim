@@ -1,0 +1,72 @@
+.l-centered.left.section-container
+  .row
+    .col-xs-7.col-xs-offset-3
+      .cell.cell-contacts-helper.h-1
+      .cell.cell-contacts.h-1.fixed
+        a.contacts-order href="#"  Заказать проект
+        .clear-wrap
+          a.cell-phone href="callto:84952230423"  8 495 223 04 23
+          .cell-phone-caption Телефон многоканальный
+        .clear-wrap.contacts-row-2
+          a.cell-phone-add href="callto:84952230423"  8 800 100 54 18
+          .cell-order-call Заказать звонок
+          .cell-location.this
+            = @nearest_office.try(:city) || 'Ростов-на-Дону'
+            span.loc-arrow
+              span.this-hover
+          .cell-adr Строителей, 23 строение 9
+  .row.news-head-section
+    .col-xs-8.col-xs-offset-1
+      h1.cont-head.news-list-head
+        | Новости
+        a.news-rss href="#"
+      .tabs-outer.clear-wrap.in-news
+        ul.tabs-wrap.clear-wrap
+          li.tab-item.js-tab-trigger.active data-tabs="tab1"
+            span.active-arrow
+            | Все новости
+          li.tab-item.js-tab-trigger data-tabs="tab2"
+            span.active-arrow
+            | Новости центрального офиса
+          li.tab-item.js-tab-trigger data-tabs="tab3"
+            span.active-arrow
+            | Новости дилеров Ростова-на-Дону
+            span.tabs-change-city.js-change-city
+              | —
+              span.inner сменить город
+  #tab1.js-tab-content
+    - @news_items.each do |news_item|
+      .row.news-list-item
+        .col-xs-1
+          .nl-date
+            = l(Date.parse(news_item.updated_at.to_s), format: :day_month)
+        .col-xs-8
+          h3.nl-head
+            = news_item.name
+          .nl-text.typo-main
+            = news_item.body.truncate(300, separator: ' ')
+          a.nl-more href="#"  Читать далее
+        .delimeter
+
+    .row.pagination-section
+      .col-xs-8.col-xs-offset-1
+        ul.pagination
+          li
+            span 1
+          li
+            a href="#"  2
+          li
+            a href="#"  3
+          li
+            a href="#"  4
+          li
+            a href="#"  5
+          li
+            a href="#"  6
+          li
+            a href="#"  7
+          li
+            a.next-arrow.this href="#"
+              | следующая страница
+              span.arrow
+                span.this-hover
