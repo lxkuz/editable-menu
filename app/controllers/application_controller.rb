@@ -19,14 +19,10 @@ class ApplicationController < ActionController::Base
 
   def auto_select_office
     unless session[:office_id]
-      user_ip = request.remote_ip
-
-      nearest_office = Office.all
-                                .select { |office| !office.distance_to_user(user_ip).nan? }
-                                .min_by { |office| office.distance_to_user(user_ip) }
-
+      nearest_office = Geocoding::NearestOfficeFinder.new(request.remote_ip).nearest_office
       session[:office_id] = nearest_office.try(:id)
     end
-    @nearest_office = nearest_office || Office.find_by_id(session[:office_id])
+
+    @nearest_office = nearest_office || Office.find_by(id: session[:office_id])
   end
 end
