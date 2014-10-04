@@ -15,7 +15,7 @@ Office.create!(
 admin = User.create! email: 'admin@example.com', password: 'password', role: 'admin'
 puts 'Admin created!'
 
-2.times do |i|
+51.times do |i|
   attributes = {
     title:          "this metatag title#{ i }",
     site:           "this metatag site#{ i }",

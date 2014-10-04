@@ -255,10 +255,12 @@ DEPENDENCIES
   devise
   factory_girl_rails
   geocoder
+  has_scope
   hirb-unicode
   inherited_resources
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   meta-tags
   meta_request (~> 0.3.4)
   pg
