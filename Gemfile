@@ -6,10 +6,16 @@ gem 'rails', '4.1.6'
 gem 'pg'
 gem 'uglifier', '>= 1.3.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
 gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
+gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
+
 gem 'carrierwave'
 gem 'meta-tags'
 gem 'inherited_resources'
+
+gem 'friendly_id'
 
 # views
 gem 'slim-rails'
