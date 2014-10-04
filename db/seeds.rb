@@ -42,7 +42,8 @@ admin = User.create! email: 'admin@example.com', password: 'password', role: 'ad
 
     name: "news title##{ i }",
     body: "body #{ i } "*300,
-    user: admin
+    user: admin,
+    updated_at: Date.current - i.day
   }
 
   NewsItem.create! attributes

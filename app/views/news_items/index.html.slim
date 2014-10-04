@@ -39,7 +39,7 @@
       .row.news-list-item
         .col-xs-1
           .nl-date
-            = l(Date.parse(news_item.updated_at.to_s), format: :day_month)
+            = news_item_short_date(news_item.updated_at)
         .col-xs-8
           h3.nl-head
             = news_item.name
