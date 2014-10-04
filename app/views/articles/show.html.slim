@@ -1,0 +1,6 @@
+.l-centered.left.section-container
+  = render 'shared/header'
+
+  .row.content-section.typo-main
+    .col-xs-8.col-xs-offset-1
+      p= @article.content.html_safe
