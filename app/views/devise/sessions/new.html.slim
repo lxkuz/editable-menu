@@ -1,0 +1,16 @@
+.container.l-centered.left.section-container
+  .row
+    .form-signin
+      = form_for(resource, as: resource_name, url: session_path(resource_name), class: 'form-signin') do |f|
+        h3.heading-desc
+          | Sign in
+        .main
+          = f.email_field :email, autofocus: true, class: 'input form-control', placeholder: 'Email'
+          = f.password_field :password, autocomplete: "off", class: 'input form-control', placeholder: 'Password'
+        .login
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me
+            = f.label :remember_me
+          = f.submit "Sign in", class: 'btn'
+        .links
+          = render "devise/shared/links"
