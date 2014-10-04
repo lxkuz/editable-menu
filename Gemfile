@@ -10,10 +10,12 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'carrierwave'
 gem 'meta-tags'
 gem 'inherited_resources'
+gem  'has_scope'
 
 # views
 gem 'slim-rails'
 gem 'jbuilder', '~> 2.0'
+gem 'kaminari'
 
 # assets
 gem 'sass-rails', '~> 4.0.3'

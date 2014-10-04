@@ -4,6 +4,6 @@ class NewsItemsController < ResourcesController
   protected
 
     def collection
-      @news_items ||= end_of_association_chain.newest
+      @news_items = end_of_association_chain.newest.page(params[:page])
     end
 end
