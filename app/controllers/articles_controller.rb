@@ -1,19 +1,13 @@
-class ArticlesController < ApplicationController
-  def index
-    @articles = Article.limit(10)
-  end
-
+class ArticlesController < ResourcesController
   def show
-    @article = Article.find(params[:id])
-
     set_meta_tags title: @article.title,
                   description: @article.description,
                   keywords: @article.keywords
   end
 
-  private
+  protected
 
-  def article_params
-    params.require(:article).permit(:title, :description, :content, :published_at)
+  def collection
+    @articles ||= end_of_association_chain.newest.limit(10)
   end
 end
