@@ -12,6 +12,11 @@ class Geocoding::NearestOfficeFinder
 
   def distance_to_user_from(office)
     user_coordinates = Geocoder.coordinates(@user_ip)
+    if user_coordinates == [60, 100]
+      ipgeobase_result = Ipgeobase.lookup(@user_ip)
+      user_coordinates = [ipgeobase_result.lat, ipgeobase_result.lng]
+    end
+
     office.distance_to(user_coordinates)
   end
 end

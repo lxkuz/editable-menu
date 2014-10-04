@@ -28,6 +28,7 @@ gem 'devise'
 
 # geolocation
 gem 'geocoder'
+gem 'ipgeobase'
 
 group :development, :test do
     # Console
