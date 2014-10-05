@@ -17,5 +17,13 @@ describe NewsItem do
 
       expect(NewsItem.newest).to eq([news_item1, news_item2])
     end
+
+    it 'should respond to :last_news' do
+      news_item1 = NewsItem.create @valid_attributes.merge(updated_at: Date.current - 1.day)
+      news_item2 = NewsItem.create @valid_attributes.merge(updated_at: Date.current - 2.day)
+      news_item3 = NewsItem.create @valid_attributes.merge(updated_at: Date.current - 3.day)
+
+      expect(NewsItem.last_news(news_item2)).to eq([news_item1, news_item3])
+    end
   end
 end

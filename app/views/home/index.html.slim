@@ -220,18 +220,12 @@
     .col-xs-3.h-3
       .h-7.cell-over.cell-news
         .cell-news-head Новости
-        a.cell-news-item href='#'
-          span.news-date 28 августа
-          span.news-text Победителем Australian Open сенсационно стал Станислас Вавринка Победителем Australian Open сенсационно стал Станислас
-        a.cell-news-item href='#'
-          span.news-date 28 августа
-          span.news-text Победителем Australian Open сенсационно стал Станислас Вавринка Победителем Australian Open сенсационно стал Станислас
-        a.cell-news-item href='#'
-          span.news-date 28 августа
-          span.news-text Победителем Australian Open сенсационно стал Станислас Вавринка Победителем Australian Open сенсационно стал Станислас
-        a.cell-news-item href='#'
-          span.news-date 28 августа
-          span.news-text Победителем Australian Open сенсационно стал Станислас Вавринка Победителем Australian Open сенсационно стал Станислас
+        - @news_items.each do |news_item|
+          = link_to news_path(news_item), class: 'cell-news-item' do
+            span.news-date
+              = news_item.updated_short_date
+            span.news-text
+              = news_item.name
         = link_to 'Все новости компании', news_index_path, class: 'view-all-news'
     .col-xs-3.h-3
   .row

@@ -110,6 +110,11 @@ GEM
     dragonfly (0.9.15)
       multi_json (~> 1.0)
       rack
+    draper (1.4.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     erubis (2.7.0)
     execjs (2.2.1)
     factory_girl (4.4.0)
@@ -214,6 +219,7 @@ GEM
       polyamorous (~> 1.1)
     rdoc (4.1.2)
       json (~> 1.4)
+    request_store (1.1.0)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rspec-core (3.1.5)
@@ -291,6 +297,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
   devise
+  draper
   factory_girl_rails
   friendly_id
   geocoder

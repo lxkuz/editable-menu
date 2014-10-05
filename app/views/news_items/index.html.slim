@@ -39,10 +39,10 @@
       .row.news-list-item
         .col-xs-1
           .nl-date
-            = l(Date.parse(news_item.updated_at.to_s), format: :day_month)
+            = news_item.updated_short_date
         .col-xs-8
           h3.nl-head
-            = news_item.name
+            = link_to news_item.name, news_path(news_item), class: 'an-head'
           .nl-text.typo-main
             = news_item.body.truncate(300, separator: ' ')
           a.nl-more href="#"  Читать далее

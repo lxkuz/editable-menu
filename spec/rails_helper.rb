@@ -4,10 +4,12 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
 require 'devise'
+require 'draper/test/rspec_integration'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
+Draper::ViewContext.test_strategy :fast
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
