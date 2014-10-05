@@ -13,6 +13,7 @@
           = @nearest_office.try(:city) || Ростов-на-Дону
           span.loc-arrow
             span.this-hover
-        .cell-adr Строителей, 23 строение 9
+        .cell-adr
+          = @nearest_office.street_address
   /! /col-xs-7
   /! /row

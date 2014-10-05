@@ -60,9 +60,9 @@ $(document).ready(function() {
         navigation: true,
         navigationText: ["",""],
         responsiveRefreshRate: 50,
-        slideSpeed: 800,
+        slideSpeed: 200,
         rewindNav: false,
-        autoPlay: 3000,
+        // autoPlay: 3000,
         stopOnHover: true
     });
     $('.js-popular-count').html($("#popular-slider .popular-slide").length);
@@ -78,9 +78,9 @@ $(document).ready(function() {
         navigation: true,
         navigationText: ["",""],
         responsiveRefreshRate: 50,
-        slideSpeed: 800,
+        slideSpeed: 200,
         rewindNav: true,
-        autoPlay: 3000,
+        // autoPlay: 3000,
         stopOnHover: true
     });
     $('.js-rev-count').html($('#rec-rev-slider .rec-reviews-slide').length);
@@ -88,11 +88,24 @@ $(document).ready(function() {
     $('.owl-prev, .owl-next')
         .addClass('this')
         .append('<span class="this-hover"></span>');
+    var back_timeout;
     $(document).on('mouseenter','.owl-prev, .owl-next', function() {
         $(this).addClass('hover');
     });
     $(document).on('mouseleave','.owl-prev, .owl-next',  function() {
         $(this).removeClass('hover');
+    });
+
+    $(document).on('mouseenter','.rec-rev-slider .owl-prev,.rec-rev-slider .owl-next', function() {
+        var _this = $(this);
+        $(this).addClass('hover');
+        back_timeout = setTimeout(function() {
+            _this.addClass('no-back')
+        },150);
+    });
+    $(document).on('mouseleave','.rec-rev-slider .owl-prev,.rec-rev-slider .owl-next',  function() {
+        $(this).removeClass('hover, no-back');
+        clearTimeout(back_timeout);
     });
 
     // special slider
@@ -118,7 +131,8 @@ $(document).ready(function() {
         },
         sliderDrag: true,
         sliderTouch: true,
-        navigateByClick: false
+        navigateByClick: false,
+        loop: true
     }).data('royalSlider');
     $(".special-slider")
         .find('.rsArrow').addClass('this')

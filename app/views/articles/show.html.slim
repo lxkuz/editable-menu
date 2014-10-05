@@ -1,6 +1,28 @@
 .l-centered.left.section-container
   = render 'shared/header'
 
+  .row.inner-nav-wrap.js-inner-nav-wrap
+    .inner-nav-trigger.js-inner-nav-trigger.active
+      .this-active
+    .js-nav-inner.nav-inner
+      .col-xs-2.col-xs-offset-1
+        a.inner-nav-item.js-anchor href="anchor-1"  Якорь №1
+        a.inner-nav-item.js-anchor href="anchor-2"  (будет реализовано позже)
+      .col-xs-2
+        a.inner-nav-item.js-anchor href="anchor-3"  Якорь №2
+        a.inner-nav-item.js-anchor href="anchor-4"  (будет реализовано позже)
+      .delimeter
+    - if can? :manage, @article
+      .js-nav-inner.nav-inner
+        .col-xs-2.col-xs-offset-1
+          = link_to 'Редактировать', edit_admin_article_path(@article), class: 'inner-nav-item'
+          = link_to 'Удалить', article_path(@article), method: :delete, class: 'inner-nav-item', data: { confirm: 'Вы уверены, что хотите удалить эту статью?' }
+    /! /js nav inner
+  /! /row
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
-      p= @article.content.html_safe
+      h1#anchor-1.cont-head
+        = @article.try(:title)
+      = @article.content.html_safe
+    .delimeter
+  /! /row

@@ -9,8 +9,8 @@ $(document).ready(function() {
         navigation: true,
         navigationText: ["",""],
         responsiveRefreshRate: 50,
-        slideSpeed: 800,
-        rewindNav: false,
+        slideSpeed: 150,
+        rewindNav: true,
         autoPlay: 3000,
         stopOnHover: true
     });
