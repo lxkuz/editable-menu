@@ -3,4 +3,7 @@ class HomeController < ApplicationController
   def index
     @news_items = @news_items.limit(4).newest.decorate
   end
+
+  def about
+  end
 end

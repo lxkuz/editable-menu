@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   resources :articles
   resources :news, controller: 'news_items'
+
+  post 'manual_select_office' => 'application#manual_select_office'
+
+  get 'about' => 'home#about'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
