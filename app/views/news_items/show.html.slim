@@ -21,6 +21,9 @@
         = @news_item.name
       .nf-date
         = @news_item.updated_short_date
+        p
+          = link_to 'Редактировать', edit_admin_news_item_path(@news_item)  if can? :edit, @news_item
+          = link_to 'Удалить', news_path(@news_item), method: :delete       if can? :delete, @news_item
       .nf-text.typo-main.in-full-news
         = @news_item.body
   .row.discount-section

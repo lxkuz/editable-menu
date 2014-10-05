@@ -1,0 +1,22 @@
+ru:
+  activerecord:
+    models:
+      news_item: Новости
+
+    attributes:
+      news_item:
+        name: Наименование
+        body: Текст новости
+        user: Автор
+        updated_at: Обновлено
+        title: Метатег title
+        site: Метатег site
+        description: Метатег description
+        keywords: Метатег keywords
+        noindex: Метатег noindex
+        noindex_bot: Метатег noindex для поискового бота
+        nofollow: Метатег nofollow
+        nofollow_bot: Метатег nofollow для поискового бота
+        canonical_url: Метатег canonical url
+        author_link: Метатег author link
+        publisher_link: Метатег publisher link
