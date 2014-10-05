@@ -3,7 +3,8 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    
+    cannot :manage, :all
+
     if user.admin?
       can :manage, NewsItem
     else

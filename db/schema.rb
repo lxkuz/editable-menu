@@ -90,7 +90,11 @@ ActiveRecord::Schema.define(version: 20141004115831) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "custom_url"
   end
+
+  add_index "news_items", ["slug"], name: "index_news_items_on_slug", unique: true, using: :btree
 
   create_table "offices", force: true do |t|
     t.string   "name"

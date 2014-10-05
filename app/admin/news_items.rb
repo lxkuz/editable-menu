@@ -12,7 +12,8 @@ ActiveAdmin.register NewsItem do
                 :publisher_link,
                 :name,
                 :body,
-                :user_id
+                :user_id,
+                :custom_url
 
   config.sort_order = 'updated_at'
 
@@ -46,6 +47,7 @@ ActiveAdmin.register NewsItem do
       f.input :canonical_url
       f.input :author_link
       f.input :publisher_link
+      f.input :custom_url
     end
 
     f.actions
