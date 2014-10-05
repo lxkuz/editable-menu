@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :news_items
+  alias_attribute :to_s, :email
 
   ROLES = %w[admin seo user]
 

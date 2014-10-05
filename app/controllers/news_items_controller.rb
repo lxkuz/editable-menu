@@ -1,5 +1,5 @@
 class NewsItemsController < ResourcesController
-  actions :index, :show
+  actions :index, :show, :destroy
 
   def show
     super do
