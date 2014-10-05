@@ -71,7 +71,7 @@
   .row
     .col-xs-3.h-4.p-1
       a.h-3.cell href='#'
-        span.cell-back style=('background-image: url("assets/index-back-actions.jpg");')
+        span.cell-back style=("background: url(#{image_path('index-back-actions.jpg')});")
         span.cell-center
           span.cell-center-inner
             | Все акции
@@ -94,7 +94,7 @@
     .col-xs-3.h-4
       a.h-7.cell-over.zoom href='#'
         span.cell-back
-          img.img-response alt='' src='assets/index-back-spiral.jpg' /
+          = image_tag('index-back-spiral.jpg', class: 'img img-response')
         span.cell-caption.black
           span.cell-head
             span.cell-name Винтовые
@@ -105,7 +105,7 @@
             span.cell-price-note рублей
     a.col-xs-7.h-3.cell.zoom href='#'
       span.cell-back
-        img.img-response alt='' src='assets/index-back-gshaped.jpg' /
+        = image_tag('index-back-gshaped.jpg', class: 'img img-response')
       span.cell-caption.white.bottom
         span.cell-head.big
           span.cell-name
@@ -124,7 +124,7 @@
         | Идеология выстраивания бренда, не меняя концепции, изложенной выше, неверно переворачивает инвестиционный продукт, используя опыт предыдущих кампаний.
       a.more-about-company href='#'  Больше о компании
     a.col-xs-5.h-4.cell.cell-production href='#'
-      span.cell-back style=('background-image: url("assets/index-back-production.jpg");')
+      span.cell-back style=("background: url(#{image_path('index-back-production.jpg')});")
       span.cell-center
         span.cell-center-inner
           span.cell-center-text.in-prod
@@ -141,43 +141,43 @@
     .cell-partners-slider
       .index-partners-slider
         a.part-slide href='#'
-          img.img-soft-response alt='' src='assets/content/part-slide1.jpg'
+          = image_tag('content/part-slide1.jpg', class: 'img img-soft-response')
         a.part-slide href='#'
-          img.img-soft-response alt='' src='assets/content/part-slide2.jpg'
+          = image_tag('content/part-slide2.jpg', class: 'img img-soft-response')
         a.part-slide href='#'
-          img.img-soft-response alt='' src='assets/content/part-slide3.jpg'
+          = image_tag('content/part-slide3.jpg', class: 'img img-soft-response')
         a.part-slide href='#'
-          img.img-soft-response alt='' src='assets/content/part-slide4.jpg'
+          = image_tag('content/part-slide4.jpg', class: 'img img-soft-response')
         a.part-slide href='#'
-          img.img-soft-response alt='' src='assets/content/part-slide5.jpg'
+          = image_tag('content/part-slide5.jpg', class: 'img img-soft-response')
         a.part-slide href='#'
-          img.img-soft-response alt='' src='assets/content/part-slide3.jpg'
+          = image_tag('content/part-slide3.jpg', class: 'img img-soft-response')
             a.part-slide href='#'
-              img.img-soft-response alt='' src='assets/content/part-slide4.jpg'
+              = image_tag('content/part-slide4.jpg', class: 'img img-soft-response')
             a.part-slide href='#'
-              img.img-soft-response alt='' src='assets/content/part-slide5.jpg'
+              = image_tag('content/part-slide5.jpg', class: 'img img-soft-response')
   .h-4.cell-slider-2
     .index-slider-2.royalSlider
       a.ind-slider2-slide href='#'
-        img.img-response alt='' src='assets/content/slide1.jpg'
+        = image_tag('content/slide1.jpg', class: 'img img-response')
           span.slider2-head
             ' Специальное предложение
             span.note №1
           span.slider2-caption П-образныя лестница в дом, 98 000 рублей
       a.ind-slider2-slide href='#'
-        img.img-response alt='' src='assets/content/slide1.jpg'
+        = image_tag('content/slide1.jpg', class: 'img img-response')
           span.slider2-head
             ' Специальное предложение
             span.note №2
           span.slider2-caption П-образныя лестница в дом, 98 000 рублей
       a.ind-slider2-slide href='#'
-        img.img-response alt='' src='assets/content/slide1.jpg'
+        = image_tag('content/slide1.jpg', class: 'img img-response')
           span.slider2-head
             ' Специальное предложение
             span.note №3
           span.slider2-caption П-образныя лестница в дом, 98 000 рублей
       a.ind-slider2-slide href='#'
-        img.img-response alt='' src='assets/content/slide1.jpg'
+        = image_tag('content/slide1.jpg', class: 'img img-response')
           span.slider2-head
             ' Специальное предложение
             span.note №4
@@ -186,7 +186,7 @@
   .row
     a.col-xs-7.h-4.cell.zoom href='#'
       span.cell-back
-        img.img-response alt='' src='assets/index-back-elite.jpg' /
+        = image_tag('index-back-elite.jpg', class: 'img img-response')
       span.cell-caption.black
         span.cell-head.italic
           span.cell-name
@@ -198,7 +198,7 @@
     .col-xs-3.h-4
       a.h-7.cell-over.zoom href='#'
         span.cell-back
-          img.img-response alt='' src='assets/index-back-econom.jpg' /
+          = image_tag('index-back-econom.jpg', class: 'img img-response')
         span.cell-caption.black
           span.cell-head
             span.cell-name Для самых экономных
@@ -208,7 +208,7 @@
   .row
     a.col-xs-4.h-3.cell.zoom href='#'
       span.cell-back
-        img.img-response alt='' src='assets/index-back-smart.jpg' /
+        = image_tag('index-back-smart.jpg', class: 'img img-response')
       span.cell-caption.white.bottom
         span.cell-head.big.italic
           span.cell-name
@@ -252,12 +252,12 @@
             span.more-hits href='#'  Подробнее
       .h-1.cell.cell-payment
         .pay-icons
-          img alt='' src='assets/content/pay1.jpg'
-            img alt='' src='assets/content/pay2.jpg'
+          = image_tag('content/pay1.jpg', class: 'img')
+          = image_tag('content/pay2.jpg', class: 'img')
         .cell-pay-head Способы оплаты
     .col-xs-3
     a.col-xs-3.h-4.cell.cell-credit href='#'
-      span.cell-back style=('background-image: url("assets/index-back-credit.jpg");')
+      span.cell-back style=("background: url(#{image_path('index-back-credit.jpg')});")
       span.cell-caption.white.bottom
         span.cell-head.big.cell-credit-head
           span.cell-name В кредит

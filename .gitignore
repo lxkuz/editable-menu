@@ -71,4 +71,4 @@ pickle-email-*.html
 .zeus.sock
 /.vagrant
 Vagrantfile
-config/secrets.yml
+# config/secrets.yml

@@ -6,6 +6,20 @@ Office.create!(
 )
 
 Office.create!(
+  name: 'на Невском',
+  city: 'Санкт-Петербург',
+  postindex: 191025,
+  street_address: 'Невский проспект, 55, офис 2'
+)
+
+Office.create!(
+  name: 'на Толстого',
+  city: 'Казань',
+  postindex: 420015,
+  street_address: 'улица Льва Толстого, 14, офис 12'
+)
+
+Office.create!(
   name: 'на Руставели',
   city: 'Уфа',
   postindex: 450081,
@@ -13,7 +27,6 @@ Office.create!(
 )
 
 admin = User.create! email: 'admin@example.com', password: 'password', role: 'admin'
-puts 'Admin created!'
 
 51.times do |i|
   attributes = {
@@ -33,7 +46,6 @@ puts 'Admin created!'
   }
 
   NewsItem.create! attributes
-  puts 'News items created!'
 end
 
 Article.create!(

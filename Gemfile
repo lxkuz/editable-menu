@@ -34,6 +34,7 @@ gem 'devise'
 
 # geolocation
 gem 'geocoder'
+gem 'ipgeobase'
 
 group :development, :test do
     # Console
@@ -50,4 +51,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
