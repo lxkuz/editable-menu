@@ -9,7 +9,7 @@ $(document).ready(function() {
         navigation: true,
         navigationText: ["",""],
         responsiveRefreshRate: 50,
-        slideSpeed: 800,
+        slideSpeed: 300,
         rewindNav: false,
         autoPlay: 3000,
         stopOnHover: true

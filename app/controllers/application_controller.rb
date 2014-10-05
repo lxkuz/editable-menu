@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
+  def manual_select_office
+    session[:office_id] = params[:office_id]
+
+    redirect_to(session[:previous_url] || root_path)
+  end
+
   def auto_select_office
     unless session[:office_id]
       nearest_office = Geocoding::NearestOfficeFinder.new(request.remote_ip).nearest_office
@@ -24,5 +30,13 @@ class ApplicationController < ActionController::Base
     end
 
     @nearest_office = nearest_office || Office.find_by(id: session[:office_id])
+  end
+
+  def after_sign_in_path_for(user)
+    if user.admin?
+      admin_root_path
+    else
+      session[:previous_url] || root_path
+    end
   end
 end

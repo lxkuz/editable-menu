@@ -11,7 +11,18 @@
  * file per style scope.
  *
  *= require main
+ *= require jquery-ui
+ *= require jquery.modal
  *= require_self
  */
 
 @import 'devise/login';
+
+#offices-list-modal.modal {
+  z-index: 9999 !important;
+  line-height: 1.5em;
+}
+
+#office-select.a {
+  color: #de3a1a !important;
+}

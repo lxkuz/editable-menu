@@ -7,7 +7,8 @@
   = link_to(root_path, class: 'logo-text') do
     = image_tag "logo-text.png"
 
-  .nav-location в Ростове-на-Дону
+  .nav-location
+    = @nearest_office.try(:name) || 'в Ростове-на-Дону'
   .nav-section
     ul.menu.main
       li
@@ -19,7 +20,7 @@
       li
         = link_to 'Монтаж', '#'
       li
-        = link_to 'О компании', '#'
+        = link_to 'О компании', about_path
       li
         = link_to 'Контакты', '#'
   .nav-section
@@ -66,7 +67,7 @@
     .nav-head.gray Дилерам
     ul.menu
       li
-        = link_to 'Личный кабинет', admin_root_path
+        = link_to 'Личный кабинет', admin_root_path, class: "#{current_user.try(:admin?) ? '' : 'js-open-auth'}"
       li
         = link_to 'Франшиза', '#'
   .nav-section
@@ -78,11 +79,11 @@
   .nav-section
     ul.menu.main
       li
-        = link_to 'О лестницах', '#'
+        = link_to 'О лестницах', articles_path
       li
         = link_to 'Рейтинг лестниц', '#'
   form.nav-search action=""
-    input.search-field placeholder="Поиск" type="text"
+    input.search-field.js-search-field value="Поиск" type="text"
       .search-icn
         .this-active
   .social-caption
@@ -98,3 +99,6 @@
     | Московские Лестницы
     br
     | &copy; 2014
+    br
+    | Front End v1.1
+

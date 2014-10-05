@@ -1,4 +1,14 @@
 $(document).ready(function() {
+    
+    
+    // search field
+    $('.js-search-field').focus(function() {
+        if(this.value==this.defaultValue) this.value='';
+    });
+    $('.js-search-field').blur(function() {
+        if(this.value=='') this.value=this.defaultValue;
+    });
+
     // phone links
     var deviceAgent = navigator.userAgent.toLowerCase();
     var agentID = deviceAgent.match(/(iphone|ipod|ipad)/);
