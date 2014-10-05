@@ -1,0 +1,49 @@
+.l-centered.left.section-container
+  = render 'shared/header'
+
+  .row.content-section.typo-main
+    .col-xs-8.col-xs-offset-1
+      h1.cont-head О лестницах
+      p Компания Московские лестницы, познание текста, основываясь на парадоксальном совмещении исключающих друг друга принципов характерности и поэтичности, упруго-пластично. Мелькание мыслей диссонирует стиль, именно поэтому голос автора романа не имеет никаких преимуществ перед голосами персонажей. Стилистическая игра интегрирует голос персонажа и передается в этом стихотворении Донна метафорическим образом циркуля.
+      p Основными направлениями деятельности Компании «Московские Лестницы» являются разработка, производство и продажа инновационных моделей модульных лестниц и комплектующих, а также качественный монтаж лестничных решений. Мы беремся за любые, даже за самые сложные лестничные проекты наших клиентов.
+    .delimeter
+  /! /row
+  .row.content-section.typo-article
+    .col-xs-6.col-xs-offset-1
+      - @articles.each_with_index do |article, index|
+        = render 'list', article: article, index: index
+    /! /col-xs-3
+
+    .col-xs-2
+      .article-list
+        h4.art-list-head 10 советов для дома
+        a href="#"  Схема сборки
+        a href="#"  Доставка
+        a href="#"  Срок службы
+        a href="#"  Эксплуатация
+      .img-wrap-2
+        img.img-response alt="" src="content/cont-img5.jpg"
+      .article-list
+        h4.art-list-head Самое популярное
+        a href="#"  Схема сборки
+        a href="#"  Уход
+        a href="#"  Эксплуатация
+        a href="#"  Противопожарная
+        a href="#"  Доставка
+        a href="#"  Срок службы
+        a href="#"  Эксплуатация
+        a href="#"  Схема сборки
+      .article-list
+        h4.art-list-head Полезные ссылки
+        a href="#"  Схема сборки
+        a href="#"  Доставка
+        a href="#"  Срок службы
+        a href="#"  Эксплуатация
+        a href="#"  Уход
+    /! /col-xs-2
+    / .col-xs-8.col-xs-offset-1
+      / img.img-response alt="" src="content/cont-img2.jpg"
+    /! /col-xs-3
+  /! /row
+/! /l centered section-container
+
