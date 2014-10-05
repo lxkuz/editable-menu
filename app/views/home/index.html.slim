@@ -223,7 +223,7 @@
         - @news_items.each do |news_item|
           = link_to news_path(news_item), class: 'cell-news-item' do
             span.news-date
-              = news_item_short_date(news_item.updated_at)
+              = news_item.updated_short_date
             span.news-text
               = news_item.name
         = link_to 'Все новости компании', news_index_path, class: 'view-all-news'

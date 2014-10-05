@@ -14,7 +14,8 @@ gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 gem 'carrierwave'
 gem 'meta-tags'
 gem 'inherited_resources'
-gem  'has_scope'
+gem 'has_scope'
+gem 'draper'
 
 gem 'friendly_id'
 
