@@ -25,7 +25,7 @@
           = link_to 'Редактировать', edit_admin_news_item_path(@news_item)  if can? :edit, @news_item
           = link_to 'Удалить', news_path(@news_item), method: :delete       if can? :delete, @news_item
       .nf-text.typo-main.in-full-news
-        = @news_item.body
+        = @news_item.body.html_safe
   .row.discount-section
     .col-xs-8.col-xs-offset-1.discount-wrap
       h4.disc-head Получите скидку уже сегодня!

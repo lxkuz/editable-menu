@@ -44,7 +44,7 @@
           h3.nl-head
             = link_to news_item.name, news_path(news_item), class: 'an-head'
           .nl-text.typo-main
-            = news_item.body.truncate(300, separator: ' ')
+            = news_item.body.truncate(300, separator: ' ').html_safe
           = link_to 'Читать далее', news_path(news_item), class: 'nl-more'
         .delimeter
 
