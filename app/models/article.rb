@@ -9,6 +9,10 @@ class Article < ActiveRecord::Base
 
   before_save :set_published_at
 
+  def to_s
+    title
+  end
+
   private
 
   def set_published_at

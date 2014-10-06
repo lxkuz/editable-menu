@@ -19,6 +19,10 @@
 //= require jquery.scrollTo.min
 //= require jquery.validate.min
 //= require owl.carousel-min
+
+//= require initializer
+//= require_tree ./components/
+
 //= require common
 //= require page-index
 //= require page-all
