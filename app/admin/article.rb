@@ -9,6 +9,7 @@ ActiveAdmin.register Article do
                 :published_at
 
   config.sort_order = 'position_asc'
+  config.filters = false
 
   index do
     selectable_column
@@ -27,9 +28,6 @@ ActiveAdmin.register Article do
 
     actions
   end
-
-  filter :title
-  filter :keywords
 
   form do |f|
     f.inputs do
