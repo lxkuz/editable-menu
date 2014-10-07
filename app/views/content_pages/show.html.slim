@@ -1,0 +1,63 @@
+.l-centered.left.section-container
+  = render 'shared/header'
+
+
+  .row.inner-nav-wrap.js-inner-nav-wrap.active
+    .inner-nav-trigger.js-inner-nav-trigger.active
+      .this-active
+    .js-nav-inner.nav-inner
+      .col-xs-2.col-xs-offset-1
+        a.inner-nav-item.heading.js-anchor href="about-company" О компании
+        a.inner-nav-item.js-anchor href="new-block" Новый блок
+      .col-xs-2
+        a.inner-nav-item.heading.js-anchor href="our-mission" Наша миссия
+        a.inner-nav-item.js-anchor href="new-block" Новый блок
+      .col-xs-2
+        a.inner-nav-item.heading.js-anchor href="smi" Информация для СМИ
+        a.inner-nav-item.js-anchor href="new-block" Новый блок
+      .col-xs-2
+        a.inner-nav-item.heading.js-anchor href="production" Производство
+        a.inner-nav-item.js-anchor href="new-block" Новый блок
+      .delimeter
+    /! /js nav inner
+  /! /row
+  - @content_page.content_page_chapters.by_position.each do |chapter|
+    .row.content-section.typo-main
+      .col-xs-8.col-xs-offset-1
+        h1.cont-head *{id: chapter.anchor}
+          = chapter.name
+        p
+          = link_to 'Редактировать', edit_admin_content_page_path(@content_page)             if can? :edit,   @content_page
+          = link_to 'Удалить',       admin_content_page_path(@content_page), method: :delete if can? :delete, @content_page
+        p
+          = chapter.content
+      .delimeter
+  /! /row
+  .row.content-section
+    .col-xs-2.col-xs-offset-1
+      a.inner-nav-item.heading href="#"  Маршевые лестницы
+      a.inner-nav-item href="#"  Схема сборки
+      a.inner-nav-item href="#"  Доставка
+      a.inner-nav-item href="#"  Срок службы
+      a.inner-nav-item href="#"  Эксплуатация
+    .col-xs-2
+      a.inner-nav-item.heading href="#"  Винтовые лестницы
+      a.inner-nav-item href="#"  Схема сборки
+      a.inner-nav-item href="#"  Уход
+      a.inner-nav-item href="#"  Эксплуатация
+      a.inner-nav-item href="#"  Противопожарная
+    .col-xs-2
+      a.inner-nav-item.heading href="#"  Модульные лестницы
+      a.inner-nav-item href="#"  Схема сборки
+      a.inner-nav-item href="#"  Доставка
+      a.inner-nav-item href="#"  Срок службы
+      a.inner-nav-item href="#"  Эксплуатация
+    .col-xs-2
+      a.inner-nav-item.heading href="#"  На монокосоуре
+      a.inner-nav-item href="#"  Схема сборки
+      a.inner-nav-item href="#"  Доставка
+      a.inner-nav-item href="#"  Срок службы
+      a.inner-nav-item href="#"  Эксплуатация
+  /! /row
+/! /l centered section-container
+/! /wrapper

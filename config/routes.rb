@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   post 'manual_select_office' => 'application#manual_select_office'
 
-  get 'about' => 'home#about'
+  resources :content_pages, only: [:show], path: ''
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
