@@ -1,0 +1,4 @@
+a.inner-nav-item.heading href=@model.targetUrl()
+  span= @model.get "name"
+a.destroy href="#" Удалить
+

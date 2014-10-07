@@ -20,7 +20,22 @@
 //= require jquery.validate.min
 //= require owl.carousel-min
 
+//= require underscore
+//= require underscore.string
+//= require underscore.inflection
+
+//= require backbone
+
 //= require initializer
+
+//= require ./components/menu-editor/base
+//= require ./components/menu-editor/models/item
+//= require ./components/menu-editor/models/items
+//= require_tree ./components/menu-editor/templates
+
+//= require ./components/menu-editor/views/view
+//= require_tree ./components/menu-editor/views
+
 //= require_tree ./components/
 
 //= require common

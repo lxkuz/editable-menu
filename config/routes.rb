@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :articles
   resources :news, controller: 'news_items'
+  resources :menu_items, only: [:index, :destroy]
 
   post 'manual_select_office' => 'application#manual_select_office'
 
