@@ -30,9 +30,9 @@
             | Новости центрального офиса
           li.tab-item.js-tab-trigger data-tabs="tab3"
             span.active-arrow
-            | Новости дилеров Ростова-на-Дону
+            ' Новости дилеров Ростова-на-Дону
             span.tabs-change-city.js-change-city
-              | —
+              ' —
               span.inner сменить город
   #tab1.js-tab-content
     - @news_items.each do |news_item|
