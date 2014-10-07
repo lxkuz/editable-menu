@@ -19,6 +19,7 @@
 # Ignore application configuration
 /config/application.yml
 /config/deploy.yml
+/config/secrets.yml
 
 .ruby-gemset*
 .ruby-version*
@@ -71,4 +72,3 @@ pickle-email-*.html
 .zeus.sock
 /.vagrant
 Vagrantfile
-# config/secrets.yml

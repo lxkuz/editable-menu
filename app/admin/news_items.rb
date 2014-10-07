@@ -16,6 +16,7 @@ ActiveAdmin.register NewsItem do
                 :custom_url
 
   config.sort_order = 'updated_at'
+  config.filters = false
 
   index do
     selectable_column
@@ -28,8 +29,6 @@ ActiveAdmin.register NewsItem do
 
     actions
   end
-
-  filter :name
 
   form do |f|
     f.inputs do
