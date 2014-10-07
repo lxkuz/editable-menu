@@ -1,7 +1,7 @@
 .row
   .col-xs-7.col-xs-offset-3
     .cell.cell-contacts-helper.h-1
-    .cell.cell-contacts.h-1.fixed
+    .cell.cell-contacts.h-1.fixed.js-fixed-top
       a.contacts-order href="#"  Заказать проект
       .clear-wrap
         a.cell-phone href="callto:84952230423"  8 495 223 04 23
@@ -10,10 +10,21 @@
         a.cell-phone-add href="callto:84952230423"  8 800 100 54 18
         .cell-order-call Заказать звонок
         .cell-location.this
-          = @nearest_office.try(:city) || Ростов-на-Дону
-          span.loc-arrow
-            span.this-hover
+          = link_to_modal "#offices-list-modal", id: 'office-select' do
+            = @nearest_office.try(:city) || 'Ростов-на-Дону'
+            span.loc-arrow
+              span.this-hover
         .cell-adr
           = @nearest_office.street_address
   /! /col-xs-7
   /! /row
+
+#offices-list-modal style=("display: none; width: 450px;")
+  - Office.find_each do |office|
+    .nav-section
+      .nav-head
+        = office.name
+      p
+        = office.address
+      = link_to 'Выбрать', manual_select_office_path(office_id: office.id), method: :post, class: 'reg-link'
+  = link_to 'Cancel', session[:previous_url] || root_path, rel: "modal:close"

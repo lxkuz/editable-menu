@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    
-    
+
+
     // search field
     $('.js-search-field').focus(function() {
         if(this.value==this.defaultValue) this.value='';
@@ -54,7 +54,7 @@ $(document).ready(function() {
             if(!$(target).parents('.js-nav').length &&
                !$(target).parents('.js-nav-trigger').length &&
                !$(target).filter('.js-nav').length &&
-               !$(target).filter('.js-nav-trigger').length) { 
+               !$(target).filter('.js-nav-trigger').length) {
                 if(first_over) {
                     timeout = setTimeout(function() {
                         hide_navigation();
@@ -100,6 +100,13 @@ $(document).ready(function() {
         var scroll_to = $('#'+$(this).attr('href')).offset().top - fixed_top_offset;
         $.scrollTo({top: scroll_to, left: 0}, 500);
     });
+
+    if (window.location.hash) {
+      setTimeout(function() {
+        var scroll_to = $(window.location.hash).offset().top - fixed_top_offset;
+        $.scrollTo({top: scroll_to, left: 0});
+      }, 500);
+    }
 
     // tabs
     var tab_trigger = $('.js-tab-trigger'),
