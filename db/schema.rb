@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004115831) do
+ActiveRecord::Schema.define(version: 20141007121026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,16 +75,8 @@ ActiveRecord::Schema.define(version: 20141004115831) do
 
   create_table "news_items", force: true do |t|
     t.string   "title"
-    t.string   "site"
     t.text     "description"
     t.text     "keywords"
-    t.boolean  "noindex",        default: false
-    t.string   "noindex_bot"
-    t.boolean  "nofollow",       default: false
-    t.string   "nofollow_bot"
-    t.string   "canonical_url"
-    t.string   "author_link"
-    t.string   "publisher_link"
     t.string   "name"
     t.text     "body"
     t.integer  "user_id"

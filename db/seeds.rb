@@ -31,14 +31,8 @@ admin = User.create! email: 'admin@example.com', password: 'password', role: 'ad
 51.times do |i|
   attributes = {
     title:          "this metatag title#{ i }",
-    site:           "this metatag site#{ i }",
     description:    "this metatag description#{ i }",
     keywords:       "this metatag keywords#{ i }",
-    noindex:        [false, true].sample,
-    nofollow:       [false, true].sample,
-    canonical_url:  "www.example#{ i }.com",
-    author_link:    "www.autor#{ i }.com",
-    publisher_link: "www.publisher#{ i }.com",
 
     name: "news title##{ i }",
     body: "body #{ i } "*300,
