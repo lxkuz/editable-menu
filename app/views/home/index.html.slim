@@ -58,7 +58,7 @@
             span.cell-price-note рублей
     .col-xs-7
       .cell.cell-contacts-helper.h-1
-      .cell.cell-contacts.h-1.fixed
+      .cell.cell-contacts.h-1.fixed.js-fixed-top
 
         .clear-wrap
           a.cell-phone href='callto:84952230423'  8 495 223 04 23
@@ -136,10 +136,10 @@
         .cell-order-caption Профессионалы помогут, отправьте заявку:
         form#feedback-form.ind-order-form.field-std.clear-wrap action=""
           input.plh name="fbemail" placeholder=("Ваш e-mail") required="" type="email"
-            .order-psw-wrap
-              input.plh name="fbphone" placeholder=("Номер телефона") required="" type="text"
-              .order-file-btn
-                input.is-hidden1 type="file"
+          .order-psw-wrap
+            input.plh name="fbphone" placeholder=("Номер телефона") required="" type="text"
+            .order-file-btn
+              input.is-hidden1 type="file"
           input.js-feedback-submit type="submit" value=("Отправить заявку")
       .js-feedback-form-sent.is-hidden
         h4.cell-order-head Спасибо за сообщение
@@ -176,7 +176,7 @@
       .cell-about-text
         | Идеология выстраивания бренда, не меняя концепции, изложенной выше, неверно переворачивает инвестиционный продукт, используя опыт предыдущих кампаний.
       a.more-about-company href='#'  Больше о компании
-    a.col-xs-5.h-4.cell.cell-production href='#'
+    = link_to about_path(anchor: 'production'), class: 'col-xs-5 h-4 cell cell-production' do
       span.cell-back style=("background: url(#{image_path('index-back-production.jpg')});")
       span.cell-center
         span.cell-center-inner

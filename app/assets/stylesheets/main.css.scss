@@ -1283,7 +1283,7 @@ ol {
   font-family: "helvetica", Helvetica, Arial, sans-serif;
   font-size: 15px;
   background-color: #df4a2c;
-  background: asset-data-url("back-red-black.jpg") repeat-y -250px 0;
+  background: asset-url("back-red-black.jpg") repeat-y -250px 0;
 }
 .field-std input[type="submit"]:active,
 .field-std input[type="submit"]:focus {
