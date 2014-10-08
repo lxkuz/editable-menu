@@ -10,6 +10,7 @@ class ArticlesController < ResourcesController
   protected
 
   def collection
-    @articles ||= end_of_association_chain.newest.limit(10)
+    @articles ||= end_of_association_chain.by_position.limit(10)
   end
 end
+

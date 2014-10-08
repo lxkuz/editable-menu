@@ -175,7 +175,7 @@
         br лестницы?
       .cell-about-text
         | Идеология выстраивания бренда, не меняя концепции, изложенной выше, неверно переворачивает инвестиционный продукт, используя опыт предыдущих кампаний.
-      a.more-about-company href='#'  Больше о компании
+      = link_to 'Больше о компании', content_page_path(:about, anchor: 'about-company'), class: 'more-about-company'
     = link_to content_page_path(:about, anchor: 'production'), class: 'col-xs-5 h-4 cell cell-production' do
       span.cell-back style=("background: url(#{image_path('index-back-production.jpg')});")
       span.cell-center
