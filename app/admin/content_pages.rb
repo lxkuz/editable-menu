@@ -8,6 +8,7 @@ ActiveAdmin.register ContentPage do
                   :id,
                   :position,
                   :name,
+                  :anchor,
                   :content
                 ]
 
