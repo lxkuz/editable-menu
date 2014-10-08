@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
 
   scope :by_position, -> { order(:position)}
 
-  validates :title_translit, presence: true
+  validates :title_translit, presence: true, uniqueness: true
 
   before_save :set_published_at
 

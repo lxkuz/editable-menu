@@ -1,6 +1,10 @@
 class ArticlesController < ResourcesController
   actions :index, :show, :destroy
 
+  def index
+    @articles_page = Article.find_or_create_by(title_translit: 'articles');
+  end
+
   def show
     set_meta_tags title: @article.title,
                   description: @article.description,

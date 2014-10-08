@@ -19,7 +19,7 @@ ActiveAdmin.register ContentPage do
     selectable_column
 
     column :name
-
+    column :page_url
     actions
   end
 
