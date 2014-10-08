@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    models:
+      content_page: Контентная страница
+
+    attributes:
+      content_page:
+        name: Имя страницы
+        page_url: URL
+        title: Метатег title
+        description: Метатег description
+        keywords: Метатег keywords

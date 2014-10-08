@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007121026) do
+ActiveRecord::Schema.define(version: 20141007185514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,27 @@ ActiveRecord::Schema.define(version: 20141007121026) do
     t.string   "storage_format"
     t.string   "storage_mime_type"
     t.string   "storage_size"
+  end
+
+  create_table "content_page_chapters", force: true do |t|
+    t.string   "name"
+    t.string   "anchor"
+    t.text     "content"
+    t.integer  "content_page_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "content_pages", force: true do |t|
+    t.string   "name"
+    t.string   "page_url"
+    t.string   "slug"
+    t.string   "title"
+    t.string   "description"
+    t.string   "keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "friendly_id_slugs", force: true do |t|

@@ -176,7 +176,7 @@
       .cell-about-text
         | Идеология выстраивания бренда, не меняя концепции, изложенной выше, неверно переворачивает инвестиционный продукт, используя опыт предыдущих кампаний.
       a.more-about-company href='#'  Больше о компании
-    = link_to about_path(anchor: 'production'), class: 'col-xs-5 h-4 cell cell-production' do
+    = link_to content_page_path(:about, anchor: 'production'), class: 'col-xs-5 h-4 cell cell-production' do
       span.cell-back style=("background: url(#{image_path('index-back-production.jpg')});")
       span.cell-center
         span.cell-center-inner
@@ -325,4 +325,3 @@
         = office.address
       = link_to 'Выбрать', manual_select_office_path(office_id: office.id), method: :post, class: 'reg-link'
   = link_to 'Cancel', session[:previous_url] || root_path, rel: "modal:close"
-

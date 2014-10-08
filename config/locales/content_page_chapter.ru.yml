@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      content_page_chapter: Глава контентной страницы
+
+    attributes:
+      content_page_chapter:
+        name: Имя главы
+        anchor: Якорь
+        content: Контент
+        content_page: Контентная страница
+        position: позиция на контентной странице
+
