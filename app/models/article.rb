@@ -2,8 +2,7 @@ class Article < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title_translit, use: [:slugged, :finders]
 
-  default_scope { order :position }
-  scope :newest, -> { order(updated_at: :desc) }
+  scope :by_position, -> { order(:position)}
 
   validates :title_translit, presence: true
 

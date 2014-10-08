@@ -47,19 +47,18 @@ group :development, :test do
   gem 'meta_request', '~> 0.3.4'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'traceroute'
 
   gem 'spring'
   gem 'capybara'
   gem 'rspec-rails', '~> 3.1.0'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+
+  # Deploy
+  gem 'mina'
 end
 
 group :production do
   gem 'rails_12factor'
 end
-
-gem 'capistrano', '~> 3.2.1'
-gem 'capistrano-bundler', '~> 1.1.3'
-gem 'capistrano-rails', '~> 1.1.2'
-gem 'capistrano-rvm', github: "capistrano/rvm"
