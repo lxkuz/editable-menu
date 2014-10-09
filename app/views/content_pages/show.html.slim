@@ -28,7 +28,7 @@
       p
         = link_to 'Редактировать', edit_admin_content_page_path(@content_page)             if can? :edit,   @content_page
         = link_to 'Удалить',       admin_content_page_path(@content_page), method: :delete if can? :delete, @content_page
-      = @content_page.content.html_safe
+      = @content_page.content.try(:html_safe)
     .delimeter
   - @content_page.content_page_chapters.by_position.each do |chapter|
     .row.content-section.typo-main
