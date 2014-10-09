@@ -19,7 +19,15 @@
         - if index.even?
           .article-item
             = link_to article_path(article) do
-            h3.article-head = article.title
+            h3.article-head role='icon_editable'
+              = article.title
+              - if can? :manage, article
+                .edit-icons.not-main-page
+                  = link_to edit_admin_article_path(article) do
+                    i.fa.fa-pencil.edit-icon
+                  = link_to article_path(article), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту статью?' } do
+                    i.fa.fa-times.edit-icon
+
             p = article.description
             = link_to 'Узнать больше', article_path(article), class: 'article-more red-black'
 
@@ -28,7 +36,14 @@
         - if index.odd?
           .article-item
             = link_to article_path(article) do
-            h3.article-head = article.title
+            h3.article-head role='icon_editable'
+              = article.title
+              - if can? :manage, article
+                .edit-icons.not-main-page
+                  = link_to edit_admin_article_path(article) do
+                    i.fa.fa-pencil.edit-icon
+                  = link_to article_path(article), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту статью?' } do
+                    i.fa.fa-times.edit-icon
             p = article.description
             = link_to 'Узнать больше', article_path(article), class: 'article-more red-black'
 

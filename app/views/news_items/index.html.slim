@@ -27,8 +27,14 @@
           .nl-date
             = news_item.updated_short_date
         .col-xs-8
-          h3.nl-head
+          h3.nl-head role='icon_editable'
             = link_to news_item.name, news_path(news_item), class: 'an-head'
+            .edit-icons.not-main-page
+              - if can? :manage, news_item
+                = link_to edit_admin_news_item_path(news_item) do
+                  i.fa.fa-pencil.edit-icon
+                = link_to news_path(news_item), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту новость?' } do
+                  i.fa.fa-times.edit-icon
           .nl-text.typo-main
             = news_item.body.truncate(300, separator: ' ').html_safe
           = link_to 'Читать далее', news_path(news_item), class: 'nl-more'
