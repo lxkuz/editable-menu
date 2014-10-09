@@ -38,8 +38,8 @@ ActiveAdmin.register ContentPage do
         end
       end
       f.input :title
-      f.input :description, as: :wysihtml5
-      f.input :keywords, as: :wysihtml5
+      f.input :description, input_html: { rows: 2 }
+      f.input :keywords,    input_html: { rows: 2 }
     end
 
     f.actions

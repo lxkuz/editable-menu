@@ -25,12 +25,12 @@ ActiveAdmin.register NewsItem do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :custom_url
       f.input :body, as: :wysihtml5
       f.input :user
       f.input :title
-      f.input :description, as: :wysihtml5
-      f.input :keywords, as: :wysihtml5
-      f.input :custom_url
+      f.input :description, input_html: { rows: 2 }
+      f.input :keywords, input_html: { rows: 2 }
     end
 
     f.actions
