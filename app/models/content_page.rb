@@ -11,6 +11,7 @@
 #  keywords    :text
 #  created_at  :datetime
 #  updated_at  :datetime
+#  content     :text
 #
 
 class ContentPage < ActiveRecord::Base
