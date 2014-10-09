@@ -2,8 +2,9 @@ ActiveAdmin.register ContentPage do
   permit_params :title,
                 :description,
                 :keywords,
-                :name,
                 :page_url,
+                :name,
+                :content,
                 content_page_chapters_attributes: [
                   :id,
                   :position,
@@ -27,8 +28,9 @@ ActiveAdmin.register ContentPage do
     f.inputs do
       f.input :name
       f.input :page_url
+      f.input :content, as: :wysihtml5
       f.inputs do
-        f.has_many :content_page_chapters, allow_destroy: true, heading: 'Chapters' do |cf|
+        f.has_many :content_page_chapters, allow_destroy: true, heading: 'Текстовые блоки' do |cf|
           cf.input :position
           cf.input :name
           cf.input :anchor
@@ -36,8 +38,8 @@ ActiveAdmin.register ContentPage do
         end
       end
       f.input :title
-      f.input :description, as: :wysihtml5
-      f.input :keywords, as: :wysihtml5
+      f.input :description, input_html: { rows: 2 }
+      f.input :keywords,    input_html: { rows: 2 }
     end
 
     f.actions

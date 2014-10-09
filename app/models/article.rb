@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id             :integer          not null, primary key
+#  title          :string(255)
+#  title_translit :string(255)
+#  description    :text
+#  keywords       :text
+#  content        :text
+#  position       :integer
+#  published_at   :datetime
+#  created_at     :datetime
+#  updated_at     :datetime
+#  slug           :string(255)
+#
+
 class Article < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title_translit, use: [:slugged, :finders]

@@ -16,7 +16,7 @@ gem 'meta-tags'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'draper'
-
+gem 'annotate', '~> 2.6.5'
 gem 'friendly_id'
 
 # views

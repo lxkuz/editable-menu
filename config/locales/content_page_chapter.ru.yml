@@ -1,11 +1,11 @@
 ru:
   activerecord:
     models:
-      content_page_chapter: Глава контентной страницы
+      content_page_chapter: текстовый блок
 
     attributes:
       content_page_chapter:
-        name: Имя главы
+        name: Имя текстового блока
         anchor: Якорь
         content: Контент
         content_page: Контентная страница

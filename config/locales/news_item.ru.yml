@@ -10,5 +10,5 @@ ru:
         user: Автор
         updated_at: Обновлено
         title: Метатег title
-        description: Метатег description
-        keywords: Метатег keywords
+        description: Описание (не больше 255 символов)
+        keywords: Ключевые слова (не больше 25 слов)

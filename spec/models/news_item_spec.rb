@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: news_items
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  description :text
+#  keywords    :text
+#  name        :string(255)
+#  body        :text
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  slug        :string(255)
+#  custom_url  :string(255)
+#
+
 require 'rails_helper'
 
 describe NewsItem do
