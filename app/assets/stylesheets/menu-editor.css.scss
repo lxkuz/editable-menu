@@ -1,0 +1,65 @@
+.menu-editor {
+  .me-btn {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .save {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: asset-data-url('menu-editor/save-icon.png') no-repeat;
+  }
+
+  .me-item, .me-root-item, .me-form {
+    position: relative;
+
+  }
+
+  .me-form {
+    display: inline-block;
+    .save {
+      left: 138px;
+      top: 3px;
+    }
+  }
+
+  .destroy {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: asset-data-url('menu-editor/destroy-icon.png') no-repeat;
+  }
+
+  .edit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: asset-data-url('menu-editor/edit-icon.png') no-repeat;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  .save, input, .destroy {
+    display: none;
+  }
+
+  &.editable {
+    .edit {
+      opacity: 1;
+    }
+    .save, input, .destroy  {
+      display: block;
+    }
+  }
+
+  &.readonly {
+    .edit, .save, input, .destroy {
+      display: none;
+    }
+  }
+}

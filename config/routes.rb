@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   resources :articles
   resources :news, controller: 'news_items'
-  resources :menu_items, only: [:index, :destroy]
+  resources :menu_items, only: [:index, :create, :destroy] do
+    collection do
+      get 'search'
+    end
+  end
 
   post 'manual_select_office' => 'application#manual_select_office'
 

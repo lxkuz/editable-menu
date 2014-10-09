@@ -1,5 +1,9 @@
 class Article < ActiveRecord::Base
   extend FriendlyId
+
+  include SearchByLike
+  has_search_by_like_for :title
+
   friendly_id :title_translit, use: [:slugged, :finders]
 
   default_scope { order :position }

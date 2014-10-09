@@ -1,6 +1,6 @@
 class MenuEditor.RootItemView extends MenuEditor.View
   template: "root-item"
-  className: "col-xs-2"
+  className: "me-root-item col-xs-2"
 
   events:
     "click .destroy": "destroy"
@@ -8,12 +8,20 @@ class MenuEditor.RootItemView extends MenuEditor.View
   render: =>
     super
     @model.children().each (child) =>
-      view = new MenuEditor.ItemView model: child
+      view = new MenuEditor.ItemView
+        model: child
+        editable: @options.editable
+        refreshCallback: @options.refreshCallback
       @$el.append view.render().el
+
+    form = new MenuEditor.FormView
+      model: new MenuEditor.Item({parent_id: @model.id})
+      searchUrl: @options.searchUrl
+      refreshCallback: @options.refreshCallback
+    @$el.append form.render().el
     @
 
   destroy: =>
     @model.destroy
-      success: =>
-        @el.remove()
+      success: @options.refreshCallback
     no

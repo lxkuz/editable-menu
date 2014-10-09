@@ -8,7 +8,7 @@ class MenuItem < ActiveRecord::Base
 
   belongs_to :target, polymorphic: true
   belongs_to :parent, class_name: "MenuItem"
-  has_many :children, class_name: "MenuItem", foreign_key: :parent_id
+  has_many :children, class_name: "MenuItem", foreign_key: :parent_id, dependent: :destroy
 
   before_save :fill_name
 

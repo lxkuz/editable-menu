@@ -4,7 +4,7 @@ class MenuEditor.Item extends Backbone.Model
     @_children
 
   url: =>
-    @collection.url + "/" + @id
+    "/menu_items#{if @id then "/" + @id else ''}"
 
   targetUrl: =>
     str = _.str.underscored(@get "target_type")

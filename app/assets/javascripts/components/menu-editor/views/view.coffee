@@ -1,5 +1,9 @@
 class MenuEditor.View extends Backbone.View
 
+  initialize: =>
+    @options = arguments[0]
+    super
+
   getTemplateFunction: =>
     JST["components/menu-editor/templates/#{@template}"]
 
@@ -10,3 +14,4 @@ class MenuEditor.View extends Backbone.View
 
   getTemplateParams: =>
     model: @model
+    options: @options
