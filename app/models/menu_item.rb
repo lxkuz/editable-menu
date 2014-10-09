@@ -1,6 +1,6 @@
 class MenuItem < ActiveRecord::Base
-
-  default_scope { order("position DESC") }
+  include HasPosition
+  has_position scoped_fields: [:menu, :parent_id]
 
   validates :target, presence: true
   validates :menu, presence: true, unless: :parent_id

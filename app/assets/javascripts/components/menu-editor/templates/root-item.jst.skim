@@ -1,3 +1,4 @@
 .me-btn.destroy
 a.inner-nav-item.heading href=@model.targetUrl()
   span= @model.get "name"
+.children

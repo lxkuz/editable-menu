@@ -14,14 +14,19 @@ class MenuItemsController < ApplicationController
 
 
   def destroy
-    menu_item =  MenuItem.find params[:id]
+    menu_item = MenuItem.find params[:id]
     menu_item.destroy
     render text: true
   end
 
+  def update
+    menu_item =  MenuItem.find params[:id]
+    menu_item.update_attributes build_params
+    render text: true
+  end
 
   def create
-    MenuItem.create! params[:menu_item].permit(:menu, :parent_id, :target_id, :target_type)
+    MenuItem.create! build_params
     render text: true
   end
 
@@ -30,6 +35,12 @@ class MenuItemsController < ApplicationController
     @menu_items = MenuItem.where menu: menu
 
     render json: @menu_items.to_json(:include => :children)
+  end
+
+  private
+
+  def build_params
+    params[:menu_item].permit(:menu, :position, :parent_id, :target_id, :target_type)
   end
 
 

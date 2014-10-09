@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20141006190741) do
     t.integer  "parent_id"
     t.string   "menu"
     t.string   "name"
-    t.integer  "position",    default: 0
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :articles
   resources :news, controller: 'news_items'
-  resources :menu_items, only: [:index, :create, :destroy] do
+  resources :menu_items, only: [:index, :create, :destroy, :update] do
     collection do
       get 'search'
     end

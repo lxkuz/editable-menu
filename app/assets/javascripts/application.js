@@ -19,6 +19,8 @@
 //= require jquery.scrollTo.min
 //= require jquery.autocomplete
 //= require jquery.validate.min
+//= require jquery-ui
+
 //= require owl.carousel-min
 
 //= require underscore

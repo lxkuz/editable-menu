@@ -6,7 +6,7 @@ class CreateMenuItems < ActiveRecord::Migration
       t.integer :parent_id
       t.string :menu
       t.string :name
-      t.integer :position, default: 0
+      t.integer :position
       t.timestamps
     end
   end
