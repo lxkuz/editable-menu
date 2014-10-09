@@ -17,11 +17,11 @@ ActiveAdmin.register Article do
     column 'Заголовок', :title
     column 'URL', :title_translit
     column :description do |article|
-      article.description.truncate 32
+      article.description
     end
     column :keywords
     column 'Текст', :content, class: 'col-content' do |article|
-      article.content.truncate 140
+      article.content
     end
     column 'Позиция', :position
     column 'Опубликовано', :published_at
