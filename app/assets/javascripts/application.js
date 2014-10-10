@@ -22,6 +22,7 @@
 //= require jquery.validate.min
 //= require jquery-ui
 
+//= require ckeditor/init
 //= require owl.carousel-min
 
 //= require underscore
@@ -46,3 +47,4 @@
 //= require page-index
 //= require page-all
 //= require icons-editing
+//= require articles

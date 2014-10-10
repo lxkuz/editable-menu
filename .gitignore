@@ -61,6 +61,7 @@ db/*.sqlite3
 /public/attachments/*
 /public/avatars/*
 /public/assets/*
+/public/uploads/*
 /spec/tmp/*
 /cache
 /capybara*
