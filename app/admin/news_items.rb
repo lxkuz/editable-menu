@@ -27,7 +27,6 @@ ActiveAdmin.register NewsItem do
       f.input :name
       f.input :custom_url
       f.input :body, as: :wysihtml5
-      f.input :user
       f.input :title
       f.input :description, input_html: { rows: 2 }
       f.input :keywords, input_html: { rows: 2 }
@@ -35,4 +34,13 @@ ActiveAdmin.register NewsItem do
 
     f.actions
   end
+
+  controller do
+    def create
+      @news_item = NewsItem.new(permitted_params[:news_item])
+      @news_item.user = current_user
+      super
+    end
+  end
+
 end
