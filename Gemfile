@@ -12,6 +12,7 @@ gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
 gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'meta-tags'
 gem 'inherited_resources'
 gem 'has_scope'
@@ -57,6 +58,8 @@ group :development, :test do
 
   # Deploy
   gem 'mina'
+
+  gem 'letter_opener'
 end
 
 group :production do
