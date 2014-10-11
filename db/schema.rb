@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009052410) do
+ActiveRecord::Schema.define(version: 20141010191615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,15 @@ ActiveRecord::Schema.define(version: 20141009052410) do
     t.string   "street_address"
     t.float    "latitude"
     t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "user_request_recipients"
+  end
+
+  create_table "user_requests", force: true do |t|
+    t.string   "email"
+    t.string   "phone"
+    t.string   "file_attachment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -238,19 +238,19 @@ $(document).ready(function() {
     	// console.log('out');
     });
 
-    // validate
     $('#feedback-form').validate({
         rules: {
-            fbemail: "required",
-            fbphone: "required"
-        },
-        submitHandler: function(form) {
-            $('.js-feedback-form').hide();
-            $('.js-feedback-form-sent').fadeIn(300);
-            start_reset_counter();
-            // form.submit();
+            user_request_email: "required",
+            user_request_phone: "required"
         }
     });
+
+    $('#feedback-form').on('ajax:complete', function() {
+        $('.js-feedback-form').hide();
+        $('.js-feedback-form-sent').fadeIn(300);
+        start_reset_counter();
+    });
+
     function form_reset() {
         $('.js-feedback-form-sent').hide();
         $('.js-feedback-form')

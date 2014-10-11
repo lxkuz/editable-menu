@@ -134,13 +134,14 @@
           | Не знаете как
           br выбрать?
         .cell-order-caption Профессионалы помогут, отправьте заявку:
-        form#feedback-form.ind-order-form.field-std.clear-wrap action=""
-          input.plh name="fbemail" placeholder=("Ваш e-mail") required="" type="email"
+        = form_for(@user_request, remote: true,  html: { id: 'feedback-form', class: 'ind-order-form field-std clear-wrap' }) do |f|
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          = f.email_field :email, class: 'plh', placeholder: 'Ваш e-mail', required: 'required'
           .order-psw-wrap
-            input.plh name="fbphone" placeholder=("Номер телефона") required="" type="text"
+            = f.text_field :phone, class: 'plh', placeholder: 'Номер телефона', required: 'required'
             .order-file-btn
-              input.is-hidden1 type="file"
-          input.js-feedback-submit type="submit" value=("Отправить заявку")
+              = f.file_field :file_attachment, class: 'is-hidden1'
+          = f.submit 'Отправить заявку', class: 'js-feedback-submit'
       .js-feedback-form-sent.is-hidden
         h4.cell-order-head Спасибо за сообщение
         .cell-order-caption Наши менеджеры перезвонят Вам в течении часа.

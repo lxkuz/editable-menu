@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+  body
+    | Поступила новая заявка от: #{mail_to @user_request.email}
+    p
+      | Телефон:
+      b= @user_request.phone
+    - if @file_url.present?
+      p
+        | Вложенный файл: #{link_to @file_url, @file_url}
+
+    = link_to 'Ссылка на заявку', @user_request_url

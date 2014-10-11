@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :auto_select_office
 
+  rescue_from ActionController::RedirectBackError do
+    redirect_to root_path
+  end
+
   def authenticate_admin_user!
     authenticate_user!
     unless current_user.admin?
