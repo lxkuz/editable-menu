@@ -45,7 +45,7 @@
   /! /auth cell
   .row
     .col-xs-3.h-6
-      a.h-7.cell-over.zoom href='/articles/marshevye_lestnicy'
+      a.h-7.cell-over.zoom href='#'
         span.cell-back
           = image_tag 'index-back-march.jpg', class: 'img-response'
         span.cell-caption.black
@@ -58,7 +58,7 @@
             span.cell-price-note рублей
     .col-xs-7
       .cell.cell-contacts-helper.h-1
-      .cell.cell-contacts.h-1.fixed
+      .cell.cell-contacts.h-1.fixed.js-fixed-top
 
         .clear-wrap
           a.cell-phone href='callto:84952230423'  8 495 223 04 23
@@ -105,7 +105,7 @@
             span.slide-caption
               | скидки до 30%
               span.arrow.next
-      a.h-3.cell.zoom href='/articles/p-obraznye_lestnicy'
+      a.h-3.cell.zoom href='#'
         span.cell-back
           = image_tag 'index-back-pshaped.jpg', class: 'img-response'
         span.cell-caption.white.bottom
@@ -134,19 +134,20 @@
           | Не знаете как
           br выбрать?
         .cell-order-caption Профессионалы помогут, отправьте заявку:
-        form#feedback-form.ind-order-form.field-std.clear-wrap action=""
-          input.plh name="fbemail" placeholder=("Ваш e-mail") required="" type="email"
-            .order-psw-wrap
-              input.plh name="fbphone" placeholder=("Номер телефона") required="" type="text"
-              .order-file-btn
-                input.is-hidden1 type="file"
-          input.js-feedback-submit type="submit" value=("Отправить заявку")
+        = form_for(@user_request, remote: true,  html: { id: 'feedback-form', class: 'ind-order-form field-std clear-wrap' }) do |f|
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          = f.email_field :email, class: 'plh', placeholder: 'Ваш e-mail', required: 'required'
+          .order-psw-wrap
+            = f.text_field :phone, class: 'plh', placeholder: 'Номер телефона', required: 'required'
+            .order-file-btn
+              = f.file_field :file_attachment, class: 'is-hidden1'
+          = f.submit 'Отправить заявку', class: 'js-feedback-submit'
       .js-feedback-form-sent.is-hidden
         h4.cell-order-head Спасибо за сообщение
         .cell-order-caption Наши менеджеры перезвонят Вам в течении часа.
 
     .col-xs-3.h-4
-      a.h-7.cell-over.zoom href='/articles/vintovye_lestnicy'
+      a.h-7.cell-over.zoom href='#'
         span.cell-back
           = image_tag('index-back-spiral.jpg', class: 'img img-response')
         span.cell-caption.black
@@ -157,7 +158,7 @@
           span.cell-price
             ' от 19 000
             span.cell-price-note рублей
-    a.col-xs-7.h-3.cell.zoom href='/articles/g-obraznye_lestnicy'
+    a.col-xs-7.h-3.cell.zoom href='#'
       span.cell-back
         = image_tag('index-back-gshaped.jpg', class: 'img img-response')
       span.cell-caption.white.bottom
@@ -175,8 +176,8 @@
         br лестницы?
       .cell-about-text
         | Идеология выстраивания бренда, не меняя концепции, изложенной выше, неверно переворачивает инвестиционный продукт, используя опыт предыдущих кампаний.
-      a.more-about-company href='#'  Больше о компании
-    a.col-xs-5.h-4.cell.cell-production href='#'
+      = link_to 'Больше о компании', content_page_path(:about, anchor: 'about-company'), class: 'more-about-company'
+    = link_to content_page_path(:about, anchor: 'production'), class: 'col-xs-5 h-4 cell cell-production' do
       span.cell-back style=("background: url(#{image_path('index-back-production.jpg')});")
       span.cell-center
         span.cell-center-inner
@@ -240,7 +241,7 @@
             |  №4
         span.slider2-caption П-образная лестница в дом, 98 000 рублей
   .row
-    a.col-xs-7.h-4.cell.zoom href='/articles/elitnye_lestnicy'
+    a.col-xs-7.h-4.cell.zoom href='#'
       span.cell-back
         = image_tag('index-back-elite.jpg', class: 'img img-response')
       span.cell-caption.black
@@ -252,7 +253,7 @@
           ' от 120 000
           span.cell-price-note рублей
     .col-xs-3.h-4
-      a.h-7.cell-over.zoom href='/articles/ekonomny_lestnicy'
+      a.h-7.cell-over.zoom href='#'
         span.cell-back
           = image_tag('index-back-econom.jpg', class: 'img img-response')
         span.cell-caption.black
@@ -262,7 +263,7 @@
             ' от 19 000
             span.cell-price-note рублей
   .row
-    a.col-xs-4.h-3.cell.zoom href='/articles'
+    a.col-xs-4.h-3.cell.zoom href='#'
       span.cell-back
         = image_tag('index-back-smart.jpg', class: 'img img-response')
       span.cell-caption.white.bottom
@@ -277,16 +278,23 @@
       .h-7.cell-over.cell-news
         .cell-news-head Новости
         - @news_items.each do |news_item|
-          = link_to news_path(news_item), class: 'cell-news-item' do
-            span.news-date
-              = news_item.updated_short_date
-            span.news-text
-              = news_item.name
+          .cell-news-item role='icon_editable'
+            = link_to news_path(news_item) do
+              span.news-date
+                = news_item.updated_short_date
+              span.news-text
+                = news_item.name
+              - if can? :manage, news_item
+                .edit-icons.main-page
+                  = link_to edit_admin_news_item_path(news_item) do
+                    i.fa.fa-pencil.edit-icon
+                  = link_to news_path(news_item), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту новость?' } do
+                    i.fa.fa-times.edit-icon
         = link_to 'Все новости компании', news_index_path, class: 'view-all-news'
     .col-xs-3.h-3
   .row
     .col-xs-4
-      a.h-3.cell.cell-hits href='/articles/akcii_i_skidki'
+      a.h-3.cell.cell-hits href='#'
         span.cell-center
           span.cell-center-inner
             span.cell-hits-head Хиты продаж
@@ -325,4 +333,3 @@
         = office.address
       = link_to 'Выбрать', manual_select_office_path(office_id: office.id), method: :post, class: 'reg-link'
   = link_to 'Cancel', session[:previous_url] || root_path, rel: "modal:close"
-

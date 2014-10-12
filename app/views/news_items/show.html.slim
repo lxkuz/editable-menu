@@ -1,20 +1,6 @@
 .l-centered.left.section-container
-  .row
-    .col-xs-7.col-xs-offset-3
-      .cell.cell-contacts-helper.h-1
-      .cell.cell-contacts.h-1.fixed
-        a.contacts-order href="#"  Заказать проект
-        .clear-wrap
-          a.cell-phone href="callto:84952230423"  8 495 223 04 23
-          .cell-phone-caption Телефон многоканальный
-        .clear-wrap.contacts-row-2
-          a.cell-phone-add href="callto:84952230423"  8 800 100 54 18
-          .cell-order-call Заказать звонок
-          .cell-location.this
-            | Ростов-на-Дону
-            span.loc-arrow
-              span.this-hover
-          .cell-adr Строителей, 23 строение 9
+  = render 'shared/header'
+
   .row.news-full-section
     .col-xs-8.col-xs-offset-1
       h1.cont-head.nf-head

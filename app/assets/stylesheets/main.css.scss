@@ -1283,7 +1283,7 @@ ol {
   font-family: "helvetica", Helvetica, Arial, sans-serif;
   font-size: 15px;
   background-color: #df4a2c;
-  background: asset-data-url("back-red-black.jpg") repeat-y -250px 0;
+  background: asset-url("back-red-black.jpg") repeat-y -250px 0;
 }
 .field-std input[type="submit"]:active,
 .field-std input[type="submit"]:focus {
@@ -4292,7 +4292,7 @@ label.error {
   bottom: 13px;
   width: 51px;
   height: 16px;
-  background-image: asset-data-url("sprite.png");
+  background-image: asset-url("sprite.png");
   background-repeat: no-repeat;
   background-position: -278px -34px;
 }

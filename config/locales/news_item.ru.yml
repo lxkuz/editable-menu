@@ -10,14 +10,5 @@ ru:
         user: Автор
         updated_at: Обновлено
         title: Метатег title
-        site: Метатег site
-        description: Метатег description
-        keywords: Метатег keywords
-        noindex: Метатег noindex
-        noindex_bot: Метатег noindex для поискового бота
-        nofollow: Метатег nofollow
-        nofollow_bot: Метатег nofollow для поискового бота
-        canonical_url: Метатег canonical url
-        author_link: Метатег author link
-        publisher_link: Метатег publisher link
-        custom_url: Новая ссылка на новость
+        description: Описание (не больше 255 символов)
+        keywords: Ключевые слова (не больше 25 слов)

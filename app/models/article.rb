@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id             :integer          not null, primary key
+#  title          :string(255)
+#  title_translit :string(255)
+#  description    :text
+#  keywords       :text
+#  content        :text
+#  position       :integer
+#  published_at   :datetime
+#  created_at     :datetime
+#  updated_at     :datetime
+#  slug           :string(255)
+#
+
 class Article < ActiveRecord::Base
   extend FriendlyId
 
@@ -6,10 +23,9 @@ class Article < ActiveRecord::Base
 
   friendly_id :title_translit, use: [:slugged, :finders]
 
-  default_scope { order :position }
-  scope :newest, -> { order(updated_at: :desc) }
+  scope :by_position, -> { order(:position)}
 
-  validates :title_translit, presence: true
+  validates :title_translit, presence: true, uniqueness: true
 
   before_save :set_published_at
 

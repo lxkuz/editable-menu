@@ -31,14 +31,8 @@ admin = User.create! email: 'admin@example.com', password: 'password', role: 'ad
 51.times do |i|
   attributes = {
     title:          "this metatag title#{ i }",
-    site:           "this metatag site#{ i }",
     description:    "this metatag description#{ i }",
     keywords:       "this metatag keywords#{ i }",
-    noindex:        [false, true].sample,
-    nofollow:       [false, true].sample,
-    canonical_url:  "www.example#{ i }.com",
-    author_link:    "www.autor#{ i }.com",
-    publisher_link: "www.publisher#{ i }.com",
 
     name: "news title##{ i }",
     body: "body #{ i } "*300,
@@ -107,3 +101,11 @@ Article.create!(
   description: "Если вам необходим оптимальный вариант по соотношения цена/качество, то это определенно лестница из ясеня.",
   keywords: "экономный, лестницы",
   content: "<h1>Лестница из ясеня — отличный вариант для экономных хозяев</h1><br><p>Если вам необходим оптимальный вариант по соотношения цена/качество, то это определенно лестница из ясеня. Такая порода древесины стоит на порядок меньше, чем дуб, однако обладает хорошими качественными и эстетическими характеристиками. Материал более твердый, чем бук, но не менее эластичный. Лестница из ясеня, отзывы о которой только положительные, изготавливаются нашими мастерами уже много лет, и мы имеем достаточный опыт, чтобы создать для вашего дома красивый и практичный элемент интерьера.</p><p>Чтобы комплектующие для лестниц из ясеня прослужили много лет, им в этом необходимо помогать. Важно следить за температурой и уровнем влажности в доме. Если показатели влажности составляют от 40 до 55%, а температура колеблется между 18 и 28 градусами, тогда с древесиной ничего не случится. Поддерживать нужную влажность можно при помощи увлажнителей воздуха.</p>")
+
+content_page = ContentPage.create!(
+                name:     'О компании',
+                page_url: 'about'
+)
+
+content_page.content_page_chapters << ContentPageChapter.new(name: 'О компании',  anchor: 'about-company', content: 'Test content'*300, position: 1)
+content_page.content_page_chapters << ContentPageChapter.new(name: 'Наша миссия', anchor: 'our-mission',   content: 'our mission'*300,  position: 2)

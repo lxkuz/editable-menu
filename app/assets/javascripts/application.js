@@ -44,3 +44,4 @@
 //= require common
 //= require page-index
 //= require page-all
+//= require icons-editing

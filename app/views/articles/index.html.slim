@@ -3,9 +3,8 @@
 
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
-      h1.cont-head О лестницах
-      p Компания Московские лестницы, познание текста, основываясь на парадоксальном совмещении исключающих друг друга принципов характерности и поэтичности, упруго-пластично. Мелькание мыслей диссонирует стиль, именно поэтому голос автора романа не имеет никаких преимуществ перед голосами персонажей. Стилистическая игра интегрирует голос персонажа и передается в этом стихотворении Донна метафорическим образом циркуля.
-      p Основными направлениями деятельности Компании «Московские Лестницы» являются разработка, производство и продажа инновационных моделей модульных лестниц и комплектующих, а также качественный монтаж лестничных решений. Мы беремся за любые, даже за самые сложные лестничные проекты наших клиентов.
+      h1.cont-head = @articles_page.try(:title)
+      = @articles_page.try(:content).try(:html_safe)
 
       - if current_user.try(:admin?)
         = link_to 'Добавить статью', new_admin_article_path, class: 'reg-link'
@@ -20,7 +19,15 @@
         - if index.even?
           .article-item
             = link_to article_path(article) do
-            h3.article-head = article.title
+            h3.article-head role='icon_editable'
+              = article.title
+              - if can? :manage, article
+                .edit-icons.not-main-page
+                  = link_to edit_admin_article_path(article) do
+                    i.fa.fa-pencil.edit-icon
+                  = link_to article_path(article), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту статью?' } do
+                    i.fa.fa-times.edit-icon
+
             p = article.description
             = link_to 'Узнать больше', article_path(article), class: 'article-more red-black'
 
@@ -29,7 +36,14 @@
         - if index.odd?
           .article-item
             = link_to article_path(article) do
-            h3.article-head = article.title
+            h3.article-head role='icon_editable'
+              = article.title
+              - if can? :manage, article
+                .edit-icons.not-main-page
+                  = link_to edit_admin_article_path(article) do
+                    i.fa.fa-pencil.edit-icon
+                  = link_to article_path(article), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту статью?' } do
+                    i.fa.fa-times.edit-icon
             p = article.description
             = link_to 'Узнать больше', article_path(article), class: 'article-more red-black'
 

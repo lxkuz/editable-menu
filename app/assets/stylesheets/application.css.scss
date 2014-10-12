@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require main
+ *= require devise
  *= require jquery-ui
  *= require jquery.modal
  *= require jquery.autocomplete
@@ -23,12 +24,24 @@
  */
 
 @import 'devise/login';
+@import 'libs/font-awesome';
+@import 'custom';
 
 #offices-list-modal.modal {
   z-index: 9999 !important;
   line-height: 1.5em;
+
+  a.close-modal {
+    background: asset-url('modal/close.png') no-repeat 0 0;
+  }
 }
 
-#office-select.a {
-  color: #de3a1a !important;
+.cell-location {
+  #office-select {
+    color: #de3a1a !important;
+  }
+}
+
+.modal-spinner {
+  background: asset-url('modal/spinner.gif') #111 no-repeat center center;
 }

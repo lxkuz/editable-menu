@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141006190741) do
+=======
+ActiveRecord::Schema.define(version: 20141010191615) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +38,8 @@ ActiveRecord::Schema.define(version: 20141006190741) do
   create_table "articles", force: true do |t|
     t.string   "title"
     t.string   "title_translit"
-    t.string   "description"
-    t.string   "keywords"
+    t.text     "description"
+    t.text     "keywords"
     t.text     "content"
     t.integer  "position"
     t.datetime "published_at"
@@ -58,6 +62,28 @@ ActiveRecord::Schema.define(version: 20141006190741) do
     t.string   "storage_format"
     t.string   "storage_mime_type"
     t.string   "storage_size"
+  end
+
+  create_table "content_page_chapters", force: true do |t|
+    t.string   "name"
+    t.string   "anchor"
+    t.text     "content"
+    t.integer  "content_page_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "content_pages", force: true do |t|
+    t.string   "name"
+    t.string   "page_url"
+    t.string   "slug"
+    t.string   "title"
+    t.text     "description"
+    t.text     "keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "content"
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -86,16 +112,8 @@ ActiveRecord::Schema.define(version: 20141006190741) do
 
   create_table "news_items", force: true do |t|
     t.string   "title"
-    t.string   "site"
     t.text     "description"
     t.text     "keywords"
-    t.boolean  "noindex",        default: false
-    t.string   "noindex_bot"
-    t.boolean  "nofollow",       default: false
-    t.string   "nofollow_bot"
-    t.string   "canonical_url"
-    t.string   "author_link"
-    t.string   "publisher_link"
     t.string   "name"
     t.text     "body"
     t.integer  "user_id"
@@ -114,6 +132,15 @@ ActiveRecord::Schema.define(version: 20141006190741) do
     t.string   "street_address"
     t.float    "latitude"
     t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "user_request_recipients"
+  end
+
+  create_table "user_requests", force: true do |t|
+    t.string   "email"
+    t.string   "phone"
+    t.string   "file_attachment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
