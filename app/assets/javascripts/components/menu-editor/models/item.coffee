@@ -1,7 +1,6 @@
 class MenuEditor.Item extends Backbone.Model
   children: =>
-    @_children = new MenuEditor.Items(@get "children") unless @_children
-    @_children
+    new MenuEditor.Items(@get "children")
 
   url: =>
     "/menu_items#{if @id then "/" + @id else ''}"

@@ -21,3 +21,6 @@ class MenuEditor.FormView extends MenuEditor.View
     @model.save null,
       success: @options.refreshCallback
 
+  unlink: =>
+    super
+    @$el.remove()

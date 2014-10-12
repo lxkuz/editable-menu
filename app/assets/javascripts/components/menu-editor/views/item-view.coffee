@@ -4,6 +4,15 @@ class MenuEditor.ItemView extends MenuEditor.View
 
   events:
     "click .destroy": "destroy"
+    "click .item-link": "preventLink"
+
+  preventLink: =>
+    @options.parent.preventLink()
+
+  render: =>
+    super
+    @$el.data "model-id", @model.id
+    @
 
   destroy: =>
     @model.destroy

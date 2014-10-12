@@ -15,3 +15,6 @@ class MenuEditor.View extends Backbone.View
   getTemplateParams: =>
     model: @model
     options: @options
+
+  unlink: =>
+    @unbind()

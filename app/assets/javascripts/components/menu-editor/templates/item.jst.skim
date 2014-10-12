@@ -1,2 +1,2 @@
-a.inner-nav-item href=@model.targetUrl() = @model.get "name"
+a.item-link.inner-nav-item href=@model.targetUrl() = @model.get "name"
 .me-btn.destroy
