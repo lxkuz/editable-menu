@@ -9,7 +9,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
-gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
+gem 'activeadmin-wysihtml5', github: 'hoblin/activeadmin-wysihtml5' # TODO: Switch back to stefanoverna's repo after this PR merging https://github.com/stefanoverna/activeadmin-wysihtml5/pull/38
 
 gem 'carrierwave'
 gem 'mini_magick'
