@@ -1,5 +1,6 @@
 class MenuEditor.FormView extends MenuEditor.View
   template: "form"
+  tagName: "li"
   className: "me-form"
 
   events:

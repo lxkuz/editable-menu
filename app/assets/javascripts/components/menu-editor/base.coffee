@@ -59,15 +59,15 @@ class MenuEditor.Base extends MenuEditor.View
       @rootItemViews.push view
 
     @formInit()
+    @itemsContainer.append $("<li class='clear'>")
 
   clear: =>
-    console.log("clear start")
     if @rootItemViews
       for view in @rootItemViews
         view.unlink()
     @formView.unlink() if @formView
     @rootItemViews = []
-    console.log("clear end")
+    @itemsContainer.empty() if @itemsContainer
 
   refresh: =>
     @items.fetch
@@ -87,7 +87,7 @@ class MenuEditor.Base extends MenuEditor.View
         model: new MenuEditor.Item({menu: @menu, position: position})
         searchUrl: @searchUrl
         refreshCallback: @refresh
-      @itemsContainer.after @formView.render().el
+      @itemsContainer.append @formView.render().el
     else
       @formView = undefined
 
@@ -96,6 +96,7 @@ class MenuEditor.Base extends MenuEditor.View
     id = item.data "model-id"
     model = @items.get id
     index =  @itemsContainer.children().index(ui.item) + 1
+    console.log("new position #{index}")
     model.set "position", index
     model.save null,
       success: @refresh

@@ -1,2 +1,3 @@
-a.item-link.inner-nav-item href=@model.targetUrl() = @model.get "name"
-.me-btn.destroy
+a.item-link.inner-nav-item href=@model.targetUrl()
+  span= @model.get "name"
+  i.fa.fa-trash.me-btn.destroy

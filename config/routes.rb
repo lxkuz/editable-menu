@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :articles
-  resources :content_pages, only: [:show], path: ''
+  get 'about' => 'home#about'
   resources :news, controller: 'news_items'
 
   resources :menu_items, only: [:index, :create, :destroy, :update] do
@@ -14,9 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'about' => 'home#about'
 
   resources :user_requests, only: [:create]
-
   post 'manual_select_office' => 'application#manual_select_office'
+  resources :content_pages, only: [:show], path: ''
 end

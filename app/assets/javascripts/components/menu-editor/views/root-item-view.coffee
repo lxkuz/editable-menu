@@ -1,7 +1,7 @@
 class MenuEditor.RootItemView extends MenuEditor.View
   template: "root-item"
   tagName: "li"
-  className: "me-root-item col-xs-2"
+  className: "me-root-item"
 
   events:
     "click .destroy": "destroy"

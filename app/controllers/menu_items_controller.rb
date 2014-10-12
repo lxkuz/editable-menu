@@ -33,7 +33,6 @@ class MenuItemsController < ApplicationController
   def index
     menu = params[:menu]
     @menu_items = MenuItem.where menu: menu
-
     render json: @menu_items.to_json(:include => :children)
   end
 
