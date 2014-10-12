@@ -17,6 +17,10 @@
 
 class Article < ActiveRecord::Base
   extend FriendlyId
+
+  include SearchByLike
+  has_search_by_like_for :title
+
   friendly_id :title_translit, use: [:slugged, :finders]
 
   scope :by_position, -> { order(:position)}
@@ -24,6 +28,10 @@ class Article < ActiveRecord::Base
   validates :title_translit, presence: true, uniqueness: true
 
   before_save :set_published_at
+
+  def to_s
+    title
+  end
 
   private
 

@@ -22,6 +22,7 @@ gem 'friendly_id'
 
 # views
 gem 'slim-rails'
+gem 'skim'
 gem 'jbuilder', '~> 2.0'
 gem 'kaminari'
 

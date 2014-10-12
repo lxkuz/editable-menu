@@ -17,8 +17,30 @@
 //= require modernizr-2.6.2-respond-1.1.0.min
 //= require jquery.royalslider.min
 //= require jquery.scrollTo.min
+//= require jquery.autocomplete
 //= require jquery.validate.min
+//= require jquery-ui
+
 //= require owl.carousel-min
+
+//= require underscore
+//= require underscore.string
+//= require underscore.inflection
+
+//= require backbone
+
+//= require initializer
+
+//= require ./components/menu-editor/init
+//= require ./components/menu-editor/views/view
+//= require ./components/menu-editor/models/item
+//= require ./components/menu-editor/models/items
+//= require_tree ./components/menu-editor/templates
+//= require_tree ./components/menu-editor/views
+//= require ./components/menu-editor/base
+
+//= require_tree ./components/
+
 //= require common
 //= require page-index
 //= require page-all
