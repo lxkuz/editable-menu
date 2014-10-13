@@ -6,6 +6,8 @@
       h1.cont-head.news-list-head
         | Новости
         a.news-rss href="#"
+      - if current_user.try(:admin?)
+        = link_to 'Добавить новость', new_admin_news_item_path, class: 'reg-link'
       .tabs-outer.clear-wrap.in-news
         ul.tabs-wrap.clear-wrap
           li.tab-item.js-tab-trigger.active data-tabs="tab1"
