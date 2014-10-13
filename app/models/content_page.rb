@@ -18,8 +18,8 @@ class ContentPage < ActiveRecord::Base
   extend FriendlyId
   friendly_id :page_url, use: [:slugged, :finders]
 
-  has_many :content_page_chapters
-  accepts_nested_attributes_for :content_page_chapters
+  has_many :content_page_chapters, dependent: :destroy 
+  accepts_nested_attributes_for :content_page_chapters, allow_destroy: true
 
   validates :content, presence: true
   validates :page_url, presence: true, uniqueness: true
