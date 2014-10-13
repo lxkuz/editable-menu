@@ -238,11 +238,12 @@ $(document).ready(function() {
     	// console.log('out');
     });
 
-    $('#feedback-form').validate({
-        rules: {
-            user_request_email: "required",
-            user_request_phone: "required"
-        }
+    $('#feedback-form').validate();
+
+    jQuery.validator.addClassRules({
+      phone: {
+        minlength: 5
+      }
     });
 
     $('#feedback-form').on('ajax:complete', function() {
