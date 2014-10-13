@@ -44,6 +44,7 @@ class MenuEditor.RootItemView extends MenuEditor.View
     unless @options.readonly
       @childrenContainer.sortable
         stop: @recalcPositions
+        items: "li:not(.me-form, .clear)"
         disabled: !@editable
         handle: ".item-link"
 
@@ -58,7 +59,7 @@ class MenuEditor.RootItemView extends MenuEditor.View
     item = ui.item
     id = item.data "model-id"
     model = @model.children().get id
-    index =  @childrenContainer.children().index(ui.item) + 1
+    index =  @childrenContainer.children(".me-item").index(ui.item) + 1
     model.set "position", index
     model.save null,
       success: @options.refreshCallback

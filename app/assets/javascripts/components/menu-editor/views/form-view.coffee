@@ -4,19 +4,36 @@ class MenuEditor.FormView extends MenuEditor.View
   className: "me-form"
 
   events:
-    "click .save": "save"
+    "focusin input": "beginAutocomplete"
 
   render: =>
     super
-    imput = @$ "input"
-    imput.autocomplete @options.searchUrl,
+    @input = @$ "input"
+    @noResultsPanel = @$ ".no-results"
+    @noResultsPanel.hide()
+    @input.autocomplete @options.searchUrl,
       queryParamName: "query"
       remoteDataType: 'json'
       onItemSelect: @setTarget
+      minChars: 0
+#      processData: @showIfNoResults
+
     @
 
+  showIfNoResults: (results) =>
+#    TODO stops here: когда вводим сначала правильные а потом неправильные буквы то results не обнуляется.
+# Какоето кеширование последнего удачного запроса есть.
+# Надо научиться его отключать
+    @noResultsPanel.toggle((results.length is 0) || (@input.val().length is 0))
+    results
+
+  beginAutocomplete: ->
+    @input.data('autocompleter').activate()
+
   setTarget: (obj) =>
-    @model.set obj.data
+    unless _.isEmpty(obj.data)
+      @model.set obj.data
+      @save()
 
   save: =>
     @model.save null,

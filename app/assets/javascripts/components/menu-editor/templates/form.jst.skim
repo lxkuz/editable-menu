@@ -1,2 +1,3 @@
-input
-.fa.fa-save.me-btn.save
+input placeholder='Заголовок статьи'
+.fa.fa-search.me-btn.search
+.no-results Поиск не дал результатов

@@ -10,7 +10,7 @@ class MenuEditor.Base extends MenuEditor.View
 
     @items = new MenuEditor.Items
 
-    @readonly = @$el.attr("data-editable") != undefined
+    @readonly = @$el.attr("data-editable") == undefined
     @$el.toggleClass "readonly", @readonly
     @editable = false
     @render()
@@ -35,16 +35,14 @@ class MenuEditor.Base extends MenuEditor.View
     unless @readonly
       @itemsContainer.sortable
         stop: @recalcPositions
+        items: "li:not(.me-form, .clear)"
         disabled: !@editable
         handle: ".root-item-link"
     @
 
   draw: =>
-    console.log @items.length
     childrenLengthArr = @items.map (item) =>
       item.children().length
-    console.log childrenLengthArr
-    console.log("draw")
     @clear()
 
     @items.each (item) =>
@@ -95,8 +93,7 @@ class MenuEditor.Base extends MenuEditor.View
     item = ui.item
     id = item.data "model-id"
     model = @items.get id
-    index =  @itemsContainer.children().index(ui.item) + 1
-    console.log("new position #{index}")
+    index =  @itemsContainer.children(".me-root-item").index(ui.item) + 1
     model.set "position", index
     model.save null,
       success: @refresh
