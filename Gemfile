@@ -31,6 +31,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-modal-rails'
+gem 'remotipart'
 
 # auth
 gem 'cancancan'
