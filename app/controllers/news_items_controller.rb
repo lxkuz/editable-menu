@@ -11,6 +11,12 @@ class NewsItemsController < ResourcesController
     end
   end
 
+  def destroy
+    destroy! do |format|
+      format.html { redirect_to :back }
+    end
+  end
+
   protected
 
     def collection
