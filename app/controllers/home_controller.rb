@@ -6,5 +6,6 @@ class HomeController < ApplicationController
   end
 
   def about
+    @about_page = ContentPage.find_or_create_by(page_url: 'about');
   end
 end
