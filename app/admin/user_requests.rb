@@ -19,6 +19,8 @@ ActiveAdmin.register UserRequest do
       end
     end
     column :created_at
+
+    actions
   end
 
   config.filters = false

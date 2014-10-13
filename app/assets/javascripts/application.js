@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require jquery-ui
 //= require jquery.modal
 //= require modernizr-2.6.2-respond-1.1.0.min
