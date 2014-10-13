@@ -10,7 +10,8 @@ ActiveAdmin.register ContentPage do
                   :position,
                   :name,
                   :anchor,
-                  :content
+                  :content,
+                  :_destroy
                 ]
 
   config.sort_order = 'created_at'
