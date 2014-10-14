@@ -6,6 +6,7 @@ class ArticlesController < ResourcesController
   end
 
   def show
+    @chapters = @article.chapters
     set_meta_tags title: @article.title,
                   description: @article.description,
                   keywords: @article.keywords

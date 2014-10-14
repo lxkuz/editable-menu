@@ -6,7 +6,15 @@ ActiveAdmin.register Article do
                 :keywords,
                 :content,
                 :position,
-                :published_at
+                :published_at,
+                chapters_attributes: [
+                  :id,
+                  :position,
+                  :name,
+                  :anchor,
+                  :content,
+                  :_destroy
+                ]
 
   config.sort_order = 'position_asc'
   config.filters = false
@@ -35,7 +43,14 @@ ActiveAdmin.register Article do
       f.input :title_translit, label: 'URL'
       # TODO: Limit html attributes later
       f.input :content, as: :wysihtml5 # , commands: [ :link ], blocks: [ :h3, :p]
-      f.input :position, label: 'Позиция в списке статей'
+
+      f.inputs do
+        f.has_many :chapters, allow_destroy: true, heading: false do |ch|
+          ch.input :name
+          ch.input :content, as: :wysihtml5
+        end
+      end
+
       f.input :published_at, label: 'Опубликовано', as: :string
 
       f.input :description, label: 'Описание (не больше 255 символов)', input_html: { rows: 2 }

@@ -46,6 +46,8 @@ gem 'devise'
 gem 'geocoder'
 gem 'ipgeobase'
 
+gem 'russian'
+
 group :development, :test do
     # Console
   gem 'pry-rails'

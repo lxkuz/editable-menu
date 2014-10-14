@@ -11,14 +11,14 @@
   /! /row
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
-      h1.cont-head *{id: (@about_page.name if @about_page.content_page_chapters.present?)}
+      h1.cont-head *{id: (@about_page.name if @about_page.chapters.present?)}
         = @about_page.name
       - if can? :edit, @about_page
         p
           = link_to 'Редактировать', edit_admin_content_page_path(@about_page)
       = @about_page.content.html_safe
     .delimeter
-  - @about_page.content_page_chapters.by_position.each do |chapter|
+  - @about_page.chapters.by_position.each do |chapter|
     .row.content-section.typo-main
       .col-xs-8.col-xs-offset-1
         h1.cont-head *{id: chapter.anchor}
