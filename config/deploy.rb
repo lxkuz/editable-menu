@@ -1,81 +1,33 @@
-require 'mina/bundler'
-require 'mina/rails'
-require 'mina/git'
-require 'mina/rvm'    # for rvm support. (http://rvm.io)
+# config valid only for Capistrano 3.1
+lock '3.2.1'
 
-# Basic settings:
-#   domain       - The hostname to SSH to.
-#   deploy_to    - Path to deploy into.
-#   repository   - Git repo to clone from. (needed by mina/git)
-#   branch       - Branch name to deploy. (needed by mina/git)
+set :application, 'Moscow_stairs'
+set :rails_env,   'production'
 
-set :domain, '178.62.155.127'
-set :deploy_to, '/home/deploy/Moscow_stairs_2'
-set :repository, 'git@github.com:tataronrails/Moscow_stairs.git'
+set :repo_url,       'git@github.com:tataronrails/Moscow_stairs.git'
+set :use_sudo,       false
+set :pty,            true
+set :bundle_without, [:development]
+set :keep_releases,  5
+
+set :rvm_type, :user
+set :rvm_ruby_version, '2.1.3@default'
+
+set :scm,    :git
 set :branch, 'master'
 
-# Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
-# They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml']
+set :linked_files, %w(config/database.yml config/secrets.yml)
+set :linked_dirs,  %w{log tmp/sockets tmp/pids tmp/queue}
 
-# Optional settings:
-set :user, 'deploy'    # Username in the server to SSH to.
-#   set :port, '30000'     # SSH port number.
+set :format, :pretty
+set :ssh_options, {
+    user: 'deploy' ,
+    forward_agent: false,
+    auth_methods: %w(publickey password) }
 
-# This task is the environment that is loaded for most commands, such as
-# `mina deploy` or `mina rake`.
-task :environment do
-  # For those using RVM, use this to load an RVM version@gemset.
-  invoke :'rvm:use[ruby-2.1.3@default]'
-end
-
-# Put any custom mkdir's in here for when `mina setup` is ran.
-# For Rails apps, we'll make some of the shared paths that are shared between
-# all releases.
-task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
-
-  queue! %[mkdir -p "#{deploy_to}/shared/config"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
-
-  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
-
-  queue! %[touch "#{deploy_to}/shared/config/secrets.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/secrets.yml'."]
-end
-
-desc "Deploys the current version to the server."
-task :deploy => :environment do
-  deploy do
-    # Put things that will set up an empty directory into a fully set-up
-    # instance of your project.
-    invoke :'git:clone'
-    invoke :'deploy:link_shared_paths'
-    invoke :'bundle:install'
-    invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
-
-    to :launch do
-      queue "touch #{deploy_to}/tmp/restart.txt"
-    end
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:legacy_restart'
   end
 end
-
-desc 'Restarts the nginx server.'
-task :restart do
-  queue 'sudo service nginx restart'
-end
-
-task :logs do
-  queue 'tail -f /var/log/nginx/error.log'
-end
-
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - http://nadarei.co/mina
-#  - http://nadarei.co/mina/tasks
-#  - http://nadarei.co/mina/settings
-#  - http://nadarei.co/mina/helpers
-
