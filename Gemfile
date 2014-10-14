@@ -11,6 +11,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
 gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 
+gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'meta-tags'
@@ -19,6 +20,10 @@ gem 'has_scope'
 gem 'draper'
 gem 'annotate', '~> 2.6.5'
 gem 'friendly_id'
+
+gem 'execjs'
+gem 'therubyracer'
+
 
 # views
 gem 'slim-rails'

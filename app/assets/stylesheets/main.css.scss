@@ -1444,9 +1444,89 @@ label.error {
 }
 .typo-main {
   color: #353535;
-  font-family: 'iowan_old_styleroman', verdana, sans-serif;
+//  font-family: 'iowan_old_styleroman', verdana, sans-serif;
+  font-family: "helvetica", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 26px;
+
+  h1, h2, h3, h4, h5, h6, b, strong {
+    font-weight: bold;
+  }
+  em, i, dfn {
+    font-style: italic;
+  }
+  dfn {
+    font-weight:bold;
+  }
+  p, code, pre, kbd {
+    margin:0 0 1.5em 0;
+  }
+  blockquote {
+    margin:0 1.5em 1.5em 1.5em;
+  }
+  cite {
+    font-style: italic;
+  }
+  li ul, li ol {
+    margin:0 1.5em;
+  }
+  ul, ol {
+    margin:0 1.5em 1.5em 1.5em;
+  }
+  ul {
+    list-style-type:disc;
+  }
+  ol {
+    list-style-type:decimal;
+  }
+  ol ol {
+    list-style: upper-alpha;
+  }
+  ol ol ol {
+    list-style: lower-roman;
+  }
+  ol ol ol ol {
+    list-style: lower-alpha;
+  }
+  dl {
+    margin:0 0 1.5em 0;
+  }
+  dl dt {
+    font-weight:bold;
+  }
+  dd {
+    margin-left:1.5em;
+  }
+  table {
+    margin-bottom:1.4em;
+    width:100%;
+  }
+  th {
+    font-weight:bold;
+  }
+  th, td, caption {
+    padding:4px 10px 4px 5px;
+  }
+  tfoot {
+    font-style:italic;
+  }
+  sup, sub {
+    line-height:0;
+  }
+  abbr, acronym {
+    border-bottom: 1px dotted;
+  }
+  address {
+    margin:0 0 1.5em;
+    font-style:italic;
+  }
+  del {
+    text-decoration: line-through;
+  }
+  pre {
+    margin:1.5em 0;
+    white-space:pre;
+  }
 }
 .typo-main p {
   position: relative;
@@ -1458,7 +1538,7 @@ label.error {
 .typo-main p:last-child {
   margin-bottom: 0;
 }
-.typo-main b {
+.typo-main b, .typo-main strong {
   font-weight: 900;
 }
 .typo-main .note {
@@ -5830,4 +5910,13 @@ body:last-child .blueimp-gallery-playing > .play-pause {
 }
 * + html .blueimp-gallery > .slides > .slide > .slide-content {
   position: relative;
+}
+//CKEDITOR
+#ck-actions {
+  position: fixed;
+  top: 100px;
+  left: 53%;
+  padding: 10px 1%;
+  display: none;
+  width: 225px;
 }
