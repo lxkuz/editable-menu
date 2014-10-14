@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require jquery-ui
 //= require jquery.modal
 //= require modernizr-2.6.2-respond-1.1.0.min
@@ -21,6 +22,7 @@
 //= require jquery.validate.min
 //= require jquery-ui
 
+//= require ckeditor/init
 //= require owl.carousel-min
 
 //= require underscore
@@ -45,3 +47,4 @@
 //= require page-index
 //= require page-all
 //= require icons-editing
+//= require articles

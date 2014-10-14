@@ -43,4 +43,13 @@ ActiveAdmin.register NewsItem do
     end
   end
 
+  member_action :update_in_place, method: :post do
+    if request.xhr?
+      news_item = NewsItem.find(params[:id])
+      if news_item.update_attributes(permitted_params[:news_item])
+        render :json => {:url => news_url(news_item)}
+      end
+    end
+  end
+
 end

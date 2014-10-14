@@ -45,4 +45,13 @@ ActiveAdmin.register Article do
     f.actions
   end
 
+  member_action :update_in_place, method: :post do
+    if request.xhr?
+      article = Article.find(params[:id])
+      if article.update_attributes(permitted_params[:article])
+        render :json => {:url => article_url(article)}
+      end
+    end
+  end
+
 end
