@@ -26,6 +26,6 @@ class Chapter < ActiveRecord::Base
   private
 
   def set_anchor
-    self.anchor = Russian::translit(name) if name.present?
+    self.anchor = Russian::translit(name.split.join('-')) if name.present?
   end
 end
