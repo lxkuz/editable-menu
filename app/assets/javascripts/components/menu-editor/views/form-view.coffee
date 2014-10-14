@@ -16,14 +16,11 @@ class MenuEditor.FormView extends MenuEditor.View
       remoteDataType: 'json'
       onItemSelect: @setTarget
       minChars: 0
-#      processData: @showIfNoResults
-
+      processData: @showIfNoResults
+      useCache: false
     @
 
   showIfNoResults: (results) =>
-#    TODO stops here: когда вводим сначала правильные а потом неправильные буквы то results не обнуляется.
-# Какоето кеширование последнего удачного запроса есть.
-# Надо научиться его отключать
     @noResultsPanel.toggle((results.length is 0) || (@input.val().length is 0))
     results
 

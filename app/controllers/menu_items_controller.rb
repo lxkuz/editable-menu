@@ -3,8 +3,11 @@ class MenuItemsController < ApplicationController
   def search
     query = params[:query]
     objects = []
+
+
     [Article].each do |klass|
-      objects += klass.search_by_like(query).limit(10)
+      join_query = "left outer join menu_items on menu_items.target_id = #{klass.name.underscore.pluralize}.id and menu_items.target_type = '#{klass}'"
+      objects += klass.search_by_like(query).joins(join_query).where("menu_items.target_id is null").limit(10)
     end
     res = objects.map do |obj|
       {value: obj.to_s, data: {target_id: obj.id, target_type: obj.class.name}}

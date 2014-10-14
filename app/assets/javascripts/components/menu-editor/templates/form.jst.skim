@@ -1,3 +1,3 @@
-input placeholder='Заголовок статьи'
+input placeholder='Поиск страницы'
 .fa.fa-search.me-btn.search
 .no-results Поиск не дал результатов
