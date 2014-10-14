@@ -45,4 +45,14 @@ ActiveAdmin.register ContentPage do
 
     f.actions
   end
+
+  member_action :update_in_place, method: :post do
+    if request.xhr?
+      content_page = ContentPage.find_by_slug(params[:id])
+      if content_page.update_attributes(permitted_params[:content_page])
+        render :json => {:url => content_page_url(content_page)}
+      end
+    end
+  end
+
 end
