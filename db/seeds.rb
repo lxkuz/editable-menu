@@ -108,8 +108,8 @@ content_page_about = ContentPage.create!(
                 content: "Наши технологии производства модульных лестниц постоянно развиваются и сейчас мы готовы предложить Вам 5 вариантов модульных конструкций лестниц"
 )
 
-content_page_about.content_page_chapters << ContentPageChapter.new(name: 'О компании',  anchor: 'about-company', content: 'Test content'*300, position: 1)
-content_page_about.content_page_chapters << ContentPageChapter.new(name: 'Наша миссия', anchor: 'our-mission',   content: 'our mission'*300,  position: 2)
+content_page_about.chapters << Chapter.new(name: 'О компании',  anchor: 'about-company', content: 'Test content'*300, position: 1)
+content_page_about.chapters << Chapter.new(name: 'Наша миссия', anchor: 'our-mission',   content: 'our mission'*300,  position: 2)
 
 ContentPage.create!(
                 name:     'Купить лестницу',

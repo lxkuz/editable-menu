@@ -5,7 +5,7 @@ ActiveAdmin.register ContentPage do
                 :page_url,
                 :name,
                 :content,
-                content_page_chapters_attributes: [
+                chapters_attributes: [
                   :id,
                   :position,
                   :name,
@@ -31,10 +31,9 @@ ActiveAdmin.register ContentPage do
       f.input :page_url
       f.input :content, as: :wysihtml5
       f.inputs do
-        f.has_many :content_page_chapters, allow_destroy: true, heading: 'Текстовые блоки' do |cf|
+        f.has_many :chapters, allow_destroy: true, heading: 'Текстовые блоки' do |cf|
           cf.input :position
           cf.input :name
-          cf.input :anchor
           cf.input :content, as: :wysihtml5
         end
       end
