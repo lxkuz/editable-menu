@@ -22,6 +22,22 @@ ActiveAdmin.register NewsItem do
     actions
   end
 
+  show do |news_item|
+    attributes_table do
+      row :title
+      row :description
+      row :keywords
+      row :name
+      row :body
+      row :user_id
+      row :custom_url
+      row 'Страница на сайте' do
+        link_to news_item.name, news_path(news_item)
+      end
+    end
+    active_admin_comments
+  end
+
   form do |f|
     f.inputs do
       f.input :name

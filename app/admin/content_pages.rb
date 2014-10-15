@@ -25,6 +25,20 @@ ActiveAdmin.register ContentPage do
     actions
   end
 
+  show do |page|
+    attributes_table do
+      row :title
+      row :description
+      row :keywords
+      row :page_url
+      row :name
+      row :content
+      row 'Страница на сайте' do
+        link_to page.name, url_for(page)
+      end
+    end
+  end
+
   form do |f|
     f.inputs do
       f.input :name

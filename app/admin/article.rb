@@ -37,6 +37,21 @@ ActiveAdmin.register Article do
     actions
   end
 
+  show do |article|
+    attributes_table do
+      row :title
+      row :title_translit
+      row :description
+      row :keywords
+      row :content
+      row :position
+      row :published_at
+      row 'Статья на сайте' do
+        link_to article.title, url_for(article)
+      end
+    end
+  end
+
   form do |f|
     f.inputs do
       f.input :title, label: 'Заголовок'
