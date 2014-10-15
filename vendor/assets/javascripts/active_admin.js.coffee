@@ -10,4 +10,8 @@ $(document).ready ->
     $('#content_page_name').liTranslit
       elAlias: $('#content_page_page_url')
 
+  unless $('#news_item_custom_url').val()
+    $('#news_item_name').liTranslit
+      elAlias: $('#news_item_custom_url')
+
   $('#article_published_at').datetimepicker()
