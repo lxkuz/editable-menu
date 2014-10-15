@@ -7,6 +7,14 @@ class MenuEditor.Item extends Backbone.Model
 
   targetUrl: =>
     str = _.str.underscored(@get "target_type")
-    str = _(str).pluralize()
-    id = @get "target_id"
-    "/#{str}/#{id}"
+
+    id = if @get "translit"
+      @get "translit"
+    else
+      @get "target_id"
+
+    switch str
+      when "content_page" then "/#{id}"
+      else
+        str = _(str).pluralize()
+        "/#{str}/#{id}"

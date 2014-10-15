@@ -18,6 +18,9 @@ class ContentPage < ActiveRecord::Base
   extend FriendlyId
   friendly_id :page_url, use: [:slugged, :finders]
 
+  include SearchByLike
+  has_search_by_like_for :name
+
   has_many :chapters, dependent: :destroy
   accepts_nested_attributes_for :chapters, allow_destroy: true
 
@@ -26,5 +29,13 @@ class ContentPage < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     page_url_changed?
+  end
+
+  def translit_field
+    page_url
+  end
+
+  def to_s
+    name
   end
 end

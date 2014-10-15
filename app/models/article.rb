@@ -37,6 +37,10 @@ class Article < ActiveRecord::Base
     title
   end
 
+  def translit_field
+    title_translit
+  end
+
   private
 
   def set_published_at
