@@ -66,11 +66,17 @@ group :development, :test do
   gem 'database_cleaner'
 
   # Deploy
-  gem 'mina'
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-linked-files'
+  gem 'capistrano3-unicorn'
 
   gem 'letter_opener'
 end
 
 group :production do
   gem 'rails_12factor'
+  gem 'unicorn'
 end
