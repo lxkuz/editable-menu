@@ -29,18 +29,18 @@
   /! /row
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
-      h1.cont-head *editable_in_place_data(:title)
+      h1.cont-head *editable_in_place_data(@article, :title)
         = @article.try(:title)
-      div *editable_in_place_data(:content, :textarea)
+      div *editable_in_place_data(@article, :content, :textarea)
         = @article.content.html_safe
-      = cksubmit(@article)
     .delimeter
 
-  - @article.chapters.by_position.each do |chapter|
+  - @article.chapters.by_position.each_with_index do |chapter, i|
     .row.content-section.typo-main
       .col-xs-8.col-xs-offset-1
-        h1.cont-head *{id: chapter.anchor}
+        h1.cont-head *{name: chapter.anchor}.merge(editable_in_place_data(@article, :name, nil, :chapters_attributes, chapter.id, i))
           = chapter.name
-        = chapter.content.html_safe
+        div *editable_in_place_data(@article, :content, :textarea, :chapters_attributes, chapter.id, i)
+          = chapter.content.html_safe
       .delimeter
   /! /row
