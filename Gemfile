@@ -20,6 +20,7 @@ gem 'has_scope'
 gem 'draper'
 gem 'annotate', '~> 2.6.5'
 gem 'friendly_id'
+gem 'truncate_html'
 
 gem 'execjs'
 gem 'therubyracer'

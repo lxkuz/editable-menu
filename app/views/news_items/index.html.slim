@@ -38,7 +38,7 @@
                 = link_to news_path(news_item), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту новость?' } do
                   i.fa.fa-times.edit-icon
           .nl-text.typo-main
-            = news_item.body.truncate(300, separator: ' ').html_safe
+            = truncate_html(news_item.body, length: 300, omission: ' ').html_safe
           = link_to 'Читать далее', news_path(news_item), class: 'nl-more'
         .delimeter
 
