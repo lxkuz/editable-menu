@@ -97,13 +97,15 @@ $(document).ready(function() {
     var fixed_top_offset = $('.js-fixed-top').outerHeight() + 20;
     $('.js-anchor').click(function(e) {
         e.preventDefault();
-        var scroll_to = $('#'+$(this).attr('href')).offset().top - fixed_top_offset;
+        var $target = $('[name=' + $(this).attr('href')+ ']')
+        var scroll_to = $target.offset().top - fixed_top_offset;
         $.scrollTo({top: scroll_to, left: 0}, 500);
     });
 
     if (window.location.hash) {
       setTimeout(function() {
-        var scroll_to = $(window.location.hash).offset().top - fixed_top_offset;
+        var $target = $('[name=' + window.location.hash.replace('#', '') + ']')
+        var scroll_to = $target.offset().top - fixed_top_offset;
         $.scrollTo({top: scroll_to, left: 0});
       }, 500);
     }
