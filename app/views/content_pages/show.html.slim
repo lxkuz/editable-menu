@@ -23,22 +23,21 @@
   /! /row
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
-      = cksubmit(@content_page)
-      h1.cont-head *{name: (@content_page.name if @content_page.chapters.present?)}.merge(editable_in_place_data(:name))
+      h1.cont-head *{name: (@content_page.name if @content_page.chapters.present?)}.merge(editable_in_place_data(@content_page, :name))
         = @content_page.name
       p
         = link_to 'Редактировать', edit_admin_content_page_path(@content_page)             if can? :edit,   @content_page
         = ' / '
         = link_to 'Удалить',       admin_content_page_path(@content_page), method: :delete if can? :delete, @content_page
-      div *editable_in_place_data(:content, :textarea)
+      div *editable_in_place_data(@content_page, :content, :textarea)
         = @content_page.content.html_safe
     .delimeter
   - @content_page.chapters.by_position.each_with_index do |chapter, i|
     .row.content-section.typo-main
       .col-xs-8.col-xs-offset-1
-        h1.cont-head *{name: chapter.anchor}.merge(editable_in_place_data(:name, nil, :chapters_attributes, chapter.id, i))
+        h1.cont-head *{name: chapter.anchor}.merge(editable_in_place_data(@content_page, :name, nil, :chapters_attributes, chapter.id, i))
           = chapter.name
-        div *editable_in_place_data(:content, :textarea, :chapters_attributes, chapter.id, i)
+        div *editable_in_place_data(@content_page, :content, :textarea, :chapters_attributes, chapter.id, i)
           = chapter.content.html_safe
       .delimeter
   /! /row
