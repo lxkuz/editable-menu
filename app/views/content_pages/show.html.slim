@@ -25,10 +25,11 @@
     .col-xs-8.col-xs-offset-1
       h1.cont-head *{name: (@content_page.name if @content_page.chapters.present?)}.merge(editable_in_place_data(@content_page, :name))
         = @content_page.name
-      p
-        = link_to 'Редактировать', edit_admin_content_page_path(@content_page)             if can? :edit,   @content_page
-        = ' / '
-        = link_to 'Удалить',       admin_content_page_path(@content_page), method: :delete if can? :delete, @content_page
+      - if can? :manage, @content_page
+        p
+          = link_to 'Редактировать', edit_admin_content_page_path(@content_page)
+          = ' / '
+          = link_to 'Удалить',       admin_content_page_path(@content_page), method: :delete
       div *editable_in_place_data(@content_page, :content, :textarea)
         = @content_page.content.html_safe
     .delimeter

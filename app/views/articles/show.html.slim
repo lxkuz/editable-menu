@@ -1,11 +1,11 @@
 .l-centered.left.section-container
   = render 'shared/header'
 
-  .row.inner-nav-wrap.js-inner-nav-wrap
-    .inner-nav-trigger.js-inner-nav-trigger.active
-      .this-active
-    .js-nav-inner.nav-inner
-      - if @chapters.present?
+  - if @chapters.present?
+    .row.inner-nav-wrap.js-inner-nav-wrap
+      .inner-nav-trigger.js-inner-nav-trigger.active
+        .this-active
+      .js-nav-inner.nav-inner
         .col-xs-2.col-xs-offset-1
           a.inner-nav-item.js-anchor href="#{@chapters[0].try(:anchor)}"  = @chapters[0].try(:name)
           a.inner-nav-item.js-anchor href="#{@chapters[1].try(:anchor)}"  = @chapters[1].try(:name)
@@ -19,18 +19,17 @@
           a.inner-nav-item.js-anchor href="#{@chapters[6].try(:anchor)}"  = @chapters[6].try(:name)
           a.inner-nav-item.js-anchor href="#{@chapters[7].try(:anchor)}"  = @chapters[7].try(:name)
         .delimeter
-    - if can? :manage, @article
-      .js-nav-inner.nav-inner
-        .col-xs-2.col-xs-offset-1
-          = link_to 'Редактировать', edit_admin_article_path(@article), class: 'inner-nav-item'
-          = ' / '
-          = link_to 'Удалить', article_path(@article), method: :delete, class: 'inner-nav-item', data: { confirm: 'Вы уверены, что хотите удалить эту статью?' }
-    /! /js nav inner
-  /! /row
+      /! /js nav inner
+    /! /row
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
       h1.cont-head *editable_in_place_data(@article, :title)
         = @article.try(:title)
+      - if can? :manage, @article
+        p
+          = link_to 'Редактировать', edit_admin_article_path(@article)
+          = ' / '
+          = link_to 'Удалить', article_path(@article), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту статью?' }
       div *editable_in_place_data(@article, :content, :textarea)
         = @article.content.html_safe
     .delimeter
