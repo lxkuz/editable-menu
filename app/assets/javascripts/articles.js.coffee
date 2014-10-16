@@ -29,7 +29,7 @@ $(document).ready ->
     moveAttrsToCK(CKEDITOR.instances[id], $el)
 
   saveChanges = (instance)->
-    if instance.firstSnapshot != instance.getData()
+    if instance.checkDirty()
       url = instance.dataUrl
       obj = instance.dataObject
       data = {}
@@ -52,6 +52,7 @@ $(document).ready ->
     if window.location.href == responce.url
       $.each CKEDITOR.instances, (instance) ->
         CKEDITOR.instances[instance].firstSnapshot = CKEDITOR.instances[instance].getData()
+        CKEDITOR.instances[instance].resetDirty()
       alert('Изменения сохранены')
     else
       window.location = responce.url
