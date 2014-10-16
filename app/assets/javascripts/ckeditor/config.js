@@ -93,5 +93,4 @@ CKEDITOR.editorConfig = function( config )
     config.toolbar_Poor =[
         ['Cut','Copy','Paste'], ['Undo','Redo']
     ];
-
 }

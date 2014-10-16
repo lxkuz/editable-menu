@@ -1,0 +1,40 @@
+.inline-admin-attributes {
+  border: 1px solid #6e6e6e;
+  >div {
+    padding: 10px;
+  }
+  i.ui-icon {
+    top: 2px;
+    position: relative;
+  }
+  .collapsible {
+    display: none;
+    border-top: 1px solid #6e6e6e;
+  }
+  .collapse {
+    .ui-icon-carat-1-e {
+      display: inline-block;
+    }
+    .ui-icon-carat-1-s {
+      display: none;
+    }
+    &.collapsed {
+      .ui-icon-carat-1-e {
+        display: none;
+      }
+      .ui-icon-carat-1-s {
+        display: inline-block;
+      }
+    }
+  }
+  .attr {
+    font-weight: bold;
+  }
+  .val {
+    margin-left: 5%;
+    border: 1px solid #d3d3d3;
+    padding: 3px;
+    border-radius: 2px;
+    margin-bottom: 15px;
+  }
+}

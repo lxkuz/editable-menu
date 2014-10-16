@@ -9,6 +9,7 @@ $(document).ready ->
 
   moveAttrsToCK = (instance, $el) ->
     instance.firstSnapshot = instance.getData()
+    instance.dataType = $el.data('type')
     instance.dataAttr = $el.data('attribute')
     instance.dataObject = $el.data('object')
     instance.dataUrl = $el.data('url')
@@ -18,16 +19,6 @@ $(document).ready ->
       instance.dataNestedFor = $el.data('nestedFor')
       instance.dataNestedIndex = $el.data('nestedIndex')
 
-  $('.ckeditable').each ->
-    $el = $(@)
-    id = @.id
-    ck_toolbar = 'Poor'
-    if $el.data('type') == 'textarea'
-      ck_toolbar = 'Rich'
-    CKEDITOR.inline(id, toolbar: ck_toolbar)
-    CKEDITOR.instances[id].on 'blur', -> saveChanges(CKEDITOR.instances[id])
-    moveAttrsToCK(CKEDITOR.instances[id], $el)
-
   saveChanges = (instance)->
     if instance.checkDirty()
       url = instance.dataUrl
@@ -36,15 +27,22 @@ $(document).ready ->
       data[obj] = getDataFromCK(instance)
       $.post( url, data, (responce) -> sucsessUpdate(responce))
 
+  getContent = (instance) ->
+    if instance.dataType == 'textarea'
+      instance.getData()
+    else
+      $(instance.getData()).text() # no html tags for text inputs
+
   getDataFromCK = (instance) ->
     data = {}
+    content = getContent(instance)
     if instance.isNested
       data[instance.dataNestedFor] ?= {}
       data[instance.dataNestedFor][instance.dataNestedIndex] ?= {}
-      data[instance.dataNestedFor][instance.dataNestedIndex][instance.dataAttr] = instance.getData()
+      data[instance.dataNestedFor][instance.dataNestedIndex][instance.dataAttr] = content
       data[instance.dataNestedFor][instance.dataNestedIndex]['id'] = instance.dataNestedId
     else
-      data[instance.dataAttr] = instance.getData()
+      data[instance.dataAttr] = content
     data
 
   sucsessUpdate = (responce)->
@@ -62,5 +60,19 @@ $(document).ready ->
 #    $.each CKEDITOR.instances, (instance) ->
 #      CKEDITOR.instances[instance].setData(CKEDITOR.instances[instance].firstSnapshot)
 
+  $('.ckeditable').each ->
+    $el = $(@)
+    id = @.id
+    ck_toolbar = 'Poor'
+    if $el.data('type') == 'textarea'
+      ck_toolbar = 'Rich'
+    CKEDITOR.inline(id, {toolbar: ck_toolbar, readOnly: false}) # by default display:none fields are readonly
+    CKEDITOR.instances[id].on 'blur', -> saveChanges(CKEDITOR.instances[id])
+    moveAttrsToCK(CKEDITOR.instances[id], $el)
 
+  $('.inline-admin-attributes .collapse').click ->
+    $(this).siblings('.collapsible').slideToggle('slow')
+    $(this).toggleClass('collapsed')
+    $.each CKEDITOR.instances, (instance) ->
+      CKEDITOR.instances[instance].setReadOnly(false)
 
