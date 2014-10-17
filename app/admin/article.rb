@@ -1,6 +1,7 @@
 ActiveAdmin.register Article do
   menu :label => "Статьи"
-  permit_params :title,
+  permit_params :id,
+                :title,
                 :title_translit,
                 :description,
                 :keywords,

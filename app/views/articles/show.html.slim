@@ -13,6 +13,8 @@
           = link_to 'Удалить', article_path(@article), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту статью?' }
       div *editable_in_place_data(@article, :content, :textarea)
         = @article.content.html_safe
+      - if can? :manage, @article
+        = render partial: 'shared/inline_edit_admin_attrs', locals: { obj: @article, admin_attrs: articles_admin_attrs(@article) }
     .delimeter
 
   - @article.chapters.each_with_index do |chapter, i|
@@ -22,5 +24,7 @@
           = chapter.name
         div *editable_in_place_data(@article, :content, :textarea, :chapters_attributes, chapter.id, i)
           = chapter.content.html_safe
+        - if can? :manage, @article
+          = render partial: 'shared/inline_edit_admin_attrs', locals: { obj: @article, admin_attrs: article_chapters_admin_attrs(@article,chapter.id, i ) }
       .delimeter
   /! /row

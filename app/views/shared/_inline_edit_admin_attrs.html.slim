@@ -9,6 +9,9 @@ div.inline-admin-attributes
        .attr
          = t("activerecord.attributes.#{obj_name(obj)}.#{attr}") + ':'
        .val *edit_in_place_options
-         = obj.try(attr) || 'Пусто'
+         - if edit_in_place_options[:data][:nested_for]
+           = obj.try('chapters', edit_in_place_options[:data][:nested_id]).try(:first).try(attr) || 'Пусто'
+         - else
+           = obj.try(attr) || 'Пусто'
 
 
