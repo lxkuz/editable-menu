@@ -25,9 +25,14 @@ set :ssh_options, {
     forward_agent: false,
     auth_methods: %w(publickey password) }
 
-after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
-  task :restart do
-    invoke 'unicorn:legacy_restart'
+  task :start_unicorn do
+    invoke 'unicorn:start'
+  end
+
+  task :stop_unicorn do
+    invoke 'unicorn:stop'
   end
 end
+before 'deploy:assets:precompile', 'deploy:stop_unicorn'
+after  'deploy:publishing',        'deploy:start_unicorn'

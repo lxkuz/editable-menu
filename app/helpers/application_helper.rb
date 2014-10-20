@@ -1,6 +1,6 @@
 module ApplicationHelper
   def display_meta_tags_with_defaults
-    set_meta_tags title: 'МЛ' if display_title.blank?
+    # set_meta_tags title: 'МЛ' if display_title.blank?
     display_meta_tags
   end
 
