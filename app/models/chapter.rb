@@ -21,7 +21,7 @@ class Chapter < ActiveRecord::Base
 
   before_validation :set_anchor
 
-  scope :by_position, -> { order(:position) }
+  default_scope { order(:position) }
 
   private
 

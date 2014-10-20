@@ -62,6 +62,7 @@ ActiveAdmin.register Article do
       f.inputs do
         f.has_many :chapters, allow_destroy: true, heading: false do |ch|
           ch.input :name
+          ch.input :position
           ch.input :content, as: :wysihtml5
         end
       end

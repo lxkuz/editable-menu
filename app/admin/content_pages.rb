@@ -46,8 +46,8 @@ ActiveAdmin.register ContentPage do
       f.input :content, as: :wysihtml5
       f.inputs do
         f.has_many :chapters, allow_destroy: true, heading: 'Текстовые блоки' do |cf|
-          cf.input :position
           cf.input :name
+          cf.input :position
           cf.input :content, as: :wysihtml5
         end
       end
