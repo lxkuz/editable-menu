@@ -1,5 +1,4 @@
 doctype html
-doctype html
 /[if lt IE 7]
   | <html class="no-js lt-ie9 lt-ie8 lt-ie7">
 /[if IE 7]
@@ -9,10 +8,8 @@ doctype html
 /! [if gt IE 8]<!--> <html class="no-js"> <!--<![endif]
 html
   head
+    = display_meta_tags_with_defaults
     meta charset='utf-8'
-    title МЛ
-    = display_meta_tags
-    meta content='МЛ' name='description'
     meta content='width=1250, initial-scale=0.2' name='viewport'
 
     link href='favicon.ico' rel='icon' type='image/x-icon'

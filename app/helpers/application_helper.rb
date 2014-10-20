@@ -1,4 +1,9 @@
 module ApplicationHelper
+  def display_meta_tags_with_defaults
+    set_meta_tags title: 'МЛ' if display_title.blank?
+    display_meta_tags
+  end
+
   def editable_in_place_data object, attribute, type=nil, nested_for=nil, nested_id=nil, nested_index=nil
     if current_user.try(:admin?)
       {
