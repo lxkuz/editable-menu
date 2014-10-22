@@ -17,15 +17,25 @@ class Chapter < ActiveRecord::Base
   belongs_to :content_page
   belongs_to :article
 
-  validates :anchor, :name, :content, presence: true
+  validates :name, :content, presence: true
 
   before_validation :set_anchor
+  before_save :set_position
 
-  default_scope { order(:position) }
+  default_scope { order(:position, :created_at) }
 
   private
 
   def set_anchor
     self.anchor = Russian::translit(name.split.join('-')) if name.present?
   end
+
+  def set_position
+    if self.position.blank?
+      parent = self.content_page || self.article
+      last_chapter = parent.reload.chapters.last
+      self.position = last_chapter.present? ? (last_chapter.position + 1) : 1
+    end
+  end
 end
+
