@@ -84,7 +84,7 @@ CKEDITOR.editorConfig = function( config )
             }
         }
     });
-
+    config.toolbar = 'Rich'
     config.toolbar_Rich =[
         ['Cut','Copy','Paste'], ['Undo','Redo'],
         ['Bold','Italic','Underline','Strike'], ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'], [ 'Link','Unlink','Anchor' ],

@@ -13,7 +13,7 @@ input#article_published_at {
   max-width: 150px;
 }
 
-.wysihtml5-sandbox {
-  max-width: 95%;
-  min-height: 640px;
+.cke_chrome {
+  width: 79.5% !important;
+  overflow: hidden;
 }

@@ -43,12 +43,12 @@ ActiveAdmin.register ContentPage do
     f.inputs do
       f.input :name
       f.input :page_url
-      f.input :content, as: :wysihtml5
+      f.input :content, as: :ckeditor
       f.inputs do
         f.has_many :chapters, allow_destroy: true, heading: 'Текстовые блоки' do |cf|
           cf.input :name
           cf.input :position
-          cf.input :content, as: :wysihtml5
+          cf.input :content, as: :ckeditor
         end
       end
       f.input :title
