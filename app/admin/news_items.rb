@@ -42,7 +42,7 @@ ActiveAdmin.register NewsItem do
     f.inputs do
       f.input :name
       f.input :custom_url
-      f.input :body, as: :wysihtml5
+      f.input :body, as: :ckeditor
       f.input :title
       f.input :description, input_html: { rows: 2 }
       f.input :keywords, input_html: { rows: 2 }

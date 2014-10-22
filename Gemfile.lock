@@ -15,23 +15,6 @@ GIT
       ransack (~> 1.3)
       sass-rails
 
-GIT
-  remote: git://github.com/stefanoverna/activeadmin-dragonfly.git
-  revision: 89a47f9124b1c4ee4ae79f6c32aa999d2566c5d1
-  specs:
-    activeadmin-dragonfly (0.0.2)
-      activeadmin
-      dragonfly (= 0.9.15)
-      rack-cache
-
-GIT
-  remote: git://github.com/stefanoverna/activeadmin-wysihtml5.git
-  revision: 38bca2986d116bb6459d3f5cafd4479a73eb51cd
-  specs:
-    activeadmin-wysihtml5 (1.0.0)
-      activeadmin
-      activeadmin-dragonfly
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -132,9 +115,6 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    dragonfly (0.9.15)
-      multi_json (~> 1.0)
-      rack
     draper (1.4.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -225,8 +205,6 @@ GEM
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     rack (1.5.2)
-    rack-cache (1.2)
-      rack (>= 0.4)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
     rack-test (0.6.2)
@@ -353,8 +331,6 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
-  activeadmin-dragonfly!
-  activeadmin-wysihtml5!
   annotate (~> 2.6.5)
   awesome_print
   better_errors

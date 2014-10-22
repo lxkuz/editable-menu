@@ -57,13 +57,13 @@ ActiveAdmin.register Article do
       f.input :title, label: 'Заголовок'
       f.input :title_translit, label: 'URL'
       # TODO: Limit html attributes later
-      f.input :content, as: :wysihtml5 # , commands: [ :link ], blocks: [ :h3, :p]
+      f.input :content, as: :ckeditor # , commands: [ :link ], blocks: [ :h3, :p]
 
       f.inputs do
         f.has_many :chapters, allow_destroy: true, heading: false do |ch|
           ch.input :name
           ch.input :position
-          ch.input :content, as: :wysihtml5
+          ch.input :content, as: :ckeditor
         end
       end
 
