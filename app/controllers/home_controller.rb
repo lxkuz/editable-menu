@@ -3,6 +3,10 @@ class HomeController < ApplicationController
   def index
     @news_items = @news_items.limit(4).newest.decorate
     @user_request = UserRequest.new
+    set_meta_tags title:       Settings.home_page_meta_title,
+                  description: Settings.home_page_meta_description,
+                  keywords:    Settings.home_page_keywords
+
   end
 
   def about

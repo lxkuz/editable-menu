@@ -19,6 +19,7 @@ gem 'draper'
 gem 'annotate', '~> 2.6.5'
 gem 'friendly_id'
 gem 'truncate_html'
+gem 'rails-settings-cached', '0.4.1'
 
 gem 'execjs'
 gem 'therubyracer'
