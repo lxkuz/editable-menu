@@ -1,3 +1,21 @@
+.nav-inner.menu-editor {
+  display: block;
+  float: left;
+  width: 200px;
+}
+
+.edit[edit-tumbler-role-done] {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+
 .menu-editor {
   position: relative;
 
@@ -5,7 +23,7 @@
     clear: both;
   }
 
-  .me-root-item li {
+  li.me-item  {
     margin-top: 10px;
 
     &:first-child {
@@ -29,7 +47,7 @@
     top: 0;
   }
 
-  .me-item, .me-root-item, .me-form {
+  .me-item, .me-item, .me-form {
     position: relative;
 
   }
@@ -40,17 +58,15 @@
     margin-top: 5px;
   }
 
-  .me-root-item {
-    display: block;
-    float: left;
-    width: 200px;
-  }
-
   .me-form {
+    margin-top: 10px;
     display: inline-block;
     .search {
       left: 144px;
       top: 4px;
+    }
+    &:first-child {
+      margin-top: 0px;
     }
   }
 
@@ -58,25 +74,11 @@
     margin-left: 10px;
   }
 
-  .edit {
-    position: absolute;
-    right: 10px;
-    top: -15px;
-    opacity: 0.5;
-
-    &:hover {
-      opacity: 0.75;
-    }
-  }
-
   .search, input, .destroy {
     display: none;
   }
 
   &.editable {
-    .edit {
-      opacity: 1;
-    }
     .search, input {
       display: block;
     }
@@ -86,7 +88,7 @@
   }
 
   &.readonly {
-    .edit, .search, input, .destroy {
+    .search, input, .destroy {
       display: none;
     }
   }

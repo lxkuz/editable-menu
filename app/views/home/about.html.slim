@@ -5,7 +5,13 @@
   .row.inner-nav-wrap.js-inner-nav-wrap.active
     .inner-nav-trigger.js-inner-nav-trigger.active
       .this-active
-    .js-nav-inner.nav-inner menu-editor-role=true data-menu='top' data-limit=4 data-search-url=search_menu_items_path data-editable=current_user.try(:admin?)
+    .col-xs-offset-1.js-nav-inner
+      .fa.fa-pencil.me-btn.edit edit-tumbler-role=true
+      .nav-inner menu-editor-role=true data-menu='top-1' data-search-url=search_menu_items_path data-editable=current_user.try(:admin?)
+      .nav-inner menu-editor-role=true data-menu='top-2' data-search-url=search_menu_items_path data-editable=current_user.try(:admin?)
+      .nav-inner menu-editor-role=true data-menu='top-3' data-search-url=search_menu_items_path data-editable=current_user.try(:admin?)
+      .nav-inner menu-editor-role=true data-menu='top-4' data-search-url=search_menu_items_path data-editable=current_user.try(:admin?)
+      .delimeter
     - #todo я оставил блок ссылок, вдруг пригодится
     /! /js nav inner
   /! /row

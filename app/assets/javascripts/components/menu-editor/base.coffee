@@ -6,8 +6,7 @@ class MenuEditor.Base extends MenuEditor.View
     @$el.addClass "menu-editor"
     @menu = @$el.data "menu"
     @searchUrl = @$el.data "search-url"
-    @limit = @$el.data("limit") || 10
-
+    @limit = @$el.data("limit")
     @items = new MenuEditor.Items
 
     @readonly = @$el.attr("data-editable") == undefined
@@ -15,12 +14,10 @@ class MenuEditor.Base extends MenuEditor.View
     @editable = false
     @render()
 
+    $(window).bind "editing-tumbler", @toggleEditable
 
-  events:
-    "click .edit": "toggleEditable"
-
-  toggleEditable: =>
-    @editable = !@editable
+  toggleEditable: (ev, editable) =>
+    @editable = editable
     for view in @rootItemViews
       view.toggleEditable()
 
@@ -37,16 +34,14 @@ class MenuEditor.Base extends MenuEditor.View
         stop: @recalcPositions
         items: "li:not(.me-form, .clear)"
         disabled: !@editable
-        handle: ".root-item-link"
+        handle: ".item-link"
     @
 
   draw: =>
-    childrenLengthArr = @items.map (item) =>
-      item.children().length
     @clear()
 
     @items.each (item) =>
-      view = new MenuEditor.RootItemView
+      view = new MenuEditor.ItemView
         model: item
         searchUrl: @searchUrl
         readonly: @readonly
@@ -80,20 +75,17 @@ class MenuEditor.Base extends MenuEditor.View
     else
       position = 1
 
-    if position <=  @limit
-      @formView = new MenuEditor.FormView
-        model: new MenuEditor.Item({menu: @menu, position: position})
-        searchUrl: @searchUrl
-        refreshCallback: @refresh
-      @itemsContainer.append @formView.render().el
-    else
-      @formView = undefined
+    @formView = new MenuEditor.FormView
+      model: new MenuEditor.Item({menu: @menu, position: position})
+      searchUrl: @searchUrl
+      refreshCallback: @refresh
+    @itemsContainer.append @formView.render().el
 
   recalcPositions: (ev, ui) =>
     item = ui.item
     id = item.data "model-id"
     model = @items.get id
-    index =  @itemsContainer.children(".me-root-item").index(ui.item) + 1
+    index =  @itemsContainer.children(".me-item").index(ui.item) + 1
     model.set "position", index
     model.save null,
       success: @refresh
