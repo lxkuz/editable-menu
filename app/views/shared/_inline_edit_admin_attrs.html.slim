@@ -1,0 +1,17 @@
+div.inline-admin-attributes
+  .collapse
+    | Редактировать админ. атрибуты
+    i.ui-icon.ui-icon-carat-1-e
+    i.ui-icon.ui-icon-carat-1-s
+  .collapsible.collapsed
+   - admin_attrs.each_pair do |attr, edit_in_place_options|
+     div
+       .attr
+         = t("activerecord.attributes.#{obj_name(obj)}.#{attr}") + ':'
+       .val *edit_in_place_options
+         - if edit_in_place_options[:data][:nested_for]
+           = obj.try('chapters', edit_in_place_options[:data][:nested_id]).try(:first).try(attr) || 'Пусто'
+         - else
+           = obj.try(attr) || 'Пусто'
+
+

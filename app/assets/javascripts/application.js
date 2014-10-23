@@ -47,4 +47,4 @@
 //= require page-index
 //= require page-all
 //= require icons-editing
-//= require articles
+//= require inline-editor

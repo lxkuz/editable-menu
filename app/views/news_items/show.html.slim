@@ -14,6 +14,8 @@
         = @news_item.updated_short_date
       .nf-text.typo-main.in-full-news *editable_in_place_data(@news_item, :body, :textarea)
         = @news_item.body.html_safe
+      - if can? :manage, @news_item
+        = render partial: 'shared/inline_edit_admin_attrs', locals: { obj: @news_item, admin_attrs: news_admin_attrs(@news_item) }
   .row.discount-section
     .col-xs-8.col-xs-offset-1.discount-wrap
       h4.disc-head Получите скидку уже сегодня!
