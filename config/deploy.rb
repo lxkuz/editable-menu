@@ -17,7 +17,7 @@ set :scm,    :git
 set :branch, 'master'
 
 set :linked_files, %w(config/database.yml config/secrets.yml)
-set :linked_dirs,  %w{log tmp/sockets tmp/pids tmp/queue}
+set :linked_dirs,  %w{log tmp/sockets tmp/pids tmp/queue public/uploads}
 
 set :format, :pretty
 set :ssh_options, {
