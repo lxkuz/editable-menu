@@ -49,7 +49,10 @@ module ApplicationHelper
   end
 
   def menu_editor_btn
-    content_tag :div, "", class: "fa fa-pencil me-btn edit", "edit-tumbler-role" => true
+    if current_user.try(:admin?)
+      content_tag :div, "", class: "fa fa-pencil me-btn edit", "edit-tumbler-role" => true
+    end
   end
+
 
 end
