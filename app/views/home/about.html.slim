@@ -6,11 +6,11 @@
     .inner-nav-trigger.js-inner-nav-trigger.active
       .this-active
     .col-xs-offset-1.js-nav-inner
-      .fa.fa-pencil.me-btn.edit edit-tumbler-role=true
-      .nav-inner menu-editor-role=true data-menu='top-1' data-search-url=search_menu_items_path data-editable=current_user.try(:admin?)
-      .nav-inner menu-editor-role=true data-menu='top-2' data-search-url=search_menu_items_path data-editable=current_user.try(:admin?)
-      .nav-inner menu-editor-role=true data-menu='top-3' data-search-url=search_menu_items_path data-editable=current_user.try(:admin?)
-      .nav-inner menu-editor-role=true data-menu='top-4' data-search-url=search_menu_items_path data-editable=current_user.try(:admin?)
+      = menu_editor_btn
+      = menu_section 'top-1', li_class: "inner-nav-item heading", ul_class: "col-xs-offset-1", class: "nav-inner"
+      = menu_section 'top-2', li_class: "inner-nav-item heading", ul_class: "col-xs-offset-1", class: "nav-inner"
+      = menu_section 'top-3', li_class: "inner-nav-item heading", ul_class: "col-xs-offset-1", class: "nav-inner"
+      = menu_section 'top-4', li_class: "inner-nav-item heading", ul_class: "col-xs-offset-1", class: "nav-inner"
       .delimeter
     - #todo я оставил блок ссылок, вдруг пригодится
     /! /js nav inner

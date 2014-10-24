@@ -8,6 +8,9 @@ class MenuEditor.Base extends MenuEditor.View
     @searchUrl = @$el.data "search-url"
     @limit = @$el.data("limit")
     @items = new MenuEditor.Items
+    @liClass = @$el.data "li-class"
+    @ulClass = @$el.data "ul-class"
+
 
     @readonly = @$el.attr("data-editable") == undefined
     @$el.toggleClass "readonly", @readonly
@@ -17,6 +20,7 @@ class MenuEditor.Base extends MenuEditor.View
     $(window).bind "editing-tumbler", @toggleEditable
 
   toggleEditable: (ev, editable) =>
+    @$el.toggleClass "editing", editable
     @editable = editable
     for view in @rootItemViews
       view.toggleEditable()
@@ -27,7 +31,8 @@ class MenuEditor.Base extends MenuEditor.View
 
   render: =>
     super
-    @itemsContainer = @$ ".items"
+    @itemsContainer = @$ "ul"
+    @itemsContainer.addClass @ulClass if @ulClass
     @refresh()
     unless @readonly
       @itemsContainer.sortable
@@ -48,7 +53,9 @@ class MenuEditor.Base extends MenuEditor.View
         editable: @editable
         parent: @
         refreshCallback: @refresh
-      @itemsContainer.append view.render().el
+      el = view.render().el
+      $(el).addClass @liClass if @liClass
+      @itemsContainer.append el
       @rootItemViews.push view
 
     @formInit()

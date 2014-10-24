@@ -37,4 +37,19 @@ module ApplicationHelper
     ['ck', nested_for.to_s.underscore, nested_id.to_s, attribute.to_s.underscore].compact.join('_')
   end
 
+
+  def menu_section name, options = {}
+    klass = options[:class]
+    content_tag :div, "",
+                class: klass, "menu-editor-role" => true,
+                data: {menu: name, search_url: search_menu_items_path,
+                       ul_class: options[:ul_class], li_class: options[:li_class],
+                       editable: current_user.try(:admin?)}
+
+  end
+
+  def menu_editor_btn
+    content_tag :div, "", class: "fa fa-pencil me-btn edit", "edit-tumbler-role" => true
+  end
+
 end

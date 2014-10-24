@@ -1,8 +1,4 @@
-.nav-inner.menu-editor {
-  display: block;
-  float: left;
-  width: 200px;
-}
+
 
 .edit[edit-tumbler-role-done] {
   position: absolute;
@@ -21,6 +17,9 @@
 
   .clear {
     clear: both;
+    margin: 0 !important;
+    padding: 0 !important;
+
   }
 
   li.me-item  {
@@ -59,6 +58,10 @@
   }
 
   .me-form {
+    display: none;
+  }
+
+  &.editing .me-form {
     margin-top: 10px;
     display: inline-block;
     .search {
@@ -112,4 +115,24 @@
     /** Define arrowhead **/
   }
 
+}
+
+
+.section-container .nav-inner.menu-editor {
+  display: block;
+  float: left;
+  width: 200px;
+}
+
+
+.navigation {
+  .fa.edit, .fa.search {
+    color: white;
+  }
+}
+
+.menu.main {
+  li.me-form input {
+    width: 163px;
+  }
 }
