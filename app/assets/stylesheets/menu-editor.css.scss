@@ -1,5 +1,4 @@
 
-
 .edit[edit-tumbler-role-done] {
   position: absolute;
   right: 10px;
@@ -11,7 +10,6 @@
   }
 }
 
-
 .menu-editor {
   position: relative;
 
@@ -22,7 +20,7 @@
 
   }
 
-  li.me-item  {
+  li.me-item {
     margin-top: 10px;
 
     &:first-child {
@@ -85,7 +83,7 @@
     .search, input {
       display: block;
     }
-    .destroy  {
+    .destroy {
       display: inline;
     }
   }
@@ -117,13 +115,11 @@
 
 }
 
-
 .section-container .nav-inner.menu-editor {
   display: block;
   float: left;
   width: 200px;
 }
-
 
 .navigation {
   .fa.edit, .fa.search {
@@ -131,8 +127,60 @@
   }
 }
 
-.menu.main {
-  li.me-form input {
-    width: 163px;
+// Left menu css fixes
+
+.menu-editor.editing {
+  .menu {
+
+    .me-form {
+      .search {
+        left: 142px;
+        top: 6px;
+      }
+
+      input {
+        background-color: #1b1b1b;
+        color: white;
+        font-size: 14px;
+        height: 30px;
+        border: 1px solid white;
+        padding-left: 10px;
+        width: 163px;
+        &.acLoading {
+          background-image: none !important;
+        }
+        &::-webkit-input-placeholder {
+          color: white;
+        }
+        &:-moz-placeholder {
+          /* FF 4-18 */
+          color: white;
+        }
+        &::-moz-placeholder {
+          /* FF 19+ */
+          color: white;
+        }
+        &:-ms-input-placeholder {
+          /* IE 10+ */
+          color: white;
+        }
+      }
+    }
   }
+}
+
+
+// articles 3 menu css fixes
+
+.article-list {
+  position: relative;
+  .fa.edit {
+    top: 0px
+  }
+}
+
+// about menu and content page bottom menu
+
+.inner-nav-item.heading a {
+  color: #1b1b1b
 }

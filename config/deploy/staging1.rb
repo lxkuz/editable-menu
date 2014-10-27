@@ -2,7 +2,7 @@ set :unicorn_rack_env, 'production'
 
 set :user,       'deploy'
 set :ip_machine, '178.62.155.127'
-set :branch, 'staging'
+set :branch, 'menu-editor-fixes'
 
 set :deploy_to,           "/home/#{ fetch(:user) }/#{ fetch(:application) }"
 set :unicorn_config_path, "#{ fetch(:deploy_to) }/current/config/unicorn.rb"

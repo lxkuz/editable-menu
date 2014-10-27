@@ -48,31 +48,38 @@
             = link_to 'Узнать больше', article_path(article), class: 'article-more red-black'
 
     .col-xs-2
+
       .article-list
+        = menu_editor_btn
         h4.art-list-head 10 советов для дома
-        a href="#"  Схема сборки
-        a href="#"  Доставка
-        a href="#"  Срок службы
-        a href="#"  Эксплуатация
+        = menu_section '10-tips'
+        /a href="#"  Схема сборки
+        /a href="#"  Доставка
+        /a href="#"  Срок службы
+        /a href="#"  Эксплуатация
       .img-wrap-2
         = image_tag 'content/cont-img5.jpg', class: 'img img-response'
       .article-list
+        = menu_editor_btn
         h4.art-list-head Самое популярное
-        a href="#"  Схема сборки
-        a href="#"  Уход
-        a href="#"  Эксплуатация
-        a href="#"  Противопожарная
-        a href="#"  Доставка
-        a href="#"  Срок службы
-        a href="#"  Эксплуатация
-        a href="#"  Схема сборки
+        = menu_section 'most-popular'
+        /a href="#"  Схема сборки
+        /a href="#"  Уход
+        /a href="#"  Эксплуатация
+        /a href="#"  Противопожарная
+        /a href="#"  Доставка
+        /a href="#"  Срок службы
+        /a href="#"  Эксплуатация
+        /a href="#"  Схема сборки
       .article-list
+        = menu_editor_btn
         h4.art-list-head Полезные ссылки
-        a href="#"  Схема сборки
-        a href="#"  Доставка
-        a href="#"  Срок службы
-        a href="#"  Эксплуатация
-        a href="#"  Уход
+        = menu_section 'usefull-links'
+        /a href="#"  Схема сборки
+        /a href="#"  Доставка
+        /a href="#"  Срок службы
+        /a href="#"  Эксплуатация
+        /a href="#"  Уход
     /! /col-xs-2
 
     .col-xs-8.col-xs-offset-1
