@@ -31,7 +31,7 @@ $(document).ready ->
     if instance.dataType == 'textarea'
       instance.getData()
     else
-      $(instance.getData()).text() # no html tags for text inputs
+      $('<p>'+instance.getData()+'</p>').text() # no html tags for text inputs
 
   getDataFromCK = (instance) ->
     data = {}
