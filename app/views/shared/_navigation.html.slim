@@ -6,82 +6,91 @@
     = image_tag "logo.png"
   = link_to(root_path, class: 'logo-text') do
     = image_tag "logo-text.png"
-
+  = menu_editor_btn
   .nav-location
     = @nearest_office.try(:name) || 'в Ростове-на-Дону'
   .nav-section
-    ul.menu.main
-      li
-        = link_to 'Купить лестницу', content_page_path(:buy_staircases)
-      li
-        = link_to 'On-line заказ', '#'
-      li
-        = link_to 'Доставка', content_page_path(:delivery)
-      li
-        = link_to 'Монтаж', content_page_path(:installation)
-      li
-        = link_to 'О компании', content_page_path(:about)
-      li
-        = link_to 'Контакты', content_page_path(:contacts)
+    = menu_section 'main', ul_class: "menu main", class: "nav-section"
+    /ul.menu.main
+    /  li
+    /    = link_to 'Купить лестницу', content_page_path(:buy_staircases)
+    /  li
+    /    = link_to 'On-line заказ', '#'
+    /  li
+    /    = link_to 'Доставка', content_page_path(:delivery)
+    /  li
+    /    = link_to 'Монтаж', content_page_path(:installation)
+    /  li
+    /    = link_to 'О компании', content_page_path(:about)
+    /  li
+    /    = link_to 'Контакты', content_page_path(:contacts)
   .nav-section
     .nav-head Типы лестниц
-    ul.menu
-      li
-        = link_to 'Маршевые лестницы', content_page_path(:open_staircases)
-      li
-        = link_to 'Г-образные лестницы', content_page_path(:l_shaped_staircase)
-      li
-        = link_to 'Винтовые лестницы', content_page_path(:spiral_staircases)
-      li
-        = link_to 'П-образные лестницы', content_page_path(:u_shaped_staircases)
+    = menu_section 'types-of-stairs', ul_class: "menu"
+    /ul.menu
+    /  li
+    /    = link_to 'Маршевые лестницы', content_page_path(:open_staircases)
+    /  li
+    /    = link_to 'Г-образные лестницы', content_page_path(:l_shaped_staircase)
+    /  li
+    /    = link_to 'Винтовые лестницы', content_page_path(:spiral_staircases)
+    /  li
+    /    = link_to 'П-образные лестницы', content_page_path(:u_shaped_staircases)
   .nav-section
     .nav-head Виды лестницы
-    ul.menu
-      li
-        = link_to 'Модульные лестницы', content_page_path(:modular_stairs)
-      li
-        = link_to 'Деревянные лестницы', content_page_path(:wooden_stairs)
-      li
-        = link_to 'На монокосоуре', content_page_path(:monokosoure)
-      li
-        = link_to 'Из нержавейки', content_page_path(:stainless)
+    = menu_section 'kinds-of-stairs', ul_class: "menu"
+    /
+    /ul.menu
+    /  li
+    /    = link_to 'Модульные лестницы', content_page_path(:modular_stairs)
+    /  li
+    /    = link_to 'Деревянные лестницы', content_page_path(:wooden_stairs)
+    /  li
+    /    = link_to 'На монокосоуре', content_page_path(:monokosoure)
+    /  li
+    /    = link_to 'Из нержавейки', content_page_path(:stainless)
   .nav-section
     .nav-head В помещение
-    ul.menu
-      li
-        = link_to 'Для дома', content_page_path(:stairs_for_home)
-      li
-        = link_to 'Для дачи', content_page_path(:stairs_for_country_house)
-      li
-        = link_to 'В квартиру', content_page_path(:stairs_in_apartment)
-      li
-        = link_to 'Для бани', content_page_path(:stairs_for_bath)
+    = menu_section 'indoors', ul_class: "menu"
+    /ul.menu
+    /  li
+    /    = link_to 'Для дома', content_page_path(:stairs_for_home)
+    /  li
+    /    = link_to 'Для дачи', content_page_path(:stairs_for_country_house)
+    /  li
+    /    = link_to 'В квартиру', content_page_path(:stairs_in_apartment)
+    /  li
+    /    = link_to 'Для бани', content_page_path(:stairs_for_bath)
   .nav-section
     .nav-head Ещё
-    ul.menu
-      li
-        = link_to 'Ограждения', content_page_path(:protection)
-      li
-        = link_to 'Облицовка лестницы', content_page_path(:facing_stairs)
+    = menu_section 'other', ul_class: "menu"
+    /ul.menu
+    /  li
+    /    = link_to 'Ограждения', content_page_path(:protection)
+    /  li
+    /    = link_to 'Облицовка лестницы', content_page_path(:facing_stairs)
   .nav-section
     .nav-head.gray Дилерам
-    ul.menu
-      li
-        = link_to 'Личный кабинет', admin_root_path, class: "#{current_user.try(:admin?) ? '' : 'js-open-auth'}"
-      li
-        = link_to 'Франшиза', content_page_path(:franchise)
+    = menu_section 'dealers', ul_class: "menu"
+    /ul.menu
+    /  li
+    /    = link_to 'Личный кабинет', admin_root_path, class: "#{current_user.try(:admin?) ? '' : 'js-open-auth'}"
+    /  li
+    /    = link_to 'Франшиза', content_page_path(:franchise)
   .nav-section
-    ul.menu.main
-      li
-        = link_to 'Техподдержка', content_page_path(:support)
-      li
-        = link_to 'Написать письмо', '#'
+    = menu_section 'main-2', ul_class: "menu main"
+    /ul.menu.main
+    /  li
+    /    = link_to 'Техподдержка', content_page_path(:support)
+    /  li
+    /    = link_to 'Написать письмо', '#'
   .nav-section
-    ul.menu.main
-      li
-        = link_to 'О лестницах', articles_path
-      li
-        = link_to 'Рейтинг лестниц', content_page_path(:rating_stairs)
+    = menu_section 'main-3', ul_class: "menu main"
+    /ul.menu.main
+    /  li
+    /    = link_to 'О лестницах', articles_path
+    /  li
+    /    = link_to 'Рейтинг лестниц', content_page_path(:rating_stairs)
   form.nav-search action=""
     input.search-field.js-search-field value="Поиск" type="text"
       .search-icn

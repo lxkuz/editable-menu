@@ -21,7 +21,7 @@ class MenuEditor.FormView extends MenuEditor.View
     @
 
   showIfNoResults: (results) =>
-    @noResultsPanel.toggle((results.length is 0) || (@input.val().length is 0))
+    @noResultsPanel.toggle((results.length is 0) && !(@input.val().length is 0))
     results
 
   beginAutocomplete: ->
@@ -37,5 +37,6 @@ class MenuEditor.FormView extends MenuEditor.View
       success: @options.refreshCallback
 
   unlink: =>
+    @input.data('autocompleter').deactivate()
     super
     @$el.remove()

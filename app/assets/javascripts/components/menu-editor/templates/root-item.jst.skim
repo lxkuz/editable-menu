@@ -1,4 +1,0 @@
-a.root-item-link.inner-nav-item.heading href=@model.targetUrl()
-  span= @model.get "name"
-  i.fa.fa-trash.me-btn.destroy
-ul.children
