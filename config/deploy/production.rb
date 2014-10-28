@@ -1,7 +1,7 @@
 set :unicorn_rack_env, 'production'
 
 set :user,       'deploy'
-set :ip_machine, '178.62.155.118'
+set :ip_machine, '188.226.199.38'
 
 set :deploy_to,           "/home/#{ fetch(:user) }/#{ fetch(:application) }"
 set :unicorn_config_path, "#{ fetch(:deploy_to) }/current/config/unicorn.rb"
