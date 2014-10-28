@@ -18,10 +18,13 @@ class MenuEditor.FormView extends MenuEditor.View
       minChars: 0
       processData: @showIfNoResults
       useCache: false
+    @input.keypress @makeLink
+
     @
 
   showIfNoResults: (results) =>
-    @noResultsPanel.toggle((results.length is 0) && !(@input.val().length is 0))
+    @nothingFounded = (results.length is 0) && !(@input.val().length is 0)
+    @noResultsPanel.toggle(@nothingFounded)
     results
 
   beginAutocomplete: ->
@@ -31,6 +34,16 @@ class MenuEditor.FormView extends MenuEditor.View
     unless _.isEmpty(obj.data)
       @model.set obj.data
       @save()
+
+  makeLink: (ev) =>
+      if @nothingFounded and ev.which is 13
+        name = @input.val()
+        url = prompt("Создание пункта меню '#{name}'. Введите адрес ссылки:")
+        if url
+          @model.set name: name, url: url
+          @save()
+        ev.preventDefault()
+
 
   save: =>
     @model.save null,

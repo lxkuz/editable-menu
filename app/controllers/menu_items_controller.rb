@@ -44,7 +44,7 @@ class MenuItemsController < ApplicationController
   private
 
   def build_params
-    params[:menu_item].permit(:menu, :position, :parent_id, :target_id, :target_type)
+    params[:menu_item].permit(:menu, :position, :name, :url, :parent_id, :target_id, :target_type)
   end
 
 

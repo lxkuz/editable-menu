@@ -2,7 +2,7 @@ class MenuItem < ActiveRecord::Base
   include HasPosition
   has_position scoped_fields: [:menu, :parent_id]
 
-  validates :target, presence: true
+  validates :target, presence: true, unless: :url
   validates :menu, presence: true, unless: :parent_id
 
 

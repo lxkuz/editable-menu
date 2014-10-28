@@ -6,6 +6,7 @@ class MenuEditor.Item extends Backbone.Model
     "/menu_items#{if @id then "/" + @id else ''}"
 
   targetUrl: =>
+    return @get("url") if @get("url")
     str = _.str.underscored(@get "target_type")
 
     id = if @get "translit"

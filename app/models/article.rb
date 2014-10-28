@@ -21,6 +21,8 @@ class Article < ActiveRecord::Base
   include SearchByLike
   has_search_by_like_for :title
 
+  include HasMenuItems
+
   friendly_id :title_translit, use: [:slugged, :finders]
 
   scope :by_position, -> { order(:position)}
