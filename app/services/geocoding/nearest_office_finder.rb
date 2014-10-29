@@ -2,11 +2,7 @@ require 'timeout'
 
 class Geocoding::NearestOfficeFinder
   def initialize(user_ip)
-    @user_ip = "188.226.21.160"
-    # puts "WAWWWWWWW"
-    # puts(@user_ip)
-    # puts(@user_ip.class.name)
-
+    @user_ip = user_ip
   end
 
   def nearest_office
