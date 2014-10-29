@@ -57,6 +57,11 @@
 
   .me-form {
     display: none;
+
+    a.add-link {
+      font-size: 10px;
+      text-decoration: underline;
+    }
   }
 
   &.editing .me-form {

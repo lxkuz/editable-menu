@@ -11,6 +11,7 @@ class MenuEditor.FormView extends MenuEditor.View
     @input = @$ "input"
     @noResultsPanel = @$ ".no-results"
     @noResultsPanel.hide()
+    
     @input.autocomplete @options.searchUrl,
       queryParamName: "query"
       remoteDataType: 'json'
@@ -18,13 +19,17 @@ class MenuEditor.FormView extends MenuEditor.View
       minChars: 0
       processData: @showIfNoResults
       useCache: false
-    @input.keypress @makeLink
 
+    @addLink = @$ "a.add-link"
+    @addLink.hide()
+    @addLink.click @makeLink
+    @input.keypress @makeLinkOnEnter
     @
 
   showIfNoResults: (results) =>
     @nothingFounded = (results.length is 0) && !(@input.val().length is 0)
     @noResultsPanel.toggle(@nothingFounded)
+    @addLink.toggle(@nothingFounded)
     results
 
   beginAutocomplete: ->
@@ -35,14 +40,19 @@ class MenuEditor.FormView extends MenuEditor.View
       @model.set obj.data
       @save()
 
-  makeLink: (ev) =>
-      if @nothingFounded and ev.which is 13
-        name = @input.val()
-        url = prompt("Создание пункта меню '#{name}'. Введите адрес ссылки:")
-        if url
-          @model.set name: name, url: url
-          @save()
-        ev.preventDefault()
+  makeLinkOnEnter: (ev) =>
+    if ev.which is 13
+      @makeLink()
+      ev.preventDefault()
+
+  makeLink: () =>
+    if @nothingFounded
+      name = @input.val()
+      url = prompt("Создание пункта меню '#{name}'. Введите адрес ссылки:")
+      if url
+        @model.set name: name, url: url
+        @save()
+      false
 
 
   save: =>
