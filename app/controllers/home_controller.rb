@@ -12,4 +12,8 @@ class HomeController < ApplicationController
   def about
     @about_page = ContentPage.find_or_create_by(page_url: 'about');
   end
+
+  def dealers
+    @dealers_page = ContentPage.find_or_create_by(page_url: 'dealers');
+  end
 end

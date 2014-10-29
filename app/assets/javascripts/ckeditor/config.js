@@ -84,11 +84,18 @@ CKEDITOR.editorConfig = function( config )
             }
         }
     });
+    config.templates_files = [ CKEDITOR.basePath + 'plugins/templates.js' ];
+    config.templates_replaceContent = false;
+
     config.toolbar = 'Rich'
     config.toolbar_Rich =[
         ['Cut','Copy','Paste'], ['Undo','Redo'],
-        ['Bold','Italic','Underline','Strike'], ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'], [ 'Link','Unlink','Anchor' ],
-        [ 'Image','Table','Snippet']
+        ['Bold','Italic','Underline','Strike'],
+        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+        ['Format'],
+        [ 'Link','Unlink','Anchor' ],
+        [ 'Image','Table'],
+        ['Templates', 'Source']
     ];
     config.toolbar_Poor =[
         ['Cut','Copy','Paste'], ['Undo','Redo']
