@@ -5,6 +5,7 @@ ActiveAdmin.register ContentPage do
                 :keywords,
                 :page_url,
                 :name,
+                :subtitle,
                 :content,
                 chapters_attributes: [
                   :id,
@@ -48,6 +49,7 @@ ActiveAdmin.register ContentPage do
       f.input :name
       f.input :menu_title
       f.input :page_url
+      f.input :subtitle if f.object.page_is?('dealers')
       f.input :content, as: :ckeditor
       f.inputs do
         f.has_many :chapters, allow_destroy: true, heading: 'Текстовые блоки' do |cf|

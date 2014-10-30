@@ -41,4 +41,9 @@ class ContentPage < ActiveRecord::Base
   def to_s
     menu_title.present? ? menu_title : name
   end
+
+  def page_is?(kind)
+    !new_record? && slug == kind
+  end
+
 end
