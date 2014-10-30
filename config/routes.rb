@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :articles
   get 'about' => 'home#about'
   get 'dealers' => 'home#dealers'
+  get 'contacts' => 'home#contacts'
+  get 'contacts_nooffice' => 'home#contacts_nooffice'
   resources :news, controller: 'news_items'
 
   resources :promo_slides, only: [:create, :destroy, :update]

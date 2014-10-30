@@ -16,4 +16,17 @@ class HomeController < ApplicationController
   def dealers
     @dealers_page = ContentPage.find_or_create_by(page_url: 'dealers');
   end
+
+  def contacts
+    if session[:no_city_office]
+      redirect_to :contacts_nooffice
+    else
+      @contacts_page = ContentPage.find_or_create_by(page_url: 'contacts')
+    end
+  end
+
+  def contacts_nooffice
+    @city_name = session[:user_city]
+    @contacts_page = ContentPage.find_or_create_by(page_url: 'contacts_nooffice')
+  end
 end
