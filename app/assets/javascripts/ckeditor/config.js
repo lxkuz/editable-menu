@@ -102,5 +102,6 @@ CKEDITOR.editorConfig = function( config )
 
     ];
     config.forcePasteAsPlainText = true;
-    config.extraPlugins = 'snippet';
+
+    config.extraPlugins = 'image2';
 }
