@@ -21,7 +21,7 @@ class HomeController < ApplicationController
     if session[:no_city_office]
       redirect_to :contacts_nooffice
     else
-      @contacts_page = ContentPage.find_or_create_by(page_url: 'contacts')
+      redirect_to @nearest_office
     end
   end
 

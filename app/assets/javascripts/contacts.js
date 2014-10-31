@@ -24,12 +24,12 @@ $(document).ready(function() {
         $(this).removeClass('hover');
     });
 
-    // staircase counter
-    $('.js-stair-count').each(function(){
-        var value_arr = $(this).html().split('');
-        $(this).html('');
-        for(var i = 0; i < value_arr.length; i++) {
-            $('<span class="stair-count-item">'+value_arr[i]+'</span>').appendTo($(this));
-        }
-    });
+//    // staircase counter
+//    $('.js-stair-count').each(function(){
+//        var value_arr = $(this).html().split('');
+//        $(this).html('');
+//        for(var i = 0; i < value_arr.length; i++) {
+//            $('<span class="stair-count-item">'+value_arr[i]+'</span>').appendTo($(this));
+//        }
+//    });
 });

@@ -51,3 +51,4 @@
 //= require promo-slider
 //= require front_page_banners
 //= require text_banners
+//= require contacts

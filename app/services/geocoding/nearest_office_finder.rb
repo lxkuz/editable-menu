@@ -11,16 +11,17 @@ class Geocoding::NearestOfficeFinder
 
   def nearest_office_in_user_city
     no_city_office = false
+    user_city = :none
     begin
-      Timeout::timeout(200) do
+      Timeout::timeout(1000) do
         ipgeobase_result = Ipgeobase.lookup(@user_ip)
-        user_city = ipgeobase_result.city || :none
+        user_city = ipgeobase_result.city
       end
     rescue
       user_city = :none
     end
     if user_city != :none
-      user_city_offices = Office.where(city: city).all
+      user_city_offices = Office.where(city: user_city).all
       if user_city_offices.any?
         office = user_city_offices.min_by {|office| distance_to_user_from(office)}
       end
@@ -36,7 +37,7 @@ class Geocoding::NearestOfficeFinder
 
   def distance_to_user_from(office)
     begin
-        Timeout::timeout(200) do
+        Timeout::timeout(1000) do
           ipgeobase_result = Ipgeobase.lookup(@user_ip)
           user_coordinates = [ipgeobase_result.lat || 55.75, ipgeobase_result.lng || 37.62]
           return office.distance_to(user_coordinates)

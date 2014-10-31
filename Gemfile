@@ -20,6 +20,7 @@ gem 'annotate', '~> 2.6.5'
 gem 'friendly_id'
 gem 'truncate_html'
 gem 'rails-settings-cached', '0.4.1'
+gem 'whenever', :require => false
 
 gem 'execjs'
 gem 'therubyracer'

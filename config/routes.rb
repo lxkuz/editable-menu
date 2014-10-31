@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   resources :user_requests, only: [:create]
   post 'manual_select_office' => 'application#manual_select_office'
   resources :content_pages, only: [:show], path: ''
+  resources :offices, only: [:show, :index]
 end
