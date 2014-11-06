@@ -65,7 +65,7 @@ ActiveAdmin.register NewsItem do
     if request.xhr?
       news_item = NewsItem.find(params[:id])
       if news_item.update_attributes(permitted_params[:news_item])
-        render :json => {:url => news_url(news_item)}
+        render :json => {:url => news_url(news_item), :notice => 'Новость успешно обновлена'}
       end
     end
   end

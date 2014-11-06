@@ -20,6 +20,8 @@
 //= require jquery.scrollTo.min
 //= require jquery.autocomplete
 //= require jquery.validate.min
+//= require jquery-ui
+//= require pnotify.core
 
 //= require ckeditor/init
 //= require owl.carousel-min
@@ -52,3 +54,4 @@
 //= require front_page_banners
 //= require text_banners
 //= require contacts
+//= require global-notifications

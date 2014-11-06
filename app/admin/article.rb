@@ -86,7 +86,7 @@ ActiveAdmin.register Article do
     if request.xhr?
       article = Article.find(params[:id])
       if article.update_attributes(permitted_params[:article])
-        render :json => {:url => article_url(article)}
+        render :json => {:url => article_url(article), :notice => 'Статья успешно обновлена'}
       end
     end
   end

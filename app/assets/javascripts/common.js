@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    PNotify.prototype.options.styling = "jqueryui";
 
     // search field
     $('.js-search-field').focus(function() {

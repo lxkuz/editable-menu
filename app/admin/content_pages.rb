@@ -70,7 +70,7 @@ ActiveAdmin.register ContentPage do
     if request.xhr?
       content_page = ContentPage.find_by_slug(params[:id])
       if content_page.update_attributes(permitted_params[:content_page])
-        render :json => {:url => content_page_url(content_page)}
+        render :json => {:url => content_page_url(content_page), :notice => 'страница успешно обновлена'}
       end
     end
   end
