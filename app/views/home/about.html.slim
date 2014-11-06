@@ -17,7 +17,7 @@
   /! /row
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
-      h1.cont-head *{id: (@about_page.name if @about_page.chapters.present?)}.merge(editable_in_place_data(@about_page, :name))
+      h1.cont-head *{name: (@about_page.name if @about_page.chapters.present?)}.merge(editable_in_place_data(@about_page, :name))
         = @about_page.name
       - if can? :edit, @about_page
         p
@@ -25,12 +25,16 @@
       div *editable_in_place_data(@about_page, :content, :textarea)
         = @about_page.content.html_safe
     .delimeter
-  - @about_page.chapters.each do |chapter|
+  - @about_page.chapters.each_with_index do |chapter, i|
     .row.content-section.typo-main
       .col-xs-8.col-xs-offset-1
-        h1.cont-head *{name: chapter.anchor.parameterize}
+        h1.cont-head *{name: chapter.anchor}.merge(editable_in_place_data(@about_page, :name, nil, :chapters_attributes, chapter.id, i))
           = chapter.name
-        = chapter.content_formated.html_safe
+        div *editable_in_place_data(@about_page, :content, :textarea, :chapters_attributes, chapter.id, i)
+          = chapter.content.html_safe
+        - if can? :manage, @about_page
+          = render partial: 'shared/inline_edit_admin_attrs', locals: { obj: @about_page, admin_attrs: content_page_chapters_admin_attrs( @about_page, chapter.id, i ) }
+
       .delimeter
   /! /row
   .row.content-section
