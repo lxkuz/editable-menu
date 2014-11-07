@@ -3157,7 +3157,14 @@ label.error {
 .cont-slider {
   position: relative;
 }
-.cont-slider .owl-buttons {
+.cont-slider.owl-carousel {
+  height: 300px;
+  &.owl-loaded {
+    opacity: 1;
+  }
+}
+
+.cont-slider .owl-nav {
   position: absolute;
   background-color: #fff;
   width: 200px;
@@ -5684,37 +5691,37 @@ body {
   margin: -100px 0 0 -100px;
   /* is width and height divided by two */
 }
-/*
- *  Core Owl Carousel CSS File
- *  v1.15
- */
-/* clearfix */
-.owl-carousel:after {
-  content: ".";
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0;
-}
-/* display none until init */
-.owl-carousel {
-  display: none;
-  position: relative;
-  width: 100%;
-}
-.owl-wrapper-outer {
-  overflow: hidden;
-}
-.owl-carousel .owl-wrapper {
-  position: relative;
-  display: inline-block;
-  -webkit-transform: translate3d(0px, 0px, 0px);
-  -webkit-perspective: 1000;
-}
-.owl-carousel .owl-item {
-  float: left;
-}
+///*
+// *  Core Owl Carousel CSS File
+// *  v1.15
+// */
+///* clearfix */
+//.owl-carousel:after {
+//  content: ".";
+//  display: block;
+//  clear: both;
+//  visibility: hidden;
+//  line-height: 0;
+//  height: 0;
+//}
+///* display none until init */
+//.owl-carousel {
+//  display: none;
+//  position: relative;
+//  width: 100%;
+//}
+//.owl-wrapper-outer {
+//  overflow: hidden;
+//}
+//.owl-carousel .owl-wrapper {
+//  position: relative;
+//  display: inline-block;
+//  -webkit-transform: translate3d(0px, 0px, 0px);
+//  -webkit-perspective: 1000;
+//}
+//.owl-carousel .owl-item {
+//  float: left;
+//}
 .owl-controlls .owl-page,
 .owl-controlls .owl-buttons {
   cursor: pointer;
@@ -5732,12 +5739,12 @@ body {
   cursor: url(grabbing.png) 8 8, move;
 }
 /* fix */
-.owl-carousel .owl-wrapper,
-.owl-carousel .owl-item {
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-}
+//.owl-carousel .owl-wrapper,
+//.owl-carousel .owl-item {
+//  -webkit-backface-visibility: hidden;
+//  -moz-backface-visibility: hidden;
+//  -ms-backface-visibility: hidden;
+//}
 /*
  * blueimp Gallery CSS 2.11.1
  * https://github.com/blueimp/Gallery

@@ -1,18 +1,21 @@
 $(document).ready(function() {
     $("#cont-slider").owlCarousel({
-        pagination: false,
-        items : 3, 
-        itemsDesktop : [1199,3],
-        itemsDesktopSmall : [1100,3],
-        itemsTablet: [768,3],
-        itemsMobile : [479,3],
-        navigation: true,
-        navigationText: ["",""],
+        dots: false,
+        autoWidth: true,
+        items : 3,
+        loop: true,
+//        itemsDesktop : [1199,3],
+//        itemsDesktopSmall : [1100,3],
+//        itemsTablet: [768,3],
+//        itemsMobile : [479,3],
+        nav: true,
+        navText: ["",""],
         responsiveRefreshRate: 50,
         slideSpeed: 150,
         rewindNav: true,
         autoPlay: 3000,
         stopOnHover: true
+
     });
     $('.owl-prev, .owl-next')
         .addClass('this')

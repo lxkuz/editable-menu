@@ -7,7 +7,7 @@ ru:
         name: Название
         postindex: Почтовый индекс
         city: Город
-        street_address: адресc
+        street_address: Адресc
         manager: Менеджер
         description: Подробности
         directions: Как добраться

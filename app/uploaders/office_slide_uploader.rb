@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class OfficeSlideUploader < CarrierWave::Uploader::Base
-
+  process :store_dimensions
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -33,11 +33,12 @@ class OfficeSlideUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :slider do
-    process :resize_to_fill => [300, 300]
+    process :resize_to_fit => [nil, 300]
+    process :store_dimensions
   end
 
   version :thumb do
-    process :resize_to_fill => [100, 100]
+    process :resize_to_fit => [nil, 100]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -51,5 +52,12 @@ class OfficeSlideUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  private
+
+  def store_dimensions
+    if file && model
+      model.width = `identify -format "%wx%h" #{file.path}`.split(/x/).first
+    end
+  end
 
 end

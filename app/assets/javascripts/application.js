@@ -24,7 +24,7 @@
 //= require ckeditor/init
 //= require owl.carousel-min
 //= require spectrum
-
+//= require owl.carousel.min
 //= require underscore
 //= require underscore.string
 //= require underscore.inflection
