@@ -21,18 +21,18 @@ class MenuItemsController < ApplicationController
   def destroy
     menu_item = MenuItem.find params[:id]
     menu_item.destroy
-    render text: true
+    render json: { text: true, notice: 'Пункт меню удален' }
   end
 
   def update
     menu_item =  MenuItem.find params[:id]
     menu_item.update_attributes build_params
-    render text: true
+    render json: { text: true, notice: 'Пункт меню изменен' }
   end
 
   def create
     MenuItem.create! build_params
-    render text: true
+    render json: { text: true, notice: 'Пункт меню создан' }
   end
 
   def index
