@@ -135,14 +135,14 @@ $(document).ready(function() {
 
     // partners slider
     $('.index-partners-slider').owlCarousel({
-        pagination: true,
+        dots: true,
         items : 4,
-        itemsDesktop : [1199,4],
-        itemsDesktopSmall : [1100,4],
-        itemsTablet: [768,4],
-        itemsMobile : [479,4],
-        navigation: true,
-        navigationText: ["",""],
+//        itemsDesktop : [1199,4],
+//        itemsDesktopSmall : [1100,4],
+//        itemsTablet: [768,4],
+//        itemsMobile : [479,4],
+        nav: true,
+        navText: ["",""],
         responsiveRefreshRate: 50,
         slideSpeed: 300,
         rewindNav: false,
