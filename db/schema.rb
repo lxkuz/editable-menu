@@ -12,7 +12,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20141205215505) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +87,7 @@ ActiveRecord::Schema.define(version: 20141205215505) do
     t.datetime "updated_at"
     t.text     "content"
     t.string   "menu_title"
+    t.string   "subtitle"
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -131,6 +131,14 @@ ActiveRecord::Schema.define(version: 20141205215505) do
 
   add_index "news_items", ["slug"], name: "index_news_items_on_slug", unique: true, using: :btree
 
+  create_table "office_slides", force: true do |t|
+    t.string   "image"
+    t.integer  "office_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "width"
+  end
+
   create_table "offices", force: true do |t|
     t.string   "name"
     t.integer  "postindex"
@@ -143,6 +151,38 @@ ActiveRecord::Schema.define(version: 20141205215505) do
     t.text     "user_request_recipients"
     t.string   "phone"
     t.boolean  "active",                  default: true
+    t.string   "manager"
+    t.text     "description"
+    t.text     "directions"
+    t.text     "work_hours"
+    t.text     "phone_numbers"
+    t.string   "email"
+    t.string   "fb_url"
+    t.string   "vk_url"
+    t.string   "tw_url"
+    t.string   "insta_url"
+    t.float    "rating"
+    t.integer  "total_votes"
+    t.string   "certificate"
+  end
+
+  create_table "promo_slides", force: true do |t|
+    t.string   "title",        null: false
+    t.string   "text"
+    t.string   "url"
+    t.boolean  "title_italic"
+    t.boolean  "text_italic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "office_id"
+    t.text     "body"
+    t.string   "author"
+    t.string   "avatar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "settings", force: true do |t|

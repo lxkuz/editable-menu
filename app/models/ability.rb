@@ -7,10 +7,12 @@ class Ability
         can :manage, Article
         can :manage, NewsItem
         can :manage, ContentPage
+        can :manage, PromoSlide
       else
         can :read, NewsItem
         can :read, Article
         can :read, ContentPage
+        can :read, PromoSlide
       end
   end
 end

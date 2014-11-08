@@ -75,37 +75,8 @@
           .cell-adr
             = @nearest_office.street_address
 
-      .cell.cell-slider.h-2
-        .index-slider-1.royalSlider
-          a.slide href='#'
-            span.slide-header
-              | Лучшие лестницы Москвы
-              br только у нас!
-            span.slide-caption
-              | скидки до 30%
-              span.arrow.next
-          a.slide href="#"
-            span.slide-header.italic
-              | Закажите лестницу онлайн
-              br и получите скидку
-            span.slide-caption
-              | скидки до 30%
-              span.arrow.next
-          a.slide href="#"
-            span.slide-header.italic
-              | Первый дисконт магазин
-              br готовых лестниц
-            span.slide-caption
-              | от 23 000
-              span.slide-price-caption рублей
-              span.arrow.next
-          a.slide href='#'
-            span.slide-header
-              | Лучшие лестницы Москвы
-              br только у нас!
-            span.slide-caption
-              | скидки до 30%
-              span.arrow.next
+      .cell.cell-slider.h-2.promo-slider-wrapper
+        = render partial: 'promo_slider'
       a.h-3.cell.zoom href='#'
         span.cell-back
           = image_tag 'index-back-pshaped.jpg', class: 'img-response'

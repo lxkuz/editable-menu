@@ -48,3 +48,4 @@
 //= require page-all
 //= require icons-editing
 //= require inline-editor
+//= require promo-slider

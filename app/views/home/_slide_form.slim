@@ -1,0 +1,20 @@
+= form_for( slide , url: slide.new_record? ? promo_slides_path() : promo_slide_path(slide), remote: true, html: { id: slide.new_record? ? 'new-promo-slide' : "edit-promo-slide-#{slide.id}", style:'display:none;', class: 'modal-form'}) do |f|
+  .modal-input
+    = f.label :title, t('activerecord.attributes.promo_slide.title')
+    .modal-subinput
+      = f.check_box :title_italic
+      = f.label :title_italic, :italic
+    = f.text_field :title
+  .modal-input
+    = f.label :text, t('activerecord.attributes.promo_slide.text')
+    .modal-subinput
+      = f.check_box :text_italic
+      = f.label :text_italic, :italic
+    = f.text_field :text
+  .modal-input
+    = f.label :url, t('activerecord.attributes.promo_slide.url')
+    br
+    = f.text_field :url
+  .clear-wrap.buttons
+    = f.submit 'Сохранить', class: :submit
+    = link_to 'Отмена', '#', rel: 'modal:close'

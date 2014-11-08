@@ -1920,15 +1920,9 @@ label.error {
   font-weight: 700;
   line-height: 1;
   text-align: center;
-  padding-top: 30px;
+  padding: 30px 100px 0;
   -webkit-transition: all 150ms linear 0ms;
   transition: all 150ms linear 0ms;
-}
-.slide-header.italic {
-  font-family: 'iowan_old_styleroman', verdana, sans-serif;
-  font-size: 35px;
-  font-style: italic;
-  font-weight: normal;
 }
 .slide-caption {
   display: inline-block;
@@ -1949,6 +1943,15 @@ label.error {
 }
 .index-slider-1 {
   position: relative;
+  .slide {
+    .slide-url {
+      height: 200px;
+      display: block;
+    }
+  }
+  .popup {
+    cursor: auto;
+  }
 }
 .index-slider-1 .rsBullets {
   text-align: center;
@@ -1994,6 +1997,23 @@ label.error {
   background-image: asset-data-url("sprite.png");
   background-repeat: no-repeat;
   background-position: 0 -17px;
+}
+.index-slider-1 .controls {
+  display: none;
+  padding: 10px;
+  position: absolute;
+  .fa {
+    font-size: 25px;
+    margin-right: 5px;
+    color: #6e6e6e;
+    &:hover {
+      color: #ffffff;
+      cursor: pointer;
+    }
+  }
+}
+.index-slider-1:hover .controls {
+  display: block;
 }
 .cell-all-actions {
   color: #fff;
@@ -5910,4 +5930,43 @@ body:last-child .blueimp-gallery-playing > .play-pause {
 }
 * + html .blueimp-gallery > .slides > .slide > .slide-content {
   position: relative;
+}
+.modal.modal-form {
+  input[type=text] {
+    border: 1px solid #b6b6b6;
+    padding: 3px;
+    margin-left: 15px;
+    width: 300px;
+  }
+  .modal-input {
+    margin-bottom: 15px;
+    label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .modal-subinput {
+      margin-left: 20px;
+      label {
+        font-weight: normal;
+        font-size: 12px;
+      }
+    }
+  }
+  .buttons {
+    text-align: right;
+    margin: 0 25px;
+    input, a{
+      margin-left: 20px;
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid #6e6e6e;
+      color: #6e6e6e;
+      background-color: #fff;
+      &:hover {
+        border: 1px solid #000;
+        color: #000;
+        background-color: #e5e5e5;
+      }
+    }
+  }
 }

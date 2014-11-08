@@ -38,11 +38,11 @@ $(document).ready(function() {
             enabled: false,
             delay: 4000,
             pauseOnHover: true,
-            stopAtAction: false,
+            stopAtAction: false
         },
         sliderDrag: true,
         sliderTouch: true,
-        navigateByClick: false,
+        navigateByClick: false
     }).data('royalSlider');
     $('.js-slider-count-wrap')
         .append('<span class="left-helper"></span>');
