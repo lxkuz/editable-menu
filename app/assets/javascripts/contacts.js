@@ -12,9 +12,10 @@ $(document).ready(function() {
         navText: ["",""],
         responsiveRefreshRate: 50,
         slideSpeed: 150,
-        rewindNav: true,
-        autoPlay: 3000,
-        stopOnHover: true
+//        rewindNav: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true
 
     });
     $('.owl-prev, .owl-next')

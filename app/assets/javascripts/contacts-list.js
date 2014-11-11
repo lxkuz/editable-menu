@@ -10,9 +10,10 @@ $(document).ready(function() {
         navText: ["",""],
         responsiveRefreshRate: 50,
         slideSpeed: 300,
-        rewindNav: false,
-        autoPlay: 3000,
-        stopOnHover: true
+//        rewindNav: false,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true
     });
     $('.js-rev-count').html($('#reviews-slider .rev-slide').length);
     $('.owl-prev, .owl-next')
