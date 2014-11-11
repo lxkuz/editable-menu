@@ -169,7 +169,7 @@ $(document).ready(function() {
     var transition = $('html').hasClass('csstransitions');
     var cssable = transforms && transition;
     // image zoom on hover
-    $('.zoom').hover(function() {
+    $('.zoom').on('mouseenter', function() {
     	if(cssable) {
     		$(this)
     			.find('.cell-back')
@@ -186,7 +186,8 @@ $(document).ready(function() {
 	    			},1500);
     	}
     	// console.log('in');
-    }, function() {
+    });
+    $('.zoom').on('mouseleave', function() {
     	if(cssable) {
     		$(this)
     			.find('.cell-back')

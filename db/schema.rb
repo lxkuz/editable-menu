@@ -103,6 +103,16 @@ ActiveRecord::Schema.define(version: 20141205215505) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "front_page_banners", force: true do |t|
+    t.string   "image"
+    t.string   "title"
+    t.string   "name"
+    t.string   "url"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "menu_items", force: true do |t|
     t.integer  "target_id"
     t.string   "target_type"

@@ -44,18 +44,10 @@
         .btn.red.auth-back-btn.js-restore-back Вернуться к авторизации
   /! /auth cell
   .row
-    .col-xs-3.h-6
-      a.h-7.cell-over.zoom href='#'
-        span.cell-back
-          = image_tag 'index-back-march.jpg', class: 'img-response'
-        span.cell-caption.black
-          span.cell-head
-            span.cell-name Маршевые
-            br
-            | лестницы
-          span.cell-price
-            ' от 19 000
-            span.cell-price-note рублей
+    .col-xs-3.h-6.fpb.fpb-tl
+      - top_left_banner = FrontPageBanner.find_by_name('top_left')
+      #fpb-wrapper-tl
+        = render partial: 'front_page_banners/banner', locals: { banner: top_left_banner }
     .col-xs-7
       .cell.cell-contacts-helper.h-1
       .cell.cell-contacts.h-1.fixed.js-fixed-top
@@ -76,18 +68,10 @@
             = @nearest_office.street_address
 
       .cell.cell-slider.h-2.promo-slider-wrapper
-        = render partial: 'promo_slider'
-      a.h-3.cell.zoom href='#'
-        span.cell-back
-          = image_tag 'index-back-pshaped.jpg', class: 'img-response'
-        span.cell-caption.white.bottom
-          span.cell-head
-            span.cell-name
-              ' П-образные
-            | лестницы
-          span.cell-price
-            ' от 29 000
-            span.cell-price-note рублей
+        = render partial: 'promo_slides/promo_slider'
+      - top_right_banner = FrontPageBanner.find_by_name('top_right')
+      #fpb-wrapper-tr.fpb
+        = render partial: 'front_page_banners/banner', locals: { banner: top_right_banner}
   .row
     .col-xs-3.h-4.p-1
       a.h-3.cell.cell-all-actions href='#'
@@ -119,28 +103,13 @@
         .cell-order-caption Наши менеджеры перезвонят Вам в течении часа.
 
     .col-xs-3.h-4
-      a.h-7.cell-over.zoom href='#'
-        span.cell-back
-          = image_tag('index-back-spiral.jpg', class: 'img img-response')
-        span.cell-caption.black
-          span.cell-head
-            span.cell-name Винтовые
-            br
-              | лестницы
-          span.cell-price
-            ' от 19 000
-            span.cell-price-note рублей
-    a.col-xs-7.h-3.cell.zoom href='#'
-      span.cell-back
-        = image_tag('index-back-gshaped.jpg', class: 'img img-response')
-      span.cell-caption.white.bottom
-        span.cell-head.big
-          span.cell-name
-            'Г-образные
-          | лестницы
-        span.cell-price
-          ' от 18 000
-          span.cell-price-note рублей
+      - center_right_banner = FrontPageBanner.find_by_name('center_right')
+      #fpb-wrapper-cr.fpb
+        = render partial: 'front_page_banners/banner', locals: { banner: center_right_banner}
+    - center_left_banner = FrontPageBanner.find_by_name('center_left')
+    #fpb-wrapper-cl.fpb.col-xs-7.h-3.cell
+      = render partial: 'front_page_banners/banner', locals: { banner: center_left_banner}
+
   .row
     .col-xs-5.h-4.cell.cell-about
       h4.cell-about-head
@@ -213,39 +182,47 @@
             |  №4
         span.slider2-caption П-образная лестница в дом, 98 000 рублей
   .row
-    a.col-xs-7.h-4.cell.zoom href='#'
-      span.cell-back
-        = image_tag('index-back-elite.jpg', class: 'img img-response')
-      span.cell-caption.black
-        span.cell-head
-          span.cell-name
-            ' Элитные
-          | лестницы
-        span.cell-price
-          ' от 120 000
-          span.cell-price-note рублей
-    .col-xs-3.h-4
-      a.h-7.cell-over.zoom href='#'
-        span.cell-back
-          = image_tag('index-back-econom.jpg', class: 'img img-response')
-        span.cell-caption.black
-          span.cell-head
-            span.cell-name Для самых экономных
-          span.cell-price
-            ' от 19 000
-            span.cell-price-note рублей
+    - bot_left_banner = FrontPageBanner.find_by_name('bot_left')
+    #fpb-wrapper-bl.fpb.col-xs-7.h-4.cell
+      = render partial: 'front_page_banners/banner', locals: { banner: bot_left_banner}
+    /a.col-xs-7.h-4.cell.zoom href='#'
+    /  span.cell-back
+    /    = image_tag('index-back-elite.jpg', class: 'img img-response')
+    /  span.cell-caption.black
+    /    span.cell-head
+    /      span.cell-name
+    /        ' Элитные
+    /      | лестницы
+    /    span.cell-price
+    /      ' от 120 000
+    /      span.cell-price-note рублей
+    - bot_right_banner = FrontPageBanner.find_by_name('bot_right')
+    #fpb-wrapper-br.fpb.col-xs-3.h-4
+      = render partial: 'front_page_banners/banner', locals: { banner: bot_right_banner}
+      /a.h-7.cell-over.zoom href='#'
+      /  span.cell-back
+      /    = image_tag('index-back-econom.jpg', class: 'img img-response')
+      /  span.cell-caption.black
+      /    span.cell-head
+      /      span.cell-name Для самых экономных
+      /    span.cell-price
+      /      ' от 19 000
+      /      span.cell-price-note рублей
   .row
-    a.col-xs-4.h-3.cell.zoom href='#'
-      span.cell-back
-        = image_tag('index-back-smart.jpg', class: 'img img-response')
-      span.cell-caption.white.bottom
-        span.cell-head.big
-          span.cell-name
-            ' Умное
-          | предложение
-        span.cell-price
-          ' от 42 000
-          span.cell-price-note рублей
+    - bot_left_mini_banner = FrontPageBanner.find_by_name('bot_left_mini')
+    #fpb-wrapper-blm.fpb.col-xs-4.h-3.cell
+      = render partial: 'front_page_banners/banner', locals: { banner: bot_left_mini_banner}
+    /a.col-xs-4.h-3.cell.zoom href='#'
+    /  span.cell-back
+    /    = image_tag('index-back-smart.jpg', class: 'img img-response')
+    /  span.cell-caption.white.bottom
+    /    span.cell-head.big
+    /      span.cell-name
+    /        ' Умное
+    /      | предложение
+    /    span.cell-price
+    /      ' от 42 000
+    /      span.cell-price-note рублей
     .col-xs-3.h-3
       .h-7.cell-over.cell-news
         .cell-news-head Новости

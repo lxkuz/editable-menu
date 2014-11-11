@@ -49,3 +49,4 @@
 //= require icons-editing
 //= require inline-editor
 //= require promo-slider
+//= require front_page_banners

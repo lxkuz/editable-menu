@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
   resources :news, controller: 'news_items'
 
-  resources :promo_slides, only: [:index, :create, :destroy, :update]
+  resources :promo_slides, only: [:create, :destroy, :update]
+  resources :front_page_banners, only: [:update]
   resources :menu_items, only: [:index, :create, :destroy, :update] do
     collection do
       get 'search'

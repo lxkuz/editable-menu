@@ -1,8 +1,8 @@
 - if can? :manage, PromoSlide
   .popup
-    = render partial: 'home/slide_form', locals: { slide: PromoSlide.new }
+    = render partial: 'promo_slides/slide_form', locals: { slide: PromoSlide.new }
     - PromoSlide.all.each do |slide|
-      = render partial: 'home/slide_form', locals: { slide: slide }
+      = render partial: 'promo_slides/slide_form', locals: { slide: slide }
 
 .index-slider-1.royalSlider
   - if can? :manage, PromoSlide

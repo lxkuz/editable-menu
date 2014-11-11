@@ -1998,10 +1998,11 @@ label.error {
   background-repeat: no-repeat;
   background-position: 0 -17px;
 }
-.index-slider-1 .controls {
+.index-slider-1 .controls, .fpb .controls  {
   display: none;
   padding: 10px;
   position: absolute;
+  z-index: 100;
   .fa {
     font-size: 25px;
     margin-right: 5px;
@@ -2012,7 +2013,7 @@ label.error {
     }
   }
 }
-.index-slider-1:hover .controls {
+.index-slider-1:hover .controls, .fpb:hover .controls {
   display: block;
 }
 .cell-all-actions {
@@ -5932,7 +5933,7 @@ body:last-child .blueimp-gallery-playing > .play-pause {
   position: relative;
 }
 .modal.modal-form {
-  input[type=text] {
+  input[type=text], input[type=file] {
     border: 1px solid #b6b6b6;
     padding: 3px;
     margin-left: 15px;
@@ -5967,6 +5968,20 @@ body:last-child .blueimp-gallery-playing > .play-pause {
         color: #000;
         background-color: #e5e5e5;
       }
+    }
+  }
+}
+.index-slider-1 .controls {
+  display: none;
+  padding: 10px;
+  position: absolute;
+  .fa {
+    font-size: 25px;
+    margin-right: 5px;
+    color: #6e6e6e;
+    &:hover {
+      color: #ffffff;
+      cursor: pointer;
     }
   }
 }

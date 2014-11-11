@@ -1,0 +1,32 @@
+- if can? :manage, banner
+  .popup
+    = form_for( banner, html: { id: "edit-fpb-#{banner_postfix(banner)}", style:'display:none;', class: 'front-page-banner-form modal-form'}, multipart: true ) do |f|
+      .modal-input
+        = f.label :title, t('activerecord.attributes.front_page_banner.title')
+        = f.text_field :title
+      .modal-input
+        = f.label :price, t('activerecord.attributes.front_page_banner.price')
+        = f.text_field :price
+      .modal-input
+        = f.label :url, t('activerecord.attributes.front_page_banner.url')
+        = f.text_field :url
+      .modal-input
+        = f.label :image, t('activerecord.attributes.front_page_banner.image') + " (#{banner_size(banner)})"
+        = f.file_field :image
+      .clear-wrap.buttons
+        = f.submit 'Сохранить', class: :submit
+        = link_to 'Отмена', '#', rel: 'modal:close'
+
+- if can? :manage, banner
+  .controls
+    a.edit.fa-edit.fa href="#edit-fpb-#{banner_postfix(banner)}" rel="modal:open"
+=link_to banner.url, class:"#{link_class(banner)} cell-over zoom" do
+  span.cell-back
+    = image_tag banner.image.url(banner_version(banner)), class: 'img-response'
+  span.cell-caption class="#{banner_class(banner)}"
+    span.cell-head
+      span.cell-name
+        = banner.title
+    span.cell-price
+      ' от #{number_with_delimiter(banner.price, delimiter: ' ') }
+      span.cell-price-note рублей
