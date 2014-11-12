@@ -1538,6 +1538,17 @@ label.error {
 .typo-main p:last-child {
   margin-bottom: 0;
 }
+.typo-main figure.caption {
+  margin: 10px;
+  z-index: 1;
+  position: relative;
+  figcaption {
+    text-align: center;
+    font-size: 11px;
+    margin-top: 4px;
+    color: #6e6e6e;
+  }
+}
 .typo-main b, .typo-main strong {
   font-weight: 900;
 }

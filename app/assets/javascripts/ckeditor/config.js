@@ -104,4 +104,5 @@ CKEDITOR.editorConfig = function( config )
     config.forcePasteAsPlainText = true;
 
     config.extraPlugins = 'image2';
+    config.removePlugins =  'image';
 }
