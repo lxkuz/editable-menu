@@ -17,6 +17,7 @@
 
 class NewsItem < ActiveRecord::Base
   extend FriendlyId
+  include HasSnippets
   friendly_id :custom_url, use: [:slugged, :finders]
 
   belongs_to :user

@@ -22,6 +22,7 @@ class ContentPage < ActiveRecord::Base
   has_search_by_like_for :name
 
   include HasMenuItems
+  include HasSnippets
 
   has_many :chapters, dependent: :destroy
   accepts_nested_attributes_for :chapters, allow_destroy: true

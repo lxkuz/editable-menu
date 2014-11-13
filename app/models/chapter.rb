@@ -14,6 +14,8 @@
 #
 
 class Chapter < ActiveRecord::Base
+  include HasSnippets
+
   belongs_to :content_page
   belongs_to :article
 
