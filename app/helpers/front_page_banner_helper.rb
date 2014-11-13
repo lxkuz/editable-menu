@@ -34,6 +34,7 @@ module FrontPageBannerHelper
       when 'top_right' then 'tr'
       when 'bot_left' then 'bl'
       when 'bot_left_mini' then 'blm'
+      when 'bg' then 'bg'
     end
   end
 

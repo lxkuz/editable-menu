@@ -16,8 +16,6 @@
       .clear-wrap.buttons
         = f.submit 'Сохранить', class: :submit
         = link_to 'Отмена', '#', rel: 'modal:close'
-
-- if can? :manage, banner
   .controls
     a.edit.fa-edit.fa href="#edit-fpb-#{banner_postfix(banner)}" rel="modal:open"
 =link_to banner.url, class:"#{link_class(banner)} cell-over zoom" do

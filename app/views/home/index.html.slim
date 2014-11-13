@@ -1,8 +1,8 @@
 .l-centered.left.banner-wrap-section.js-content-width
-  .banner-wrap
-    .banner-outer
-      a#banner href="#"
-        = image_tag 'content/banner.jpg'
+  .banner-wrap.fpb
+    - bg_banner = FrontPageBanner.find_or_create_by(name: :bg)
+    #fpb-wrapper-bg
+      = render partial: 'front_page_banners/bg_banner', locals: { banner: bg_banner }
 
 .l-section.left.section-wrapper
   .auth-cell.js-auth-cell
