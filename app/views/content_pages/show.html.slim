@@ -1,7 +1,7 @@
 .l-centered.left.section-container
   = render 'shared/header'
 
-  =render partial: 'shared/nested_chapters', locals: { chapters: @chapters }
+  =render partial: 'shared/nested_chapters', locals: { chapters: @chapters, parent: @content_page }
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
       h1.cont-head *{name: (@content_page.name if @content_page.chapters.present?)}.merge(editable_in_place_data(@content_page, :name))
@@ -27,12 +27,12 @@
           = render partial: 'shared/inline_edit_admin_attrs', locals: { obj: @content_page, admin_attrs: content_page_chapters_admin_attrs(@content_page,chapter.id, i ) }
       .delimeter
   /! /row
-  .row.content-section
-    = menu_editor_btn
-    = menu_section 'top-1', li_class: "inner-nav-item heading", class: "nav-inner col-xs-2 col-xs-offset-1"
-    = menu_section 'top-2', li_class: "inner-nav-item heading", class: "nav-inner col-xs-2 "
-    = menu_section 'top-3', li_class: "inner-nav-item heading", class: "nav-inner col-xs-2 "
-    = menu_section 'top-4', li_class: "inner-nav-item heading", class: "nav-inner col-xs-2 "
+  /.row.content-section
+  /  = menu_editor_btn
+  /  = menu_section 'top-1', li_class: "inner-nav-item heading", class: "nav-inner col-xs-2 col-xs-offset-1"
+  /  = menu_section 'top-2', li_class: "inner-nav-item heading", class: "nav-inner col-xs-2 "
+  /  = menu_section 'top-3', li_class: "inner-nav-item heading", class: "nav-inner col-xs-2 "
+  /  = menu_section 'top-4', li_class: "inner-nav-item heading", class: "nav-inner col-xs-2 "
   /! /row
 /! /l centered section-container
 /! /wrapper
