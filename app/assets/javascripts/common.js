@@ -97,7 +97,7 @@ $(document).ready(function() {
     var fixed_top_offset = $('.js-fixed-top').outerHeight() + 20;
     $('.js-anchor').click(function(e) {
         e.preventDefault();
-        var $target = $('[name=' + $(this).attr('href')+ ']')
+        var $target = $('[name=' + $(this).attr('href').replace(/^.*#/, "") + ']')
         var scroll_to = $target.offset().top - fixed_top_offset;
         $.scrollTo({top: scroll_to, left: 0}, 500);
     });
