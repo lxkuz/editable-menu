@@ -22,14 +22,14 @@
       - if can? :edit, @about_page
         p
           = link_to 'Редактировать', edit_admin_content_page_path(@about_page)
-      = @about_page.content.html_safe
+      = @about_page.content_formated.html_safe
     .delimeter
   - @about_page.chapters.each do |chapter|
     .row.content-section.typo-main
       .col-xs-8.col-xs-offset-1
         h1.cont-head *{name: chapter.anchor.parameterize}
           = chapter.name
-        = chapter.content.html_safe
+        = chapter.content_formated.html_safe
       .delimeter
   /! /row
   .row.content-section

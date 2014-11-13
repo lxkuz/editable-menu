@@ -88,10 +88,11 @@ CKEDITOR.editorConfig = function( config )
     config.toolbar_Rich =[
         ['Cut','Copy','Paste'], ['Undo','Redo'],
         ['Bold','Italic','Underline','Strike'], ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'], [ 'Link','Unlink','Anchor' ],
-        [ 'Image','Table']
+        [ 'Image','Table','Snippet']
     ];
     config.toolbar_Poor =[
         ['Cut','Copy','Paste'], ['Undo','Redo']
     ];
     config.forcePasteAsPlainText = true;
+    config.extraPlugins = 'snippet';
 }
