@@ -20,7 +20,7 @@
   - @article.chapters.each_with_index do |chapter, i|
     .row.content-section.typo-main
       .col-xs-8.col-xs-offset-1
-        h1.cont-head *{name: chapter.anchor}.merge(editable_in_place_data(@article, :name, nil, :chapters_attributes, chapter.id, i))
+        h1.cont-head *{name: chapter.anchor.parameterize}.merge(editable_in_place_data(@article, :name, nil, :chapters_attributes, chapter.id, i))
           = chapter.name
         div *editable_in_place_data(@article, :content, :textarea, :chapters_attributes, chapter.id, i)
           = chapter.content.html_safe

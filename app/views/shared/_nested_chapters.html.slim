@@ -4,15 +4,15 @@
       .this-active
     .js-nav-inner.nav-inner
       .col-xs-2.col-xs-offset-1
-        =link_to chapters[0].try(:name), chapter_parent_path(parent, anchor: chapters[0].try(:anchor)), class: 'inner-nav-item js-anchor' if chapters[0]
-        =link_to chapters[1].try(:name), chapter_parent_path(parent, anchor: chapters[1].try(:anchor)), class: 'inner-nav-item js-anchor' if chapters[1]
+        =link_to chapters[0].try(:name), chapter_parent_path(parent, anchor: chapters[0].anchor.parameterize), class: 'inner-nav-item js-anchor' if chapters[0]
+        =link_to chapters[1].try(:name), chapter_parent_path(parent, anchor: chapters[1].anchor.parameterize), class: 'inner-nav-item js-anchor' if chapters[1]
       .col-xs-2
-        =link_to chapters[2].try(:name), chapter_parent_path(parent, anchor: chapters[2].try(:anchor)), class: 'inner-nav-item js-anchor' if chapters[2]
-        =link_to chapters[3].try(:name), chapter_parent_path(parent, anchor: chapters[3].try(:anchor)), class: 'inner-nav-item js-anchor' if chapters[3]
+        =link_to chapters[2].try(:name), chapter_parent_path(parent, anchor: chapters[2].anchor.parameterize), class: 'inner-nav-item js-anchor' if chapters[2]
+        =link_to chapters[3].try(:name), chapter_parent_path(parent, anchor: chapters[3].anchor.parameterize), class: 'inner-nav-item js-anchor' if chapters[3]
       .col-xs-2
-        =link_to chapters[4].try(:name), chapter_parent_path(parent, anchor: chapters[4].try(:anchor)), class: 'inner-nav-item js-anchor' if chapters[4]
-        =link_to chapters[5].try(:name), chapter_parent_path(parent, anchor: chapters[5].try(:anchor)), class: 'inner-nav-item js-anchor' if chapters[5]
+        =link_to chapters[4].try(:name), chapter_parent_path(parent, anchor: chapters[4].anchor.parameterize), class: 'inner-nav-item js-anchor' if chapters[4]
+        =link_to chapters[5].try(:name), chapter_parent_path(parent, anchor: chapters[5].anchor.parameterize), class: 'inner-nav-item js-anchor' if chapters[5]
       .col-xs-2
-        =link_to chapters[6].try(:name), chapter_parent_path(parent, anchor: chapters[6].try(:anchor)), class: 'inner-nav-item js-anchor' if chapters[6]
-        =link_to chapters[7].try(:name), chapter_parent_path(parent, anchor: chapters[7].try(:anchor)), class: 'inner-nav-item js-anchor' if chapters[7]
+        =link_to chapters[6].try(:name), chapter_parent_path(parent, anchor: chapters[6].anchor.parameterize), class: 'inner-nav-item js-anchor' if chapters[6]
+        =link_to chapters[7].try(:name), chapter_parent_path(parent, anchor: chapters[7].anchor.parameterize), class: 'inner-nav-item js-anchor' if chapters[7]
       .delimeter

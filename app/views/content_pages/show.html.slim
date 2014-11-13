@@ -4,7 +4,7 @@
   =render partial: 'shared/nested_chapters', locals: { chapters: @chapters, parent: @content_page }
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
-      h1.cont-head *{name: (@content_page.name if @content_page.chapters.present?)}.merge(editable_in_place_data(@content_page, :name))
+      h1.cont-head *{name: (@content_page.name.parameterize if @content_page.chapters.present?)}.merge(editable_in_place_data(@content_page, :name))
         = @content_page.name
       - if can? :manage, @content_page
         p
@@ -19,7 +19,7 @@
   - @content_page.chapters.each_with_index do |chapter, i|
     .row.content-section.typo-main
       .col-xs-8.col-xs-offset-1
-        h1.cont-head *{name: chapter.anchor}.merge(editable_in_place_data(@content_page, :name, nil, :chapters_attributes, chapter.id, i))
+        h1.cont-head *{name: chapter.anchor.parameterize}.merge(editable_in_place_data(@content_page, :name, nil, :chapters_attributes, chapter.id, i))
           = chapter.name
         div *editable_in_place_data(@content_page, :content, :textarea, :chapters_attributes, chapter.id, i)
           = chapter.content.html_safe

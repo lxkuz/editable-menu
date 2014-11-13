@@ -17,7 +17,7 @@
   /! /row
   .row.content-section.typo-main
     .col-xs-8.col-xs-offset-1
-      h1.cont-head *{id: (@about_page.name if @about_page.chapters.present?)}
+      h1.cont-head *{name: (@about_page.name.parameterize if @about_page.chapters.present?)}
         = @about_page.name
       - if can? :edit, @about_page
         p
@@ -27,7 +27,7 @@
   - @about_page.chapters.each do |chapter|
     .row.content-section.typo-main
       .col-xs-8.col-xs-offset-1
-        h1.cont-head *{id: chapter.anchor}
+        h1.cont-head *{name: chapter.anchor.parameterize}
           = chapter.name
         = chapter.content.html_safe
       .delimeter
