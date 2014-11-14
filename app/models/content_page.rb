@@ -19,7 +19,7 @@ class ContentPage < ActiveRecord::Base
   friendly_id :page_url, use: [:slugged, :finders]
 
   include SearchByLike
-  has_search_by_like_for :name
+  has_search_by_like_for :name, :menu_title
 
   include HasMenuItems
   include HasSnippets
@@ -39,6 +39,6 @@ class ContentPage < ActiveRecord::Base
   end
 
   def to_s
-    name
+    menu_title.present? ? menu_title : name
   end
 end

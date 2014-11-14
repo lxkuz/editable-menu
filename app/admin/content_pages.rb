@@ -1,5 +1,6 @@
 ActiveAdmin.register ContentPage do
   permit_params :title,
+                :menu_title,
                 :description,
                 :keywords,
                 :page_url,
@@ -32,6 +33,7 @@ ActiveAdmin.register ContentPage do
       row :keywords
       row :page_url
       row :name
+      row :menu_title
       row :content do
         raw page.content_formated
       end
@@ -44,6 +46,7 @@ ActiveAdmin.register ContentPage do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :menu_title
       f.input :page_url
       f.input :content, as: :ckeditor
       f.inputs do

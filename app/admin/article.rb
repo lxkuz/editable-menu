@@ -3,6 +3,7 @@ ActiveAdmin.register Article do
   permit_params :id,
                 :title,
                 :title_translit,
+                :menu_title,
                 :description,
                 :keywords,
                 :content,
@@ -42,6 +43,7 @@ ActiveAdmin.register Article do
     attributes_table do
       row :title
       row :title_translit
+      row :menu_title
       row :description
       row :keywords
       row :content do
@@ -59,6 +61,7 @@ ActiveAdmin.register Article do
     f.inputs do
       f.input :title, label: 'Заголовок'
       f.input :title_translit, label: 'URL'
+      f.input :menu_title, label: 'Заголовок для меню'
       # TODO: Limit html attributes later
       f.input :content, as: :ckeditor # , commands: [ :link ], blocks: [ :h3, :p]
 
