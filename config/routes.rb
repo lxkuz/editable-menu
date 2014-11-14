@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :news, controller: 'news_items'
 
   resources :promo_slides, only: [:create, :destroy, :update]
+  resources :text_banners, only: [:create, :destroy, :update]
   resources :front_page_banners, only: [:update]
   resources :menu_items, only: [:index, :create, :destroy, :update] do
     collection do

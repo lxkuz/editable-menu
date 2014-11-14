@@ -73,17 +73,9 @@
       #fpb-wrapper-tr.fpb
         = render partial: 'front_page_banners/banner', locals: { banner: top_right_banner}
   .row
-    .col-xs-3.h-4.p-1
-      a.h-3.cell.cell-all-actions href='#'
-        span.cell-back style=("background: url(#{image_path('index-back-actions.jpg')});")
-        span.cell-center
-          span.cell-center-inner
-            | Все акции
-            br
-            | и скидки
-            br
-            | на выбор!
-
+    - top_text_banner = TextBanner.find_or_create_by(name: :t)
+    .col-xs-3.h-4.p-1.tb#tb-wrapper-t
+      = render partial: 'text_banners/banner', locals: { banner: top_text_banner}
     .col-xs-4.h-4.cell.cell-order
       .js-feedback-form
         h4.cell-order-head
@@ -111,26 +103,12 @@
       = render partial: 'front_page_banners/banner', locals: { banner: center_left_banner}
 
   .row
-    .col-xs-5.h-4.cell.cell-about
-      h4.cell-about-head
-        | Что такое Московские
-        br лестницы?
-      .cell-about-text
-        | Это первый дискаунтер лестниц, где вы можете купить лестницу для дома по настоящему дёшево: по цене на 15-30% ниже заявленной стоимости производителей с доставкой по Москве на следующий день. Все проверенные годами бренды лестниц в одном месте с отличными скидками.
-      = link_to 'Больше о компании', content_page_path(:about, anchor: 'about-company'), class: 'more-about-company'
-    = link_to content_page_path(:about, anchor: 'production'), class: 'col-xs-5 h-4 cell cell-production' do
-      span.cell-back style=("background: url(#{image_path('index-back-production.jpg')});")
-      span.cell-center
-        span.cell-center-inner
-          span.cell-center-text.in-prod
-            | Собственное
-            br
-            | производство
-            br
-            | лестниц и
-            br
-            | комплектующих
-          span.prod-view-more Узнать больше
+    - center_left_text_banner = TextBanner.find_or_create_by(name: :cl)
+    .col-xs-5.h-4.tb#tb-wrapper-cl
+      = render partial: 'text_banners/banner', locals: {banner: center_left_text_banner}
+    - center_left_text_banner = TextBanner.find_or_create_by(name: :cr)
+    .col-xs-5.h-4.tb#tb-wrapper-cr
+      = render partial: 'text_banners/banner', locals: {banner: center_left_text_banner}
   .h-1.cell.cell-partners.clear-wrap
     h4.cell-partners-head Все лестницы в одном месте
     .cell-partners-slider
@@ -248,35 +226,40 @@
     .col-xs-3.h-3
   .row
     .col-xs-4
-      a.h-3.cell.cell-hits href='#'
-        span.cell-center
-          span.cell-center-inner
-            span.cell-hits-head Хиты продаж
-            span.cell-hits-text
-              | В наличии сегодня
-              br
-              | осталось всего 4 лестницы
-              br
-              ' по ценам —
-              span.white
-                ' от 22 000
-                span.note рублей
-            span.more-hits href='#'  Подробнее
+      - bottom_left_text_banner = TextBanner.find_or_create_by(name: :bl)
+      .h-3.cell.tb#tb-wrapper-bl
+        = render partial: 'text_banners/banner', locals: {banner: bottom_left_text_banner}
+      /a.h-3.cell.cell-hits href='#'
+      /  span.cell-center
+      /    span.cell-center-inner
+      /      span.cell-hits-head Хиты продаж
+      /      span.cell-hits-text
+      /        | В наличии сегодня
+      /        br
+      /        | осталось всего 4 лестницы
+      /        br
+      /        ' по ценам —
+      /        span.white
+      /          ' от 22 000
+      /          span.note рублей
+      /      span.more-hits href='#'  Подробнее
       .h-1.cell.cell-payment
         .pay-icons
           = image_tag('content/pay1.jpg', class: 'img')
           = image_tag('content/pay2.jpg', class: 'img')
         .cell-pay-head Способы оплаты
     .col-xs-3
-    a.col-xs-3.h-4.cell.cell-credit href='#'
-      span.cell-back style=("background: url(#{image_path('index-back-credit.jpg')});")
-      span.cell-caption.white.bottom
-        span.cell-head.big.cell-credit-head
-          span.cell-name В кредит
-        span.cell-price
-          span.cell-price-note
-            | оформление кредита
-            br на лестницу
+    - bottom_right_text_banner = TextBanner.find_or_create_by(name: :br)
+    .col-xs-3.h-4.cell.tb#tb-wrapper-br
+      = render partial: 'text_banners/banner', locals: {banner: bottom_right_text_banner}
+      /span.cell-back style=("background: url(#{image_path('index-back-credit.jpg')});")
+      /span.cell-caption.white.bottom
+      /  span.cell-head.big.cell-credit-head
+      /    span.cell-name В кредит
+      /  span.cell-price
+      /    span.cell-price-note
+      /      | оформление кредита
+      /      br на лестницу
 
 #offices-list-modal style=("display: none; width: 450px;")
   - Office.active.find_each do |office|

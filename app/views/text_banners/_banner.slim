@@ -1,0 +1,61 @@
+- if can? :manage, banner
+  .popup
+    = form_for(banner, html: { id: "edit-tb-#{banner.name}", style:'display:none;', class: 'text-banner-form modal-form'}, multipart: true ) do |f|
+      .modal-input
+        = f.label :bg, t('activerecord.attributes.text_banner.bg')
+        .uitabs
+          ul
+            li
+              a href="#tabs-#{banner.name}-1"
+                =t('activerecord.attributes.text_banner.image') + " (#{text_banner_specific_size(banner)})"
+            li
+              a href="#tabs-#{banner.name}-2"
+                | Цвет
+          div id="tabs-#{banner.name}-1"
+            = f.file_field :image
+          div id="tabs-#{banner.name}-2"
+            = f.text_field :bg, class: :colorpicker
+
+      .modal-input
+        = f.label :v_align, t('activerecord.attributes.text_banner.v_align')
+        .modal-subinput
+          label.inline
+            =f.radio_button :v_align, :top
+            | top
+          label.inline
+            =f.radio_button :v_align, :middle
+            | middle
+          label.inline
+            =f.radio_button :v_align, :bottom
+            | bottom
+
+
+      .modal-input
+        = f.label :body, t('activerecord.attributes.text_banner.body')
+        = f.text_area :body, class: 'ckeditable-rich-text'
+
+      .modal-input
+        = f.label :all_block_url, t('activerecord.attributes.text_banner.all_block_url')
+        .modal-subinput
+          = f.check_box :all_block_url, data:{for:"#url-tb-#{banner.name}"}, class: 'tb-toggle-chb'
+
+      .modal-input id="url-tb-#{banner.name}" class="#{'is-hidden' unless banner.all_block_url }"
+        = f.label :url, t('activerecord.attributes.text_banner.url')
+        = f.text_field :url
+      .clear-wrap.buttons
+        = f.submit 'Сохранить', class: :submit
+        = link_to('Отмена', '#', rel: 'modal:close')
+  .controls
+    a.edit.fa-edit.fa href="#edit-tb-#{banner.name}" rel="modal:open"
+-if banner.all_block_url && banner.url.present?
+  =link_to banner.url, class: "cell fpb #{text_banner_specific_link_class(banner)}" do
+    span.cell-back style=(text_banner_specific_bg(banner))
+    span.cell-center
+      .cell-center-inner style=(text_banner_specific_v_align(banner))
+        = banner.body.try(:html_safe)
+-else
+  span class="cell tb #{text_banner_specific_link_class(banner)}"
+    span.cell-back style=(text_banner_specific_bg(banner))
+    span.cell-center
+      .cell-center-inner style=(text_banner_specific_v_align(banner))
+        = banner.body.try(:html_safe)

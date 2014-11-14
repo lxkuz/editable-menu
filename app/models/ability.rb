@@ -9,12 +9,14 @@ class Ability
         can :manage, ContentPage
         can :manage, PromoSlide
         can :manage, FrontPageBanner
+        can :manage, TextBanner
       else
         can :read, NewsItem
         can :read, Article
         can :read, ContentPage
         can :read, PromoSlide
         can :read, FrontPageBanner
+        can :read, TextBanner
       end
   end
 end

@@ -1,0 +1,18 @@
+ru:
+  activerecord:
+    models:
+      front_page_banner: Баннер на главной
+      text_banner: Текстовый баннер
+    attributes:
+      front_page_banner:
+        title: Заголовок
+        price: Цена
+        url: Ссылка
+        image: Изображение
+      text_banner:
+        body: Текст
+        v_align: Вертикальное выравнивание текста
+        bg: Фон
+        url: Ссылка
+        image: Изображение
+        all_block_url: Весь блок ссылка

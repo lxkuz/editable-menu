@@ -1683,12 +1683,14 @@ label.error {
 }
 .cell-center-inner {
   display: table-cell;
+  padding: 30px;
   vertical-align: middle;
-  text-align: center;
   color: #fff;
-  font-size: 40px;
   -webkit-transition: all 150ms linear 0ms;
   transition: all 150ms linear 0ms;
+  em {
+    font-family: 'iowan_old_styleroman', verdana, sans-serif;
+  }
 }
 .cell-center-inner:link {
   color: #ffffff;
@@ -1998,7 +2000,7 @@ label.error {
   background-repeat: no-repeat;
   background-position: 0 -17px;
 }
-.index-slider-1 .controls, .fpb .controls  {
+.index-slider-1 .controls, .fpb .controls, .tb .controls  {
   display: none;
   padding: 10px;
   position: absolute;
@@ -2013,7 +2015,7 @@ label.error {
     }
   }
 }
-.index-slider-1:hover .controls, .fpb:hover .controls {
+.index-slider-1:hover .controls, .fpb:hover .controls, .tb:hover .controls {
   display: block;
 }
 .cell-all-actions {
@@ -5933,15 +5935,16 @@ body:last-child .blueimp-gallery-playing > .play-pause {
   position: relative;
 }
 .modal.modal-form {
-  input[type=text], input[type=file] {
+  input[type=text], input[type=file], textarea {
     border: 1px solid #b6b6b6;
     padding: 3px;
     margin-left: 15px;
-    width: 300px;
+    width: 250px;
   }
   .modal-input {
     margin-bottom: 15px;
     label {
+      display: block;
       font-weight: bold;
       font-size: 14px;
     }
@@ -5950,6 +5953,16 @@ body:last-child .blueimp-gallery-playing > .play-pause {
       label {
         font-weight: normal;
         font-size: 12px;
+        &.inline {
+          display: inline;
+          margin-right: 7px;
+          vertical-align: middle;
+        }
+        input[type=radio] {
+          position: relative;
+          top: 3px;
+          margin-right: 3px;
+        }
       }
     }
   }
