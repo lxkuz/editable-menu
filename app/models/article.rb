@@ -19,7 +19,7 @@ class Article < ActiveRecord::Base
   extend FriendlyId
 
   include SearchByLike
-  has_search_by_like_for :title
+  has_search_by_like_for :title, :menu_title
 
   include HasMenuItems
   include HasSnippets
@@ -37,7 +37,7 @@ class Article < ActiveRecord::Base
   before_save :set_published_at
 
   def to_s
-    title
+    menu_title.present? ? menu_title : title
   end
 
   def translit_field
