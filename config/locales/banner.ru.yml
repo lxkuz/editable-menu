@@ -7,6 +7,9 @@ ru:
       front_page_banner:
         title: Заголовок
         price: Цена
+        valign: Положение текста
+        font_size: Размер текста
+        font_color: Цвет текста
         url: Ссылка
         image: Изображение
       text_banner:

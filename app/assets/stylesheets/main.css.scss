@@ -1602,9 +1602,10 @@ label.error {
   background-color: #f0f0f0;
 }
 .cell-caption {
-  display: block;
+  display: table-cell;
   position: relative;
   padding: 26px 30px;
+  vertical-align: top;
 }
 .cell-caption.bottom {
   position: absolute;
@@ -1647,11 +1648,15 @@ label.error {
   bottom: 0;
   background: asset-data-url("shadow-bottom.png") repeat-x 0 0;
 }
+.cell-table {
+  display: table;
+  width: 100%;
+}
 .cell-head {
   position: relative;
   display: block;
   margin-bottom: 15px;
-  font-size: 40px;
+//  font-size: 40px;
   font-weight: 100;
   line-height: 40px;
 }
@@ -1665,11 +1670,11 @@ label.error {
 .cell-price {
   position: relative;
   font-weight: 900;
-  font-size: 20px;
+  font-size: 0.5em;
 }
 .cell-price-note {
   font-family: 'iowan_old_styleroman', verdana, sans-serif;
-  font-size: 22px;
+  font-size: 1.1em;
   font-style: italic;
   font-weight: normal;
 }
@@ -5935,11 +5940,14 @@ body:last-child .blueimp-gallery-playing > .play-pause {
   position: relative;
 }
 .modal.modal-form {
-  input[type=text], input[type=file], textarea {
+  input[type=text], input[type=file], textarea, select {
     border: 1px solid #b6b6b6;
     padding: 3px;
     margin-left: 15px;
     width: 250px;
+  }
+  .sp-replacer {
+    margin-left: 15px;
   }
   .modal-input {
     margin-bottom: 15px;

@@ -13,15 +13,33 @@
       .modal-input
         = f.label :image, t('activerecord.attributes.front_page_banner.image') + " (#{banner_size(banner)})"
         = f.file_field :image
+      .modal-input
+        = f.label :valign, t('activerecord.attributes.front_page_banner.valign')
+        .modal-subinput
+          label.inline
+            =f.radio_button :valign, :top
+            | top
+          label.inline
+            =f.radio_button :valign, :middle
+            | middle
+          label.inline
+            =f.radio_button :valign, :bottom
+            | bottom
+      .modal-input
+        = f.label :font_size, t('activerecord.attributes.front_page_banner.font_size')
+        = f.select :font_size, options_for_select([20,24,28,32,36,40,48,72], f.object.font_size || 40)
+      .modal-input
+        = f.label :font_color, t('activerecord.attributes.front_page_banner.font_color')
+        = f.text_field :font_color, class: 'colorpicker-4-banner'
       .clear-wrap.buttons
         = f.submit 'Сохранить', class: :submit
         = link_to 'Отмена', '#', rel: 'modal:close'
   .controls
     a.edit.fa-edit.fa href="#edit-fpb-#{banner_postfix(banner)}" rel="modal:open"
-=link_to banner.url, class:"#{link_class(banner)} cell-over zoom" do
+=link_to banner.url, class:"#{link_class(banner)} cell-over cell-table zoom" do
   span.cell-back
     = image_tag banner.image.url(banner_version(banner)), class: 'img-response'
-  span.cell-caption class="#{banner_class(banner)}"
+  span.cell-caption style="#{banner_conf(banner)}"
     span.cell-head
       span.cell-name
         = banner.title

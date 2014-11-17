@@ -1,4 +1,9 @@
 module FrontPageBannerHelper
+  def banner_conf banner
+    "font-size:#{banner.font_size.present? ? banner.font_size : 40}px;
+     color: #{banner.font_color.present? ? banner.font_color : '#000000'};
+     vertical-align:#{banner.valign.present? ? banner.valign : 'top'};"
+  end
   def banner_size(banner)
     case banner.name
       when 'top_left', 'center_right', 'bot_right' then '300x700'
@@ -16,14 +21,6 @@ module FrontPageBannerHelper
     end
   end
 
-  def banner_class(banner)
-    case banner.name
-      when 'top_left', 'center_right', 'bot_right' then 'black'
-      when 'top_right', 'center_left' then 'white bottom'
-      when 'bot_left' then 'black'
-      when 'bot_left_mini' then 'white bottom'
-    end
-  end
 
   def banner_postfix banner
     case banner.name
@@ -46,5 +43,7 @@ module FrontPageBannerHelper
       when 'bot_left_mini' then 'banner4x3'
     end
   end
+
+
 
 end

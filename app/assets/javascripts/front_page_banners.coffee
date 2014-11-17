@@ -1,4 +1,13 @@
 $(document).ready ->
+  colorpickerOps = {
+    showPaletteOnly: true,
+    showPalette: true,
+    palette: [
+      ['black', 'white', 'rgb(92, 92, 92);']
+    ]
+  }
+  $(".colorpicker-4-banner").spectrum(colorpickerOps);
+
   $(document).on 'submit', '.front-page-banner-form', (e) ->
     e.preventDefault()
     form = e.target
@@ -38,6 +47,7 @@ $(document).ready ->
                   width: "100%",
                   height: "100%"
                 ,1500)
+          $(data.insert_to).find(".colorpicker-4-banner").spectrum(colorpickerOps);
 
 
 

@@ -16,6 +16,6 @@ class FrontPageBannersController < ApplicationController
   private
 
   def build_params
-    params.require(:front_page_banner).permit(:image, :title, :price, :url)
+    params.require(:front_page_banner).permit(:image, :title, :price, :url, :valign, :font_size, :font_color)
   end
 end
