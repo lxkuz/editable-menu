@@ -49,5 +49,13 @@ $(document).ready ->
                 ,1500)
           $(data.insert_to).find(".colorpicker-4-banner").spectrum(colorpickerOps);
 
+  $(document).on 'DOMNodeInserted', '.banner-outer', (e) ->
+      content_width = 1000 + parseInt($('.js-content-width').css('margin-left'))
+      with_half_banner = content_width + $('#banner img').outerWidth()*0.5
+      window_width = $(window).width();
+      if(window_width < with_half_banner)
+        $('#banner').addClass('slided')
+
+
 
 

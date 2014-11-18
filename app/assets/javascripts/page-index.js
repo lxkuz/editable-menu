@@ -1,13 +1,10 @@
 $(document).ready(function() {
     // show hide banner
-    var banner = $('#banner'),
-        banner_img = $('#banner img'),
-        banner_outer = $('.banner-outer'),
-        banner_wrap = $('.banner-wrap');
+    var banner = $('#banner')
 
     function detect_banner_slide() {
         var content_width = 1000 + parseInt($('.js-content-width').css('margin-left')),
-            with_half_banner = content_width + banner_img.outerWidth()*0.5,
+            with_half_banner = content_width + $('#banner img').outerWidth()*0.5,
             window_width = $(window).width();
         if(window_width < with_half_banner) {
             banner.addClass('slided');
@@ -29,40 +26,36 @@ $(document).ready(function() {
     } else {
         trans = false;
     }
-    banner
-        .hover(function() {
-            if($(this).hasClass('slided')) {
+    $(document).on('mouseenter', '#banner',  function () {
+            if ($(this).hasClass('slided')) {
                 $(this).addClass('hover');
                 show_banner();
             }
-        }, function() {
+    });
+    $(document).on('mouseleave', '#banner',  function () {
             $(this).removeClass('hover');
             hide_banner();
-        });
+    });
 
     function show_banner() {
         var content_width = 1000 + parseInt($('.js-content-width').css('margin-left')),
             window_width = $(window).width(),
-            banner_width = banner_img.outerWidth(),
+            banner_width = $('#banner img').outerWidth(),
             banner_shift = -(banner_width-(window_width - content_width));
         if(trans) {
-            banner_img
-                .addClass('open')
+            $('#banner img').addClass('open')
                 .css({
                     '-webkit-transform': 'translateX(' + banner_shift + 'px)',
                     '-ms-transform': 'translateX(' + banner_shift + 'px)',
                     'transform': 'translateX(' + banner_shift + 'px)'
                 });
         } else {
-            banner_img
-                .addClass('open')
-                .stop(1)
-                .animate({left: banner_shift},500);
+            $('#banner img').addClass('open').stop(1).animate({left: banner_shift},500);
         }
     }
     function hide_banner() {
         if(trans) {
-            banner_img
+            $('#banner img')
                 .removeClass('open')
                 .css({
                     '-webkit-transform': 'translateX(' + 0 + 'px)',
@@ -70,7 +63,7 @@ $(document).ready(function() {
                     'transform': 'translateX(' + 0 + 'px)'
                 });
         } else {
-            banner_img
+            $('#banner img')
                 .removeClass('open')
                 .stop(1)
                 .animate({left: 0},500);
@@ -78,7 +71,7 @@ $(document).ready(function() {
     }
 
     $(window).resize(function() {
-        if(banner_img.hasClass('open')) {
+        if($('#banner img').hasClass('open')) {
             show_banner();
         }
     });
