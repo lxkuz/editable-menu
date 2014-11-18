@@ -92,7 +92,7 @@ ActiveAdmin.register Office do
     if request.xhr?
       office = Office.find(params[:id])
       if office.update_attributes(permitted_params[:office])
-        render :json => {:url => office_url(office)}
+        render :json => {:url => office_url(office), :notice => 'Данные успешно обновлены'}
       end
     end
   end
