@@ -13,6 +13,7 @@ class TextBannersController < ApplicationController
   private
 
   def build_params
-    params.require(:text_banner).permit(:image, :body, :bg, :url, :all_block_url, :v_align)
+    params[:text_banner][:remove_image] = 1 if params[:text_banner].has_key?(:bg) && !params[:text_banner].has_key?(:image)
+    params.require(:text_banner).permit(:image, :body, :bg, :url, :all_block_url, :v_align, :remove_image)
   end
 end

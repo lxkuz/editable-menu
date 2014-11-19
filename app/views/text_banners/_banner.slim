@@ -14,7 +14,7 @@
           div id="tabs-#{banner.name}-1"
             = f.file_field :image
           div id="tabs-#{banner.name}-2"
-            = f.text_field :bg, class: :colorpicker
+            = f.text_field :bg, class: :colorpicker, value: banner.bg || '#000000'
 
       .modal-input
         = f.label :v_align, t('activerecord.attributes.text_banner.v_align')
