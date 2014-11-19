@@ -1551,10 +1551,12 @@ label.error {
   margin: 10px;
   z-index: 1;
   position: relative;
+  display: inline-block;
   figcaption {
     font-size: 11px;
     margin-top: 4px;
     color: #6e6e6e;
+    text-align: center;
   }
 }
 .typo-main b, .typo-main strong {
