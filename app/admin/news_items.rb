@@ -28,9 +28,7 @@ ActiveAdmin.register NewsItem do
       row :description
       row :keywords
       row :name
-      row :body do
-        raw news_item.body_formated
-      end
+      row :body
       row :user_id
       row :custom_url
       row 'Страница на сайте' do

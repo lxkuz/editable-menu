@@ -18,9 +18,10 @@ jQuery.extend({
   }
 });
 
-var items = $.getValues('/admin/snippets.json');
-
 CKEDITOR.dialog.add('snippetDialog', function(editor) {
+  var snippetsUrl = '/admin/snippets.json',
+      items       = $.getValues(snippetsUrl);
+
   return {
     title: 'Select snippet to insert',
     minWidth: 400,
@@ -41,7 +42,21 @@ CKEDITOR.dialog.add('snippetDialog', function(editor) {
 
     onOk: function() {
       var name = this.getValueOf('tab-basic', 'snippet')
-      editor.insertHtml('{{snippet:' + name + '}}');
+
+      $.ajax({
+        url: snippetsUrl,
+        type: 'get',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+          $.each(data, function(key, value) {
+            if (value.name == name) {
+              editor.insertHtml(value.text);
+              return false;
+            }
+          });
+        }
+      });
     }
   };
 });

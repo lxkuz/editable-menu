@@ -46,9 +46,7 @@ ActiveAdmin.register Article do
       row :menu_title
       row :description
       row :keywords
-      row :content do
-        raw article.content_formated
-      end
+      row :content
       row :position
       row :published_at
       row 'Статья на сайте' do

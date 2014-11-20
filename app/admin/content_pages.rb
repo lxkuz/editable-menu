@@ -35,9 +35,7 @@ ActiveAdmin.register ContentPage do
       row :page_url
       row :name
       row :menu_title
-      row :content do
-        raw page.content_formated
-      end
+      row :content
       row 'Страница на сайте' do
         link_to page.name, url_for(page)
       end

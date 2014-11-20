@@ -22,7 +22,6 @@ class Article < ActiveRecord::Base
   has_search_by_like_for :title, :menu_title
 
   include HasMenuItems
-  include HasSnippets
 
   friendly_id :title_translit, use: [:slugged, :finders]
 
