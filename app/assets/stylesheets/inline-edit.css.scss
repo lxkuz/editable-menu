@@ -40,3 +40,7 @@
     margin-bottom: 15px;
   }
 }
+.ckeditable[data-type=textarea] {
+  overflow: auto;
+  width: 100%
+}
