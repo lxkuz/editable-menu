@@ -1,5 +1,5 @@
 ActiveAdmin.register Office do
-  menu priority: 1, label: 'Офисы'
+  menu priority: 20, label: 'Офисы'
   permit_params :name,
                 :postindex,
                 :city,
