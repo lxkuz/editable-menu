@@ -27,6 +27,6 @@ class PromoSlidesController < ApplicationController
   private
 
   def build_params
-    params.require(:promo_slide).permit(:title, :text, :url, :text_italic, :title_italic)
+    params.require(:promo_slide).permit(:title, :text, :url, :title_italic)
   end
 end

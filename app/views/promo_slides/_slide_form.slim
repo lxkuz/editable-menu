@@ -2,14 +2,11 @@
   .modal-input
     = f.label :title, t('activerecord.attributes.promo_slide.title')
     .modal-subinput
-      = f.check_box :title_italic
-      = f.label :title_italic, :italic
+      = f.check_box :title_italic, id: "promo_slide_titile-italic-#{slide.id}"
+      = f.label "titile-italic-#{slide.id}", :italic, class: :inline
     = f.text_field :title
   .modal-input
     = f.label :text, t('activerecord.attributes.promo_slide.text')
-    .modal-subinput
-      = f.check_box :text_italic
-      = f.label :text_italic, :italic
     = f.text_field :text
   .modal-input
     = f.label :url, t('activerecord.attributes.promo_slide.url')
