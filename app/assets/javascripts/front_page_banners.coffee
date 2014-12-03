@@ -2,6 +2,7 @@ $(document).ready ->
   colorpickerOps = {
     showPaletteOnly: true,
     showPalette: true,
+    allowEmpty: true,
     palette: [
       ['black', 'white', 'rgb(92, 92, 92);']
     ]

@@ -5983,22 +5983,25 @@ body:last-child .blueimp-gallery-playing > .play-pause {
       display: block;
       font-weight: bold;
       font-size: 14px;
+      &.inline {
+        display: inline;
+        margin-right: 7px;
+        vertical-align: middle;
+      }
+    }
+    input[type=radio], input[type=checkbox] {
+      position: relative;
+      top: 3px;
+      margin-right: 3px;
     }
     .modal-subinput {
       margin-left: 20px;
       label {
         font-weight: normal;
         font-size: 12px;
-        &.inline {
-          display: inline;
-          margin-right: 7px;
-          vertical-align: middle;
-        }
       }
-      input[type=radio], input[type=checkbox] {
-        position: relative;
-        top: 3px;
-        margin-right: 3px;
+      .tb-toggle-chb {
+
       }
     }
   }

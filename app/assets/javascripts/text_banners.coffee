@@ -1,13 +1,14 @@
 $(document).ready ->
   colorpickerOps = {
     showPalette: true
-    preferredFormat: "hex"
+    allowEmpty: true
     palette: [
       ['black', 'white'],
       ['rgb(222, 58, 26);', 'rgb(92, 92, 92);']
     ]
     change: (color) ->
-      color.toHexString()
+      if color
+        color.toHexString()
 
   }
   $(".colorpicker").spectrum(colorpickerOps);

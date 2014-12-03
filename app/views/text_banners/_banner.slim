@@ -14,20 +14,20 @@
           div id="tabs-#{banner.name}-1"
             = f.file_field :image
           div id="tabs-#{banner.name}-2"
-            = f.text_field :bg, class: :colorpicker, value: banner.bg || '#000000'
+            = f.text_field :bg, class: :colorpicker, value: ''
 
       .modal-input
         = f.label :v_align, t('activerecord.attributes.text_banner.v_align')
         .modal-subinput
           label.inline
             =f.radio_button :v_align, :top
-            | top
+            | верх
           label.inline
             =f.radio_button :v_align, :middle
-            | middle
+            | центр
           label.inline
             =f.radio_button :v_align, :bottom
-            | bottom
+            | низ
 
 
       .modal-input
@@ -35,9 +35,8 @@
         = f.text_area :body, class: 'ckeditable-rich-text'
 
       .modal-input
-        = f.label :all_block_url, t('activerecord.attributes.text_banner.all_block_url')
-        .modal-subinput
-          = f.check_box :all_block_url, data:{for:"#url-tb-#{banner.name}"}, class: 'tb-toggle-chb'
+        = f.label :all_block_url, t('activerecord.attributes.text_banner.all_block_url'), class: :inline
+        = f.check_box :all_block_url, data:{for:"#url-tb-#{banner.name}"}, class: 'tb-toggle-chb'
 
       .modal-input id="url-tb-#{banner.name}" class="#{'is-hidden' unless banner.all_block_url }"
         = f.label :url, t('activerecord.attributes.text_banner.url')
