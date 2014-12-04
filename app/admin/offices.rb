@@ -33,6 +33,10 @@ ActiveAdmin.register Office do
                     :_destroy
                 ]
 
+  action_item only: :show do
+    link_to('Смотреть на сайте', url_for(resource))
+  end
+
   form(:html => { :multipart => true }) do |f|
     f.inputs 'Контактная информация' do
       f.input :name

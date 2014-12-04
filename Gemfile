@@ -51,6 +51,7 @@ gem 'russian'
 
 group :development, :test do
     # Console
+  gem 'thin'
   gem 'pry-rails'
   gem 'hirb-unicode'
   gem 'awesome_print'

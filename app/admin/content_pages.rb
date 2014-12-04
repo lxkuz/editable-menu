@@ -27,6 +27,10 @@ ActiveAdmin.register ContentPage do
     actions
   end
 
+  action_item only: :show do
+    link_to('Смотреть на сайте', url_for(resource))
+  end
+
   show do |page|
     attributes_table do
       row :title

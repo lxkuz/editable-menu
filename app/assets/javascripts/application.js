@@ -24,6 +24,7 @@
 
 //= require ckeditor/init
 //= require owl.carousel.min
+//= require jquery.blueimp-gallery.min
 //= require spectrum
 //= require owl.carousel.min
 //= require underscore

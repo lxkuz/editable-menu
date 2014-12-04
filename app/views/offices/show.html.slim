@@ -63,10 +63,8 @@
         .inline-block *editable_in_place_data(@office, :total_votes)
           =@office.total_votes
       - if @office.certificate.present?
-        =link_to_modal '#cert', class:'sert-photo' do
+        =link_to @office.certificate.url(:zoomed), class:'sert-photo', 'data-gallery' => '' do
           =image_tag @office.certificate.url(:thumb)
-        #cert
-          =image_tag @office.certificate.url(:zoomed)
 
   .row.typo-main.no-print.slider-row
     .col-xs-8.col-xs-offset-1

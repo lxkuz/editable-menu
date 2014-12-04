@@ -21,6 +21,10 @@ ActiveAdmin.register Article do
   config.sort_order = 'position_asc'
   config.filters = false
 
+  action_item only: :show do
+    link_to('Смотреть на сайте', url_for(resource))
+  end
+
   index do
     selectable_column
 

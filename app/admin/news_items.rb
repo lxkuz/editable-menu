@@ -10,6 +10,10 @@ ActiveAdmin.register NewsItem do
   config.sort_order = 'updated_at'
   config.filters = false
 
+  action_item only: :show do
+    link_to('Смотреть на сайте', news_path(resource))
+  end
+
   index do
     selectable_column
 
