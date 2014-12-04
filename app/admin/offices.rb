@@ -1,5 +1,6 @@
 ActiveAdmin.register Office do
   menu priority: 20, label: 'Офисы'
+
   permit_params :name,
                 :postindex,
                 :city,
@@ -21,23 +22,23 @@ ActiveAdmin.register Office do
                 :user_request_recipients,
                 :certificate,
                 office_slides_attributes: [
-                    :id,
-                    :image,
-                    :_destroy
+                  :id,
+                  :image,
+                  :_destroy
                 ],
                 reviews_attributes: [
-                    :id,
-                    :author,
-                    :avatar,
-                    :body,
-                    :_destroy
+                  :id,
+                  :author,
+                  :avatar,
+                  :body,
+                  :_destroy
                 ]
 
   action_item only: :show do
     link_to('Смотреть на сайте', url_for(resource))
   end
 
-  form(:html => { :multipart => true }) do |f|
+  form(html: { multipart: true }) do |f|
     f.inputs 'Контактная информация' do
       f.input :name
       f.input :postindex
@@ -88,17 +89,33 @@ ActiveAdmin.register Office do
     column :city
     column :postindex
     column :street_address
+    column :active
     column :updated_at
     actions
   end
+
+
+  batch_action 'Активировать' do |selection|
+    Office.find(selection).each do |office|
+      office.activate!
+    end
+    redirect_to collection_path
+  end
+
+  batch_action 'Дективировать' do |selection|
+    Office.find(selection).each do |office|
+      office.deactivate!
+    end
+    redirect_to collection_path
+  end
+
 
   member_action :update_in_place, method: :post do
     if request.xhr?
       office = Office.find(params[:id])
       if office.update_attributes(permitted_params[:office])
-        render :json => {:url => office_url(office), :notice => 'Данные успешно обновлены'}
+        render json: { url: office_url(office), notice: 'Данные успешно обновлены' }
       end
     end
   end
-
 end

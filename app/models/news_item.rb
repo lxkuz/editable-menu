@@ -25,8 +25,18 @@ class NewsItem < ActiveRecord::Base
 
   scope :newest,    -> { order(updated_at: :desc)}
   scope :last_news, ->(news_id) { where.not(id: news_id).newest.limit(6) }
+  scope :active, -> { where(active:true)}
 
   def should_generate_new_friendly_id?
     custom_url_changed?
   end
+
+  def activate!
+    self.update_columns(active: true)
+  end
+
+  def deactivate!
+    self.update_columns(active: false)
+  end
+
 end

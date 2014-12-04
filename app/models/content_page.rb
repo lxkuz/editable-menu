@@ -26,6 +26,8 @@ class ContentPage < ActiveRecord::Base
   has_many :chapters, dependent: :destroy
   accepts_nested_attributes_for :chapters, allow_destroy: true
 
+  scope :active, -> { where(active:true)}
+
   validates :content, presence: true
   validates :page_url, presence: true, uniqueness: true
 
@@ -35,6 +37,14 @@ class ContentPage < ActiveRecord::Base
 
   def translit_field
     page_url
+  end
+
+  def activate!
+    self.update_columns(active: true)
+  end
+
+  def deactivate!
+    self.update_columns(active: false)
   end
 
   def to_s

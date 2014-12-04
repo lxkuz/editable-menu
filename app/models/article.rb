@@ -26,6 +26,7 @@ class Article < ActiveRecord::Base
   friendly_id :title_translit, use: [:slugged, :finders]
 
   scope :by_position, -> { order(:position)}
+  scope :active, -> { where(active:true)}
 
   has_many :chapters, dependent: :destroy
   accepts_nested_attributes_for :chapters, allow_destroy: true
@@ -37,6 +38,14 @@ class Article < ActiveRecord::Base
 
   def to_s
     menu_title.present? ? menu_title : title
+  end
+
+  def activate!
+    self.update_columns(active: true)
+  end
+
+  def deactivate!
+    self.update_columns(active: false)
   end
 
   def translit_field

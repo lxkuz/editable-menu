@@ -4,6 +4,7 @@ ActiveAdmin.register Article do
                 :title,
                 :title_translit,
                 :menu_title,
+                :active,
                 :description,
                 :keywords,
                 :content,
@@ -25,6 +26,20 @@ ActiveAdmin.register Article do
     link_to('Смотреть на сайте', url_for(resource))
   end
 
+  batch_action 'Активировать' do |selection|
+    Article.find(selection).each do |article|
+      article.activate!
+    end
+    redirect_to collection_path
+  end
+
+  batch_action 'Дективировать' do |selection|
+    Article.find(selection).each do |article|
+      article.deactivate!
+    end
+    redirect_to collection_path
+  end
+
   index do
     selectable_column
 
@@ -38,6 +53,7 @@ ActiveAdmin.register Article do
       article.content
     end
     column 'Позиция', :position
+    column 'Активировано', :active
     column 'Опубликовано', :published_at
 
     actions
@@ -51,6 +67,7 @@ ActiveAdmin.register Article do
       row :description
       row :keywords
       row :content
+      row :active
       row :position
       row :published_at
       row 'Статья на сайте' do
@@ -63,6 +80,7 @@ ActiveAdmin.register Article do
     f.inputs do
       f.input :title, label: 'Заголовок'
       f.input :title_translit, label: 'URL'
+      f.input :active, label: 'Активировано'
       f.input :menu_title, label: 'Заголовок для меню'
       # TODO: Limit html attributes later
       f.input :content, as: :ckeditor # , commands: [ :link ], blocks: [ :h3, :p]

@@ -21,13 +21,13 @@ class Geocoding::NearestOfficeFinder
       user_city = :none
     end
     if user_city != :none
-      user_city_offices = Office.where(city: user_city).all
+      user_city_offices = Office.active.where(city: user_city).all
       if user_city_offices.any?
         office = user_city_offices.min_by {|office| distance_to_user_from(office)}
       end
     end
     if office.nil?
-      office = Office.all.min_by { |office| distance_to_user_from(office) }
+      office = Office.active.all.min_by { |office| distance_to_user_from(office) }
       no_city_office = true
     end
     return [office, user_city, no_city_office]

@@ -23,6 +23,8 @@ class Office < ActiveRecord::Base
   has_many :office_slides
   accepts_nested_attributes_for :office_slides,  allow_destroy: true
 
+  scope :active, -> { where(active:true)}
+
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? }
   after_validation :set_user_request_recipients, on: [ :create, :update ]

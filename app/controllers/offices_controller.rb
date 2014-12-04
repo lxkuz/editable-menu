@@ -5,7 +5,7 @@ class OfficesController < ResourcesController
   end
 
   def show
-    @office = Office.find(params[:id])
+    @office = Office.active.find(params[:id])
   end
 
   protected

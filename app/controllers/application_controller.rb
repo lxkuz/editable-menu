@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def manual_select_office
     session[:office_id] = params[:office_id]
-    session[:user_city] = Office.find_by(id: params[:office_id]).city
+    session[:user_city] = Office.active.find_by(id: params[:office_id]).city
     session[:no_city_office] = false
     redirect_to(session[:previous_url] || root_path)
   end
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
       session[:user_city] = city
       session[:no_city_office] = no_city_office
     end
-    @nearest_office = nearest_office || Office.find_by(id: session[:office_id])
+    @nearest_office = nearest_office || Office.active.find_by(id: session[:office_id])
   end
 
   def after_sign_in_path_for(user)

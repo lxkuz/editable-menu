@@ -163,44 +163,13 @@
     - bot_left_banner = FrontPageBanner.find_by_name('bot_left')
     #fpb-wrapper-bl.fpb.col-xs-7.h-4.cell
       = render partial: 'front_page_banners/banner', locals: { banner: bot_left_banner}
-    /a.col-xs-7.h-4.cell.zoom href='#'
-    /  span.cell-back
-    /    = image_tag('index-back-elite.jpg', class: 'img img-response')
-    /  span.cell-caption.black
-    /    span.cell-head
-    /      span.cell-name
-    /        ' Элитные
-    /      | лестницы
-    /    span.cell-price
-    /      ' от 120 000
-    /      span.cell-price-note рублей
     - bot_right_banner = FrontPageBanner.find_by_name('bot_right')
     #fpb-wrapper-br.fpb.col-xs-3.h-4
       = render partial: 'front_page_banners/banner', locals: { banner: bot_right_banner}
-      /a.h-7.cell-over.zoom href='#'
-      /  span.cell-back
-      /    = image_tag('index-back-econom.jpg', class: 'img img-response')
-      /  span.cell-caption.black
-      /    span.cell-head
-      /      span.cell-name Для самых экономных
-      /    span.cell-price
-      /      ' от 19 000
-      /      span.cell-price-note рублей
   .row
     - bot_left_mini_banner = FrontPageBanner.find_by_name('bot_left_mini')
     #fpb-wrapper-blm.fpb.col-xs-4.h-3.cell
       = render partial: 'front_page_banners/banner', locals: { banner: bot_left_mini_banner}
-    /a.col-xs-4.h-3.cell.zoom href='#'
-    /  span.cell-back
-    /    = image_tag('index-back-smart.jpg', class: 'img img-response')
-    /  span.cell-caption.white.bottom
-    /    span.cell-head.big
-    /      span.cell-name
-    /        ' Умное
-    /      | предложение
-    /    span.cell-price
-    /      ' от 42 000
-    /      span.cell-price-note рублей
     .col-xs-3.h-3
       .h-7.cell-over.cell-news
         .cell-news-head Новости

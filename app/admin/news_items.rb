@@ -2,6 +2,7 @@ ActiveAdmin.register NewsItem do
   permit_params :title,
                 :description,
                 :keywords,
+                :active,
                 :name,
                 :body,
                 :user_id,
@@ -22,6 +23,7 @@ ActiveAdmin.register NewsItem do
       news_item.body.truncate 200
     end
     column :updated_at
+    column 'Активировано', :active
 
     actions
   end
@@ -35,6 +37,7 @@ ActiveAdmin.register NewsItem do
       row :body
       row :user_id
       row :custom_url
+      row :active
       row 'Страница на сайте' do
         link_to news_item.name, news_path(news_item)
       end
@@ -46,6 +49,7 @@ ActiveAdmin.register NewsItem do
     f.inputs do
       f.input :name
       f.input :custom_url
+      f.input :active, label: 'Активировано'
       f.input :body, as: :ckeditor
       f.input :title
       f.input :description, input_html: { rows: 2 }
@@ -62,6 +66,22 @@ ActiveAdmin.register NewsItem do
       super
     end
   end
+
+  batch_action 'Активировать' do |selection|
+    NewsItem.find(selection).each do |n|
+      n.activate!
+    end
+    redirect_to collection_path
+  end
+
+  batch_action 'Дективировать' do |selection|
+    NewsItem.find(selection).each do |n|
+      n.deactivate!
+    end
+    redirect_to collection_path
+  end
+
+
 
   member_action :update_in_place, method: :post do
     if request.xhr?

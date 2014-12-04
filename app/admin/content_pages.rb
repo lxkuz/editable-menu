@@ -3,6 +3,7 @@ ActiveAdmin.register ContentPage do
                 :menu_title,
                 :description,
                 :keywords,
+                :active,
                 :page_url,
                 :name,
                 :subtitle,
@@ -24,6 +25,7 @@ ActiveAdmin.register ContentPage do
 
     column :name
     column :page_url
+    column 'Активировано', :active
     actions
   end
 
@@ -40,6 +42,7 @@ ActiveAdmin.register ContentPage do
       row :name
       row :menu_title
       row :content
+      row :active
       row 'Страница на сайте' do
         link_to page.name, url_for(page)
       end
@@ -50,6 +53,7 @@ ActiveAdmin.register ContentPage do
     f.inputs do
       f.input :name
       f.input :menu_title
+      f.input :active, label: 'Активировано'
       f.input :page_url
       f.input :subtitle if f.object.page_is?('dealers')
       f.input :content, as: :ckeditor
@@ -67,6 +71,21 @@ ActiveAdmin.register ContentPage do
 
     f.actions
   end
+
+  batch_action 'Активировать' do |selection|
+    ContentPage.find(selection).each do |page|
+      page.activate!
+    end
+    redirect_to collection_path
+  end
+
+  batch_action 'Дективировать' do |selection|
+    ContentPage.find(selection).each do |page|
+      page.deactivate!
+    end
+    redirect_to collection_path
+  end
+
 
   member_action :update_in_place, method: :post do
     if request.xhr?
