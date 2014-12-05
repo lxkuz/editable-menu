@@ -3,6 +3,7 @@ ActiveAdmin.register Office do
   permit_params :name,
                 :postindex,
                 :city,
+                :phone,
                 :street_address,
                 :user_request_recipients
 
@@ -11,6 +12,7 @@ ActiveAdmin.register Office do
       f.input :name
       f.input :postindex
       f.input :city
+      f.input :phone
       f.input :street_address
     end
 

@@ -26,6 +26,16 @@ ActiveAdmin.register_page "Settings" do
           end
         end
       end
+      panel "Настройки сайта" do
+        fieldset do
+          ol do
+            li do
+              label 'Основной телефон'
+              f.input :name => "data[main_phone]", :value => Settings.main_phone
+            end
+          end
+        end
+      end
       f.input :type => 'submit', :value => 'Add'
     end
   end

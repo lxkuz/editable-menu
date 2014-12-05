@@ -4,10 +4,12 @@
     .cell.cell-contacts.h-1.fixed.js-fixed-top
       a.contacts-order href="#"  Заказать проект
       .clear-wrap
-        a.cell-phone href="callto:+78005556538" +7 (800) 555 65 38
+        a.cell-phone href="callto:#{Settings.main_phone}"
+          = Settings.main_phone
         .cell-phone-caption Телефон многоканальный
       .clear-wrap.contacts-row-2
-        a.cell-phone-add href="callto:74951344054"+7 495 134 40 54
+        a.cell-phone-add href="callto:#{@nearest_office.try(:phone)}"
+          = @nearest_office.try(:phone)
         .cell-order-call Заказать звонок
         .cell-location.this
           = link_to_modal "#offices-list-modal", id: 'office-select' do
