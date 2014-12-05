@@ -29,11 +29,22 @@ class ApplicationController < ActionController::Base
 
   def auto_select_office
     unless session[:office_id]
-      nearest_office = Geocoding::NearestOfficeFinder.new(request.remote_ip).nearest_office
-      session[:office_id] = nearest_office.try(:id)
+      nearest_office = find_nearest_office
     end
 
-    @nearest_office = nearest_office || Office.find_by(id: session[:office_id])
+    if nearest_office.present?
+      @nearest_office = nearest_office
+    elsif Office.active.find_by(id: session[:office_id]).present?
+      @nearest_office = Office.active.find_by(id: session[:office_id])
+    else
+      @nearest_office = find_nearest_office
+    end
+  end
+
+  def find_nearest_office
+    nearest_office = Geocoding::NearestOfficeFinder.new(request.remote_ip).nearest_office
+    session[:office_id] = nearest_office.try(:id)
+    nearest_office
   end
 
   def after_sign_in_path_for(user)

@@ -19,8 +19,18 @@ class Office < ActiveRecord::Base
   after_validation :geocode, if: ->(obj){ obj.address.present? }
   after_validation :set_user_request_recipients, on: [ :create, :update ]
 
+  scope :active, -> { where(active:true)}
+
   def address
     [postindex, city, street_address].compact.join(', ')
+  end
+
+  def activate!
+    self.update_columns(active: true)
+  end
+
+  def deactivate!
+    self.update_columns(active: false)
   end
 
   private

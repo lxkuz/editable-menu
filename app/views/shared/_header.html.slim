@@ -22,7 +22,7 @@
   /! /row
 
 #offices-list-modal style=("display: none; width: 450px;")
-  - Office.find_each do |office|
+  - Office.active.find_each do |office|
     .nav-section
       .nav-head
         = office.name

@@ -6,7 +6,7 @@ class Geocoding::NearestOfficeFinder
   end
 
   def nearest_office
-    Office.all.min_by { |office| distance_to_user_from(office) }
+    Office.active.all.min_by { |office| distance_to_user_from(office) }
   end
 
   private
