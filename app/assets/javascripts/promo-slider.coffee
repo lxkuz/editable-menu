@@ -26,7 +26,17 @@ $(document).ready ->
     promo_slider.next()
   $(document).on 'click', '.js-slider-prev', ->
     promo_slider.prev()
+
+  $('.promo-slider-wrapper').on 'submit', 'form', (e)->
+    $(e.target).block
+      message: '<h3>Отправка..</h3>'
+      css:
+        border: '3px solid ##252525'
+        padding: '15px'
+        borderRadius: '8px'
+
   $('.promo-slider-wrapper').on 'ajax:success', 'form, .index-slider-1 .destroy', (event, data, status, xhr)->
+    $(event.target).unblock
     promo_slider.destroy();
     $(".promo-slider-wrapper").html(data.slider_html)
     promo_slider = $(".index-slider-1").royalSlider(promoSliderOps).data('royalSlider');

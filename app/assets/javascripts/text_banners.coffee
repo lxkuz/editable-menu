@@ -30,6 +30,12 @@ $(document).ready ->
     e.preventDefault()
     form = e.target
     data = new FormData(form)
+    $(form).block
+      message: '<h3>Отправка..</h3>',
+      css:
+        border: '3px solid ##252525'
+        padding: '15px'
+        borderRadius: '8px'
     $.ajax
       url: form.action
       data: data
@@ -38,6 +44,7 @@ $(document).ready ->
       processData: false
       type: 'POST'
       success: (data) ->
+        $(form).unblock()
         $(data.insert_to).html(data.banner_html)
         $(data.insert_to).find('.uitabs').tabs()
         $(data.insert_to).find(".colorpicker").spectrum(colorpickerOps);

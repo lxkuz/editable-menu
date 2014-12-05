@@ -12,6 +12,12 @@ $(document).ready ->
   $(document).on 'submit', '.front-page-banner-form', (e) ->
     e.preventDefault()
     form = e.target
+    $(form).block
+      message: '<h3>Отправка..</h3>',
+      css:
+        border: '3px solid ##252525'
+        padding: '15px'
+        borderRadius: '8px'
     data = new FormData(form)
     $.ajax
       url: form.action
@@ -21,6 +27,7 @@ $(document).ready ->
       processData: false
       type: 'POST'
       success: (data) ->
+        $(form).unblock()
         $(data.insert_to).html(data.banner_html)
         if !data.is_bg_banner
           transforms = $('html').hasClass('csstransforms')

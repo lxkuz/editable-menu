@@ -26,7 +26,8 @@
 //= require owl.carousel.min
 //= require jquery.blueimp-gallery.min
 //= require spectrum
-//= require owl.carousel.min
+//= require jquery.blockUI
+
 //= require underscore
 //= require underscore.string
 //= require underscore.inflection
