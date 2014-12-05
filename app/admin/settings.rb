@@ -33,6 +33,11 @@ ActiveAdmin.register_page "Settings" do
               label 'Всего лестниц продано'
               f.input :name => "data[total_stairs_sold]", :value => Settings.total_stairs_sold
             end
+            li do
+              label 'Основной телефон'
+              f.input :name => "data[main_phone]", :value => Settings.main_phone
+            end
+            Settings
           end
         end
       end
