@@ -44,6 +44,11 @@ module FrontPageBannerHelper
     end
   end
 
-
+  def caption_class(banner)
+    str_class = ''
+    str_class << 'white ' if banner.font_color == 'rgb(255, 255, 255)' || banner.font_color == '#ffffff'
+    str_class << banner.valign if banner.valign.present?
+    str_class
+  end
 
 end

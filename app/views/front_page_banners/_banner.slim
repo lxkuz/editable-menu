@@ -39,7 +39,7 @@
 =link_to banner.url, class:"#{link_class(banner)} cell-over cell-table zoom" do
   span.cell-back
     = image_tag banner.image.url(banner_version(banner)), class: 'img-response'
-  span.cell-caption style="#{banner_conf(banner)}"
+  span.cell-caption style="#{banner_conf(banner)}" class="#{caption_class(banner)}"
     span.cell-head
       span.cell-name
         = banner.title
