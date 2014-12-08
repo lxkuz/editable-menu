@@ -37,7 +37,7 @@ class MenuItemsController < ApplicationController
 
   def index
     menu = params[:menu]
-    @menu_items = MenuItem.where menu: menu
+    @menu_items = MenuItem.where(menu: menu).reject{|item| item.target.active == false }
     render json: @menu_items.to_json(:include => :children)
   end
 

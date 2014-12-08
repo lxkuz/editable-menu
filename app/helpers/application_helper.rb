@@ -50,6 +50,7 @@ module ApplicationHelper
       content_tag :div, class: "#{klass} menu-editor" do
         content_tag :ul, class: options[:ul_class] do
           MenuItem.where(menu: name).map do |menu_item|
+            next if menu_item.target.try(:active) == false
             content_tag :li, class: options[:li_class] do
               concat link_to( menu_item.name, menu_item.url || url_for(menu_item.target))
             end
