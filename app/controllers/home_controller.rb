@@ -15,6 +15,7 @@ class HomeController < ApplicationController
 
   def dealers
     @dealers_page = ContentPage.find_or_create_by(page_url: 'dealers');
+    @dealer_request = DealerRequest.new
   end
 
   def contacts

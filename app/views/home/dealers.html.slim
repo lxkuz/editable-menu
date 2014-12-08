@@ -9,6 +9,7 @@
       - if can? :edit, @dealers_page
         p
           = link_to 'Редактировать', edit_admin_content_page_path(@dealers_page)
+      =render 'home/dealers_form'
       div *editable_in_place_data(@dealers_page, :content, :textarea)
         = @dealers_page.content.html_safe
     .delimeter

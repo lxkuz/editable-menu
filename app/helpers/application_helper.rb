@@ -3,7 +3,7 @@ module ApplicationHelper
     display_meta_tags(:site => 'МЛ', :reverse => true)
   end
 
-  def editable_in_place_data object, attribute, type=nil, nested_for=nil, nested_id=nil, nested_index=nil
+  def editable_in_place_data object, attribute, type=nil, nested_for=nil, nested_id=nil, nested_index=nil, url=nil
     if current_user.try(:admin?)
       {
           class: :ckeditable,
@@ -11,7 +11,7 @@ module ApplicationHelper
           contenteditable: "true",
           data: {
             object: obj_name(object),
-            url: url_for([:update_in_place, :admin, object]),
+            url: url.present? ? url : url_for([:update_in_place, :admin, object] ),
             attribute: attribute,
             type: type,
             nested_for: nested_for,

@@ -37,10 +37,25 @@ ActiveAdmin.register_page "Settings" do
               label 'Основной телефон'
               f.input :name => "data[main_phone]", :value => Settings.main_phone
             end
-            Settings
           end
         end
       end
+
+      panel "Форма дилеров" do
+        fieldset do
+          ol do
+            li do
+              label 'Заголовок'
+              f.input :name => "data[dealers_form_title]", :type => 'text', :value => Settings.dealers_form_title
+            end
+            li do
+              label 'Подзаголовок'
+              f.input :name => "data[dealers_form_subtitle]", :type => 'text', :value => Settings.dealers_form_subtitle
+            end
+          end
+        end
+      end
+
       f.input :type => 'submit', :value => 'Add'
     end
   end
@@ -50,5 +65,14 @@ ActiveAdmin.register_page "Settings" do
       Settings[k] = v
     end
     redirect_to :back, :notice => "Сохранено"
+  end
+
+  page_action :update_in_place, method: :post do
+    if request.xhr?
+      params['class'].each do |k, v|
+        Settings[k] = v
+      end
+      render :json => {:url => request.env['HTTP_REFERER'], :notice => 'Данные успешно обновлены'}
+    end
   end
 end

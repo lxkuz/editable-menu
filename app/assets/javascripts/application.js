@@ -55,4 +55,5 @@
 //= require front_page_banners
 //= require text_banners
 //= require contacts
+//= require become-dealer
 //= require global-notifications

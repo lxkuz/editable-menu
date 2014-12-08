@@ -6087,6 +6087,46 @@ body:last-child .blueimp-gallery-playing > .play-pause {
   background-color: #fff;
   margin-bottom: 55px;
 }
+.cell-order-head.small {
+  font-size: 35px;
+  line-height: 41px;
+}
+.cell-order-head.small.in-success {
+  line-height: 60px;
+}
+.cell-order-caption.small {
+  margin-bottom: 24px;
+}
+.form-col {
+  float: left;
+  width: 50%;
+}
+.form-col.left {
+  padding-right: 8px;
+}
+.form-col.right {
+  padding-left: 8px;
+}
+.close-form-wrap {
+  position: absolute;
+  left: 30px;
+  bottom: 27px;
+  font-size: 15px;
+  font-weight: 900;
+}
+.close-count {
+  display: inline-block;
+  margin-right: 16px;
+}
+.close-form {
+  cursor: pointer;
+  color: #de3a1a;
+  -webkit-transition: all 150ms linear 0ms;
+  transition: all 150ms linear 0ms;
+}
+.close-form:hover {
+  color: #252525;
+}
 .become-dealer-form textarea {
   height: 115px;
 }
