@@ -41,7 +41,7 @@ $(document).ready(function() {
         },
         submitHandler: function(form) {
             var data = new FormData(form);
-            $('.dealer-form-wrap').block({
+            $('body').block({
                 message: '<h3>Отправка..</h3>',
                 css: {
                     border: '3px solid ##252525',
@@ -56,7 +56,7 @@ $(document).ready(function() {
                 processData: false,
                 type: 'POST',
                 success: function(){
-                    $('.dealer-form-wrap').unblock();
+                    $('body').unblock();
                     show_success_form();
                 }
             });
