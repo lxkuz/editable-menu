@@ -81,7 +81,7 @@ ActiveAdmin.register Article do
       f.input :title, label: 'Заголовок'
       f.input :title_translit, label: 'URL'
       f.input :active, label: 'Активировано'
-      f.input :menu_title, label: 'Заголовок для меню'
+      f.input :menu_title, label: 'Название пункта меню'
       # TODO: Limit html attributes later
       f.input :content, as: :ckeditor # , commands: [ :link ], blocks: [ :h3, :p]
 
