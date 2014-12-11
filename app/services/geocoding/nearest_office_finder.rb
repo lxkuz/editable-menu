@@ -43,7 +43,7 @@ class Geocoding::NearestOfficeFinder
           return office.distance_to(user_coordinates)
         end
     rescue
-      user_coordinates = [55.75, 37.62]
+      user_coordinates ||= [55.75, 37.62]
       return office.distance_to(user_coordinates)
     end
   end

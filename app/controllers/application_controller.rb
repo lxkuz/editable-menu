@@ -29,7 +29,8 @@ class ApplicationController < ActionController::Base
   end
 
   def auto_select_office
-    unless session[:office_id]
+    unless session[:office_id] && !Office.active.find(session[:office_id]).nil?
+      #todo save to db lat lon coordinates and search closest without so much Geocoding requests
       nearest_office, city, no_city_office = Geocoding::NearestOfficeFinder.new(request.remote_ip).nearest_office_in_user_city
       session[:office_id] = nearest_office.try(:id)
       session[:user_city] = city
