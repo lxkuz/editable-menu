@@ -63,3 +63,9 @@
 .view-edit-icons {
   display: inline;
 }
+
+.blockUI.blockMsg.blockElement {
+  position: fixed !important;
+  top: 50% !important;
+  margin-top: -100px !important;
+}
