@@ -15,9 +15,10 @@ module FrontPageBannerHelper
 
   def link_class(banner)
     case banner.name
-      when 'top_left', 'center_right', 'bot_right' then 'h-7'
+      when 'top_left', 'center_right' then 'h-7'
       when 'bot_left_mini', 'top_right', 'center_left' then 'h-3'
       when 'bot_left' then 'h-4'
+      when 'bot_right' then 'h-7 fpb-overflow'
     end
   end
 

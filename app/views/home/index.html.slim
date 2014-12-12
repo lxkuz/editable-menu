@@ -44,9 +44,9 @@
         .btn.red.auth-back-btn.js-restore-back Вернуться к авторизации
   /! /auth cell
   .row
-    .col-xs-3.h-6.fpb.fpb-tl.fpb-overflow
+    .col-xs-3.h-6.fpb.fpb-tl
       - top_left_banner = FrontPageBanner.find_by_name('top_left')
-      #fpb-wrapper-tl
+      #fpb-wrapper-tl.fpb-overflow
         = render partial: 'front_page_banners/banner', locals: { banner: top_left_banner }
     .col-xs-7
       .cell.cell-contacts-helper.h-1
@@ -164,7 +164,7 @@
     #fpb-wrapper-bl.fpb.col-xs-7.h-4.cell.fpb-overflow
       = render partial: 'front_page_banners/banner', locals: { banner: bot_left_banner}
     - bot_right_banner = FrontPageBanner.find_by_name('bot_right')
-    #fpb-wrapper-br.fpb.col-xs-3.h-4.fpb-overflow
+    #fpb-wrapper-br.fpb.col-xs-3.h-4
       = render partial: 'front_page_banners/banner', locals: { banner: bot_right_banner}
   .row
     - bot_left_mini_banner = FrontPageBanner.find_by_name('bot_left_mini')
