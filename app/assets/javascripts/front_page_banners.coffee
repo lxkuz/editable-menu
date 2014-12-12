@@ -12,7 +12,7 @@ $(document).ready ->
   $(document).on 'submit', '.front-page-banner-form', (e) ->
     e.preventDefault()
     form = e.target
-    $('.wrapper').block
+    $('body>.wrapper').block
       message: '<h3>Отправка..</h3>',
       css:
         border: '3px solid ##252525'
@@ -27,7 +27,7 @@ $(document).ready ->
       processData: false
       type: 'POST'
       success: (data) ->
-        $('.wrapper').unblock()
+        $('body>.wrapper').unblock()
         $(data.insert_to).html(data.banner_html)
         if !data.is_bg_banner
           transforms = $('html').hasClass('csstransforms')

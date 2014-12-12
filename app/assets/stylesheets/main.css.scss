@@ -1919,6 +1919,9 @@ label.error {
   color: #6e6e6e;
   font-weight: 900;
 }
+.fpb-overflow {
+  overflow: hidden;
+}
 .slide {
   display: block;
   position: absolute;
@@ -2030,7 +2033,7 @@ label.error {
   display: none;
   padding: 10px;
   position: absolute;
-  z-index: 100;
+  z-index: 2;
   .fa {
     font-size: 25px;
     margin-right: 5px;
@@ -2040,6 +2043,10 @@ label.error {
       cursor: pointer;
     }
   }
+}
+.fpb-bg .controls {
+  z-index: 40;
+
 }
 .index-slider-1:hover .controls, .fpb:hover .controls, .tb:hover .controls {
   display: block;

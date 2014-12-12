@@ -28,7 +28,7 @@ $(document).ready ->
     promo_slider.prev()
 
   $('.promo-slider-wrapper').on 'submit', 'form', (e)->
-    $(e.target).block
+    $('body>.wrapper').block
       message: '<h3>Отправка..</h3>'
       css:
         border: '3px solid ##252525'
@@ -36,9 +36,10 @@ $(document).ready ->
         borderRadius: '8px'
 
   $('.promo-slider-wrapper').on 'ajax:success', 'form, .index-slider-1 .destroy', (event, data, status, xhr)->
-    $(event.target).unblock
+    $('body>.wrapper').unblock();
     promo_slider.destroy();
     $(".promo-slider-wrapper").html(data.slider_html)
     promo_slider = $(".index-slider-1").royalSlider(promoSliderOps).data('royalSlider');
     if data.goto?
       promo_slider.goTo(data.goto)
+  return false

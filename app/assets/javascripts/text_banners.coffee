@@ -30,7 +30,7 @@ $(document).ready ->
     e.preventDefault()
     form = e.target
     data = new FormData(form)
-    $('.wrapper').block
+    $('body>.wrapper').block
       message: '<h3>Отправка..</h3>',
       css:
         border: '3px solid ##252525'
@@ -44,7 +44,7 @@ $(document).ready ->
       processData: false
       type: 'POST'
       success: (data) ->
-        $('.wrapper').unblock()
+        $('body>.wrapper').unblock()
         $(data.insert_to).html(data.banner_html)
         $(data.insert_to).find('.uitabs').tabs()
         $(data.insert_to).find(".colorpicker").spectrum(colorpickerOps);

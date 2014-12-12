@@ -31,9 +31,12 @@
 .modal {
   z-index: 9999 !important;
   line-height: 1.5em;
+  overflow-x: visible;
+  overflow-y: auto;
 
   a.close-modal {
-    background: asset-url('modal/close.png') no-repeat 0 0;
+    display: none;
+//    background: asset-url('modal/close.png') no-repeat 0 0;
   }
 }
 
