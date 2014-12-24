@@ -1,11 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
-
-gem 'rails', '4.1.6'
+gem 'rails', '4.1.8'
 gem 'pg'
 gem 'uglifier', '>= 1.3.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'activeadmin', github: 'activeadmin'
 
@@ -20,7 +17,7 @@ gem 'annotate', '~> 2.6.5'
 gem 'friendly_id'
 gem 'truncate_html'
 gem 'rails-settings-cached', '0.4.1'
-gem 'whenever', :require => false
+gem 'whenever', require: false
 
 gem 'execjs'
 gem 'therubyracer'
@@ -78,6 +75,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'rails_12factor'
   gem 'unicorn'
 end
