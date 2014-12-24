@@ -45,7 +45,7 @@
   /! /auth cell
   .row
     .col-xs-3.h-6.fpb.fpb-tl
-      - top_left_banner = FrontPageBanner.find_by_name('top_left')
+      - top_left_banner = FrontPageBanner.find_or_create_by(name: 'top_left')
       #fpb-wrapper-tl.fpb-overflow
         = render partial: 'front_page_banners/banner', locals: { banner: top_left_banner }
     .col-xs-7
@@ -69,7 +69,7 @@
 
       .cell.cell-slider.h-2.promo-slider-wrapper
         = render partial: 'promo_slides/promo_slider'
-      - top_right_banner = FrontPageBanner.find_by_name('top_right')
+      - top_right_banner = FrontPageBanner.find_or_create_by(name: 'top_right')
       #fpb-wrapper-tr.fpb.fpb-overflow
         = render partial: 'front_page_banners/banner', locals: { banner: top_right_banner}
   .row
@@ -95,10 +95,10 @@
         .cell-order-caption Наши менеджеры перезвонят Вам в течении часа.
 
     .col-xs-3.h-4
-      - center_right_banner = FrontPageBanner.find_by_name('center_right')
+      - center_right_banner = FrontPageBanner.find_or_create_by(name: 'center_right')
       #fpb-wrapper-cr.fpb.fpb-overflow
         = render partial: 'front_page_banners/banner', locals: { banner: center_right_banner}
-    - center_left_banner = FrontPageBanner.find_by_name('center_left')
+    - center_left_banner = FrontPageBanner.find_or_create_by(name: 'center_left')
     #fpb-wrapper-cl.fpb.col-xs-7.h-3.cell.fpb-overflow
       = render partial: 'front_page_banners/banner', locals: { banner: center_left_banner}
 
@@ -160,14 +160,14 @@
             |  №4
         span.slider2-caption П-образная лестница в дом, 98 000 рублей
   .row
-    - bot_left_banner = FrontPageBanner.find_by_name('bot_left')
+    - bot_left_banner = FrontPageBanner.find_or_create_by(name: 'bot_left')
     #fpb-wrapper-bl.fpb.col-xs-7.h-4.cell.fpb-overflow
       = render partial: 'front_page_banners/banner', locals: { banner: bot_left_banner}
-    - bot_right_banner = FrontPageBanner.find_by_name('bot_right')
+    - bot_right_banner = FrontPageBanner.find_or_create_by(name: 'bot_right')
     #fpb-wrapper-br.fpb.col-xs-3.h-4
       = render partial: 'front_page_banners/banner', locals: { banner: bot_right_banner}
   .row
-    - bot_left_mini_banner = FrontPageBanner.find_by_name('bot_left_mini')
+    - bot_left_mini_banner = FrontPageBanner.find_or_create_by(name: 'bot_left_mini')
     #fpb-wrapper-blm.fpb.col-xs-4.h-3.cell.fpb-overflow
       = render partial: 'front_page_banners/banner', locals: { banner: bot_left_mini_banner}
     .col-xs-3.h-3

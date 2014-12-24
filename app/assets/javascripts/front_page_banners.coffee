@@ -13,7 +13,7 @@ $(document).ready ->
     e.preventDefault()
     form = e.target
     $('body>.wrapper').block
-      message: '<h3>Отправка..</h3>',
+      message: '<h3>Отправка...</h3>',
       css:
         border: '3px solid ##252525'
         padding: '15px'
