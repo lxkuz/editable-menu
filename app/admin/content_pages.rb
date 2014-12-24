@@ -3,8 +3,10 @@ ActiveAdmin.register ContentPage do
                 :menu_title,
                 :description,
                 :keywords,
+                :active,
                 :page_url,
                 :name,
+                :subtitle,
                 :content,
                 chapters_attributes: [
                   :id,
@@ -23,7 +25,12 @@ ActiveAdmin.register ContentPage do
 
     column :name
     column :page_url
+    column 'Активировано', :active
     actions
+  end
+
+  action_item only: :show do
+    link_to('Смотреть на сайте', url_for(resource))
   end
 
   show do |page|
@@ -34,9 +41,8 @@ ActiveAdmin.register ContentPage do
       row :page_url
       row :name
       row :menu_title
-      row :content do
-        raw page.content_formated
-      end
+      row :content
+      row :active
       row 'Страница на сайте' do
         link_to page.name, url_for(page)
       end
@@ -47,7 +53,9 @@ ActiveAdmin.register ContentPage do
     f.inputs do
       f.input :name
       f.input :menu_title
+      f.input :active, label: 'Активировано'
       f.input :page_url
+      f.input :subtitle if f.object.page_is?('dealers')
       f.input :content, as: :ckeditor
       f.inputs do
         f.has_many :chapters, allow_destroy: true, heading: 'Текстовые блоки' do |cf|
@@ -64,11 +72,26 @@ ActiveAdmin.register ContentPage do
     f.actions
   end
 
+  batch_action 'Активировать' do |selection|
+    ContentPage.find(selection).each do |page|
+      page.activate!
+    end
+    redirect_to collection_path
+  end
+
+  batch_action 'Дективировать' do |selection|
+    ContentPage.find(selection).each do |page|
+      page.deactivate!
+    end
+    redirect_to collection_path
+  end
+
+
   member_action :update_in_place, method: :post do
     if request.xhr?
       content_page = ContentPage.find_by_slug(params[:id])
       if content_page.update_attributes(permitted_params[:content_page])
-        render :json => {:url => content_page_url(content_page)}
+        render :json => {:url => content_page_url(content_page), :notice => 'страница успешно обновлена'}
       end
     end
   end

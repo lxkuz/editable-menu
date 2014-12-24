@@ -84,15 +84,32 @@ CKEDITOR.editorConfig = function( config )
             }
         }
     });
-    config.toolbar = 'Rich'
+    config.templates_files = [ '/ckeditor/templates_config.js' ];
+    config.templates_replaceContent = false;
+
+    config.toolbar = 'Rich';
     config.toolbar_Rich =[
         ['Cut','Copy','Paste'], ['Undo','Redo'],
-        ['Bold','Italic','Underline','Strike'], ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'], [ 'Link','Unlink','Anchor' ],
-        [ 'Image','Table','Snippet']
+        ['Bold','Italic','Underline','Strike'],
+        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+        ['Format'],
+        [ 'Link','Unlink','Anchor' ],
+        [ 'Image','Table', 'Source', 'Templates']
     ];
     config.toolbar_Poor =[
         ['Cut','Copy','Paste'], ['Undo','Redo']
     ];
+    config.toolbar_RichText =[
+        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+        { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+        { name: 'paragraph', groups: [ 'indent', 'blocks', 'align', 'bidi' ], items: ['Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'] },
+        { name: 'styles', items: [ 'Styles', 'Format', 'TextColor', 'FontSize' ] }
+
+
+    ];
+    config.allowedContent = true;
     config.forcePasteAsPlainText = true;
-    config.extraPlugins = 'snippet';
+
+    config.extraPlugins = 'image2';
+    config.removePlugins =  'image';
 }

@@ -225,3 +225,8 @@ ContentPage.create!(
                 page_url: 'rating_stairs',
                 content:  'Рейтинг лестниц'
 )
+ContentPage.create!(
+                name:     'Дилерам',
+                page_url: 'dealers',
+                content:  'Страница дилеров'
+)

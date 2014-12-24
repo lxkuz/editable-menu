@@ -1,0 +1,25 @@
+- if can? :manage, PromoSlide
+  .popup
+    = render partial: 'promo_slides/slide_form', locals: { slide: PromoSlide.new }
+    - PromoSlide.all.each do |slide|
+      = render partial: 'promo_slides/slide_form', locals: { slide: slide }
+
+.index-slider-1.royalSlider
+  - if can? :manage, PromoSlide
+    - if !PromoSlide.all.any?
+      .slide
+        .controls
+          a.add.fa-plus.fa href="#new-promo-slide" rel="modal:open"
+  - PromoSlide.all.each do |slide|
+    .slide
+      - if can? :manage, PromoSlide
+        .controls
+          a.edit.fa-edit.fa href="#edit-promo-slide-#{slide.id}" rel="modal:open"
+          a.add.fa-plus.fa href="#new-promo-slide" rel="modal:open"
+          = link_to '', slide, method: :delete, class: 'fa-trash fa destroy', remote: true, data: {confirm: 'Подтверждаете удаление этого слайда?'}
+      = link_to slide.url, class: 'slide-url' do
+        span.slide-header
+          =slide.title_italic ? content_tag(:i, slide.title) : slide.title
+        span.slide-caption
+          =slide.text
+          span.arrow.next

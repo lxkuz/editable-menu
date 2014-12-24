@@ -16,11 +16,11 @@
  *= require jquery.modal
  *= require jquery.autocomplete
  *= require jquery-ui
-
+ *= require spectrum
  *= require menu-editor
  *= require inline-edit
-
-
+ *= require owl.carousel
+ *= require pnotify.core
  *= require_self
  */
 
@@ -28,12 +28,15 @@
 @import 'libs/font-awesome';
 @import 'custom';
 
-#offices-list-modal.modal {
+.modal {
   z-index: 9999 !important;
   line-height: 1.5em;
+  overflow-x: visible;
+  overflow-y: auto;
 
   a.close-modal {
-    background: asset-url('modal/close.png') no-repeat 0 0;
+    display: none;
+//    background: asset-url('modal/close.png') no-repeat 0 0;
   }
 }
 

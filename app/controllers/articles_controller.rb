@@ -3,6 +3,7 @@ class ArticlesController < ResourcesController
 
   def index
     @articles_page = Article.find_or_create_by(title_translit: 'articles');
+    @articles = collection
   end
 
   def show
@@ -15,7 +16,7 @@ class ArticlesController < ResourcesController
   protected
 
   def collection
-    @articles ||= end_of_association_chain.by_position.limit(10)
+    @articles.present? ? @articles.active : end_of_association_chain.active.by_position.limit(10)
   end
 end
 

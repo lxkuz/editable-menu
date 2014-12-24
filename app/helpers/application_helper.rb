@@ -3,7 +3,7 @@ module ApplicationHelper
     display_meta_tags(:site => 'МЛ', :reverse => true)
   end
 
-  def editable_in_place_data object, attribute, type=nil, nested_for=nil, nested_id=nil, nested_index=nil
+  def editable_in_place_data object, attribute, type=nil, nested_for=nil, nested_id=nil, nested_index=nil, url=nil
     if current_user.try(:admin?)
       {
           class: :ckeditable,
@@ -11,7 +11,7 @@ module ApplicationHelper
           contenteditable: "true",
           data: {
             object: obj_name(object),
-            url: url_for([:update_in_place, :admin, object]),
+            url: url.present? ? url : url_for([:update_in_place, :admin, object] ),
             attribute: attribute,
             type: type,
             nested_for: nested_for,
@@ -50,6 +50,7 @@ module ApplicationHelper
       content_tag :div, class: "#{klass} menu-editor" do
         content_tag :ul, class: options[:ul_class] do
           MenuItem.where(menu: name).map do |menu_item|
+            next if menu_item.target.try(:active) == false
             content_tag :li, class: options[:li_class] do
               concat link_to( menu_item.name, menu_item.url || url_for(menu_item.target))
             end

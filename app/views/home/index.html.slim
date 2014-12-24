@@ -1,8 +1,8 @@
 .l-centered.left.banner-wrap-section.js-content-width
-  .banner-wrap
-    .banner-outer
-      a#banner href="#"
-        = image_tag 'content/banner.jpg'
+  .banner-wrap.fpb.fpb-bg
+    - bg_banner = FrontPageBanner.find_or_create_by(name: :bg)
+    #fpb-wrapper-bg
+      = render partial: 'front_page_banners/bg_banner', locals: { banner: bg_banner }
 
 .l-section.left.section-wrapper
   .auth-cell.js-auth-cell
@@ -44,18 +44,10 @@
         .btn.red.auth-back-btn.js-restore-back Вернуться к авторизации
   /! /auth cell
   .row
-    .col-xs-3.h-6
-      a.h-7.cell-over.zoom href='#'
-        span.cell-back
-          = image_tag 'index-back-march.jpg', class: 'img-response'
-        span.cell-caption.black
-          span.cell-head
-            span.cell-name Маршевые
-            br
-            | лестницы
-          span.cell-price
-            ' от 19 000
-            span.cell-price-note рублей
+    .col-xs-3.h-6.fpb.fpb-tl
+      - top_left_banner = FrontPageBanner.find_or_create_by(name: 'top_left')
+      #fpb-wrapper-tl.fpb-overflow
+        = render partial: 'front_page_banners/banner', locals: { banner: top_left_banner }
     .col-xs-7
       .cell.cell-contacts-helper.h-1
       .cell.cell-contacts.h-1.fixed.js-fixed-top
@@ -75,60 +67,15 @@
           .cell-adr
             = @nearest_office.street_address
 
-      .cell.cell-slider.h-2
-        .index-slider-1.royalSlider
-          a.slide href='#'
-            span.slide-header
-              | Лучшие лестницы Москвы
-              br только у нас!
-            span.slide-caption
-              | скидки до 30%
-              span.arrow.next
-          a.slide href="#"
-            span.slide-header.italic
-              | Закажите лестницу онлайн
-              br и получите скидку
-            span.slide-caption
-              | скидки до 30%
-              span.arrow.next
-          a.slide href="#"
-            span.slide-header.italic
-              | Первый дисконт магазин
-              br готовых лестниц
-            span.slide-caption
-              | от 23 000
-              span.slide-price-caption рублей
-              span.arrow.next
-          a.slide href='#'
-            span.slide-header
-              | Лучшие лестницы Москвы
-              br только у нас!
-            span.slide-caption
-              | скидки до 30%
-              span.arrow.next
-      a.h-3.cell.zoom href='#'
-        span.cell-back
-          = image_tag 'index-back-pshaped.jpg', class: 'img-response'
-        span.cell-caption.white.bottom
-          span.cell-head
-            span.cell-name
-              ' П-образные
-            | лестницы
-          span.cell-price
-            ' от 29 000
-            span.cell-price-note рублей
+      .cell.cell-slider.h-2.promo-slider-wrapper
+        = render partial: 'promo_slides/promo_slider'
+      - top_right_banner = FrontPageBanner.find_or_create_by(name: 'top_right')
+      #fpb-wrapper-tr.fpb.fpb-overflow
+        = render partial: 'front_page_banners/banner', locals: { banner: top_right_banner}
   .row
-    .col-xs-3.h-4.p-1
-      a.h-3.cell.cell-all-actions href='#'
-        span.cell-back style=("background: url(#{image_path('index-back-actions.jpg')});")
-        span.cell-center
-          span.cell-center-inner
-            | Все акции
-            br
-            | и скидки
-            br
-            | на выбор!
-
+    - top_text_banner = TextBanner.find_or_create_by(name: :t)
+    .col-xs-3.h-4.p-1.tb#tb-wrapper-t
+      = render partial: 'text_banners/banner', locals: { banner: top_text_banner}
     .col-xs-4.h-4.cell.cell-order
       .js-feedback-form
         h4.cell-order-head
@@ -148,49 +95,20 @@
         .cell-order-caption Наши менеджеры перезвонят Вам в течении часа.
 
     .col-xs-3.h-4
-      a.h-7.cell-over.zoom href='#'
-        span.cell-back
-          = image_tag('index-back-spiral.jpg', class: 'img img-response')
-        span.cell-caption.black
-          span.cell-head
-            span.cell-name Винтовые
-            br
-              | лестницы
-          span.cell-price
-            ' от 19 000
-            span.cell-price-note рублей
-    a.col-xs-7.h-3.cell.zoom href='#'
-      span.cell-back
-        = image_tag('index-back-gshaped.jpg', class: 'img img-response')
-      span.cell-caption.white.bottom
-        span.cell-head.big
-          span.cell-name
-            'Г-образные
-          | лестницы
-        span.cell-price
-          ' от 18 000
-          span.cell-price-note рублей
+      - center_right_banner = FrontPageBanner.find_or_create_by(name: 'center_right')
+      #fpb-wrapper-cr.fpb.fpb-overflow
+        = render partial: 'front_page_banners/banner', locals: { banner: center_right_banner}
+    - center_left_banner = FrontPageBanner.find_or_create_by(name: 'center_left')
+    #fpb-wrapper-cl.fpb.col-xs-7.h-3.cell.fpb-overflow
+      = render partial: 'front_page_banners/banner', locals: { banner: center_left_banner}
+
   .row
-    .col-xs-5.h-4.cell.cell-about
-      h4.cell-about-head
-        | Что такое Московские
-        br лестницы?
-      .cell-about-text
-        | Это первый дискаунтер лестниц, где вы можете купить лестницу для дома по настоящему дёшево: по цене на 15-30% ниже заявленной стоимости производителей с доставкой по Москве на следующий день. Все проверенные годами бренды лестниц в одном месте с отличными скидками.
-      = link_to 'Больше о компании', content_page_path(:about, anchor: 'about-company'), class: 'more-about-company'
-    = link_to content_page_path(:about, anchor: 'production'), class: 'col-xs-5 h-4 cell cell-production' do
-      span.cell-back style=("background: url(#{image_path('index-back-production.jpg')});")
-      span.cell-center
-        span.cell-center-inner
-          span.cell-center-text.in-prod
-            | Собственное
-            br
-            | производство
-            br
-            | лестниц и
-            br
-            | комплектующих
-          span.prod-view-more Узнать больше
+    - center_left_text_banner = TextBanner.find_or_create_by(name: :cl)
+    .col-xs-5.h-4.tb#tb-wrapper-cl
+      = render partial: 'text_banners/banner', locals: {banner: center_left_text_banner}
+    - center_left_text_banner = TextBanner.find_or_create_by(name: :cr)
+    .col-xs-5.h-4.tb#tb-wrapper-cr
+      = render partial: 'text_banners/banner', locals: {banner: center_left_text_banner}
   .h-1.cell.cell-partners.clear-wrap
     h4.cell-partners-head Все лестницы в одном месте
     .cell-partners-slider
@@ -242,39 +160,16 @@
             |  №4
         span.slider2-caption П-образная лестница в дом, 98 000 рублей
   .row
-    a.col-xs-7.h-4.cell.zoom href='#'
-      span.cell-back
-        = image_tag('index-back-elite.jpg', class: 'img img-response')
-      span.cell-caption.black
-        span.cell-head
-          span.cell-name
-            ' Элитные
-          | лестницы
-        span.cell-price
-          ' от 120 000
-          span.cell-price-note рублей
-    .col-xs-3.h-4
-      a.h-7.cell-over.zoom href='#'
-        span.cell-back
-          = image_tag('index-back-econom.jpg', class: 'img img-response')
-        span.cell-caption.black
-          span.cell-head
-            span.cell-name Для самых экономных
-          span.cell-price
-            ' от 19 000
-            span.cell-price-note рублей
+    - bot_left_banner = FrontPageBanner.find_or_create_by(name: 'bot_left')
+    #fpb-wrapper-bl.fpb.col-xs-7.h-4.cell.fpb-overflow
+      = render partial: 'front_page_banners/banner', locals: { banner: bot_left_banner}
+    - bot_right_banner = FrontPageBanner.find_or_create_by(name: 'bot_right')
+    #fpb-wrapper-br.fpb.col-xs-3.h-4
+      = render partial: 'front_page_banners/banner', locals: { banner: bot_right_banner}
   .row
-    a.col-xs-4.h-3.cell.zoom href='#'
-      span.cell-back
-        = image_tag('index-back-smart.jpg', class: 'img img-response')
-      span.cell-caption.white.bottom
-        span.cell-head.big
-          span.cell-name
-            ' Умное
-          | предложение
-        span.cell-price
-          ' от 42 000
-          span.cell-price-note рублей
+    - bot_left_mini_banner = FrontPageBanner.find_or_create_by(name: 'bot_left_mini')
+    #fpb-wrapper-blm.fpb.col-xs-4.h-3.cell.fpb-overflow
+      = render partial: 'front_page_banners/banner', locals: { banner: bot_left_mini_banner}
     .col-xs-3.h-3
       .h-7.cell-over.cell-news
         .cell-news-head Новости
@@ -300,35 +195,40 @@
     .col-xs-3.h-3
   .row
     .col-xs-4
-      a.h-3.cell.cell-hits href='#'
-        span.cell-center
-          span.cell-center-inner
-            span.cell-hits-head Хиты продаж
-            span.cell-hits-text
-              | В наличии сегодня
-              br
-              | осталось всего 4 лестницы
-              br
-              ' по ценам —
-              span.white
-                ' от 22 000
-                span.note рублей
-            span.more-hits href='#'  Подробнее
+      - bottom_left_text_banner = TextBanner.find_or_create_by(name: :bl)
+      .h-3.cell.tb#tb-wrapper-bl
+        = render partial: 'text_banners/banner', locals: {banner: bottom_left_text_banner}
+      /a.h-3.cell.cell-hits href='#'
+      /  span.cell-center
+      /    span.cell-center-inner
+      /      span.cell-hits-head Хиты продаж
+      /      span.cell-hits-text
+      /        | В наличии сегодня
+      /        br
+      /        | осталось всего 4 лестницы
+      /        br
+      /        ' по ценам —
+      /        span.white
+      /          ' от 22 000
+      /          span.note рублей
+      /      span.more-hits href='#'  Подробнее
       .h-1.cell.cell-payment
         .pay-icons
           = image_tag('content/pay1.jpg', class: 'img')
           = image_tag('content/pay2.jpg', class: 'img')
         .cell-pay-head Способы оплаты
     .col-xs-3
-    a.col-xs-3.h-4.cell.cell-credit href='#'
-      span.cell-back style=("background: url(#{image_path('index-back-credit.jpg')});")
-      span.cell-caption.white.bottom
-        span.cell-head.big.cell-credit-head
-          span.cell-name В кредит
-        span.cell-price
-          span.cell-price-note
-            | оформление кредита
-            br на лестницу
+    - bottom_right_text_banner = TextBanner.find_or_create_by(name: :br)
+    .col-xs-3.h-4.cell.tb#tb-wrapper-br
+      = render partial: 'text_banners/banner', locals: {banner: bottom_right_text_banner}
+      /span.cell-back style=("background: url(#{image_path('index-back-credit.jpg')});")
+      /span.cell-caption.white.bottom
+      /  span.cell-head.big.cell-credit-head
+      /    span.cell-name В кредит
+      /  span.cell-price
+      /    span.cell-price-note
+      /      | оформление кредита
+      /      br на лестницу
 
 #offices-list-modal style=("display: none; width: 450px;")
   - Office.active.find_each do |office|

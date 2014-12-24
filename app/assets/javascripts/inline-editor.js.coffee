@@ -51,7 +51,6 @@ $(document).ready ->
       $.each CKEDITOR.instances, (instance) ->
         CKEDITOR.instances[instance].firstSnapshot = CKEDITOR.instances[instance].getData()
         CKEDITOR.instances[instance].resetDirty()
-      alert('Изменения сохранены')
     else
       window.location = responce.url
 

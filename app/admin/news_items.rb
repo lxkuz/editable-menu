@@ -2,6 +2,7 @@ ActiveAdmin.register NewsItem do
   permit_params :title,
                 :description,
                 :keywords,
+                :active,
                 :name,
                 :body,
                 :user_id,
@@ -9,6 +10,10 @@ ActiveAdmin.register NewsItem do
 
   config.sort_order = 'updated_at'
   config.filters = false
+
+  action_item only: :show do
+    link_to('Смотреть на сайте', news_path(resource))
+  end
 
   index do
     selectable_column
@@ -18,6 +23,7 @@ ActiveAdmin.register NewsItem do
       news_item.body.truncate 200
     end
     column :updated_at
+    column 'Активировано', :active
 
     actions
   end
@@ -28,11 +34,10 @@ ActiveAdmin.register NewsItem do
       row :description
       row :keywords
       row :name
-      row :body do
-        raw news_item.body_formated
-      end
+      row :body
       row :user_id
       row :custom_url
+      row :active
       row 'Страница на сайте' do
         link_to news_item.name, news_path(news_item)
       end
@@ -44,6 +49,7 @@ ActiveAdmin.register NewsItem do
     f.inputs do
       f.input :name
       f.input :custom_url
+      f.input :active, label: 'Активировано'
       f.input :body, as: :ckeditor
       f.input :title
       f.input :description, input_html: { rows: 2 }
@@ -61,11 +67,27 @@ ActiveAdmin.register NewsItem do
     end
   end
 
+  batch_action 'Активировать' do |selection|
+    NewsItem.find(selection).each do |n|
+      n.activate!
+    end
+    redirect_to collection_path
+  end
+
+  batch_action 'Дективировать' do |selection|
+    NewsItem.find(selection).each do |n|
+      n.deactivate!
+    end
+    redirect_to collection_path
+  end
+
+
+
   member_action :update_in_place, method: :post do
     if request.xhr?
       news_item = NewsItem.find(params[:id])
       if news_item.update_attributes(permitted_params[:news_item])
-        render :json => {:url => news_url(news_item)}
+        render :json => {:url => news_url(news_item), :notice => 'Новость успешно обновлена'}
       end
     end
   end

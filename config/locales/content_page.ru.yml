@@ -5,8 +5,9 @@ ru:
 
     attributes:
       content_page:
-        name: Имя страницы
-        menu_title: Заголовок для меню
+        name: Заголовок
+        menu_title: Название пункта меню
+        subtitle: Подзаголовок
         page_url: URL
         title: Метатег title
         description: Описание (не больше 255 символов)

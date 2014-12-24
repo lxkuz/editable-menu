@@ -1,13 +1,10 @@
 $(document).ready(function() {
     // show hide banner
-    var banner = $('#banner'),
-        banner_img = $('#banner img'),
-        banner_outer = $('.banner-outer'),
-        banner_wrap = $('.banner-wrap');
+    var banner = $('#banner')
 
     function detect_banner_slide() {
         var content_width = 1000 + parseInt($('.js-content-width').css('margin-left')),
-            with_half_banner = content_width + banner_img.outerWidth()*0.5,
+            with_half_banner = content_width + $('#banner img').outerWidth()*0.5,
             window_width = $(window).width();
         if(window_width < with_half_banner) {
             banner.addClass('slided');
@@ -29,40 +26,36 @@ $(document).ready(function() {
     } else {
         trans = false;
     }
-    banner
-        .hover(function() {
-            if($(this).hasClass('slided')) {
+    $(document).on('mouseenter', '#banner',  function () {
+            if ($(this).hasClass('slided')) {
                 $(this).addClass('hover');
                 show_banner();
             }
-        }, function() {
+    });
+    $(document).on('mouseleave', '#banner',  function () {
             $(this).removeClass('hover');
             hide_banner();
-        });
+    });
 
     function show_banner() {
         var content_width = 1000 + parseInt($('.js-content-width').css('margin-left')),
             window_width = $(window).width(),
-            banner_width = banner_img.outerWidth(),
+            banner_width = $('#banner img').outerWidth(),
             banner_shift = -(banner_width-(window_width - content_width));
         if(trans) {
-            banner_img
-                .addClass('open')
+            $('#banner img').addClass('open')
                 .css({
                     '-webkit-transform': 'translateX(' + banner_shift + 'px)',
                     '-ms-transform': 'translateX(' + banner_shift + 'px)',
                     'transform': 'translateX(' + banner_shift + 'px)'
                 });
         } else {
-            banner_img
-                .addClass('open')
-                .stop(1)
-                .animate({left: banner_shift},500);
+            $('#banner img').addClass('open').stop(1).animate({left: banner_shift},500);
         }
     }
     function hide_banner() {
         if(trans) {
-            banner_img
+            $('#banner img')
                 .removeClass('open')
                 .css({
                     '-webkit-transform': 'translateX(' + 0 + 'px)',
@@ -70,7 +63,7 @@ $(document).ready(function() {
                     'transform': 'translateX(' + 0 + 'px)'
                 });
         } else {
-            banner_img
+            $('#banner img')
                 .removeClass('open')
                 .stop(1)
                 .animate({left: 0},500);
@@ -78,7 +71,7 @@ $(document).ready(function() {
     }
 
     $(window).resize(function() {
-        if(banner_img.hasClass('open')) {
+        if($('#banner img').hasClass('open')) {
             show_banner();
         }
     });
@@ -94,40 +87,6 @@ $(document).ready(function() {
         return M[0];
         }
     if( get_browser() == 'Firefox') {$('html').addClass('ff');}
-
-
-    // slider
-    var index_slider_1 = $(".index-slider-1").royalSlider({
-        arrowsNav: false,
-        controlNavigationSpacing: 0,
-        controlNavigation: 'bullets',
-        keyboardNavEnabled: true,
-        // autoHeight: true,
-        autoScaleSlider: true,
-        autoScaleSliderWidth: 700,
-        autoScaleSliderHeight: 200,
-        imageScalePadding: 0,
-        slidesSpacing: 0,
-        transitionSpeed: 500,
-        imageScaleMode: 'fit',
-        autoPlay: {
-            enabled: false,
-            delay: 4000,
-            pauseOnHover: true,
-            stopAtAction: false,
-        },
-        sliderDrag: true,
-        sliderTouch: true,
-        navigateByClick: false,
-    }).data('royalSlider');
-
-    $(document).on('click', '.js-slider-next', function() {
-    	index_slider_1.next();
-    });
-    $(document).on('click', '.js-slider-prev', function() {
-    	index_slider_1.prev();
-    });
-
 
     // index slide 2
     var index_slider_2 = $(".index-slider-2").royalSlider({
@@ -176,19 +135,20 @@ $(document).ready(function() {
 
     // partners slider
     $('.index-partners-slider').owlCarousel({
-        pagination: true,
+        dots: true,
         items : 4,
-        itemsDesktop : [1199,4],
-        itemsDesktopSmall : [1100,4],
-        itemsTablet: [768,4],
-        itemsMobile : [479,4],
-        navigation: true,
-        navigationText: ["",""],
+//        itemsDesktop : [1199,4],
+//        itemsDesktopSmall : [1100,4],
+//        itemsTablet: [768,4],
+//        itemsMobile : [479,4],
+        nav: true,
+        navText: ["",""],
         responsiveRefreshRate: 50,
         slideSpeed: 300,
-        rewindNav: false,
-        autoPlay: 3000,
-        stopOnHover: true
+//        rewindNav: false,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true
     });
     $('.index-partners-slider .owl-prev, .index-partners-slider .owl-next')
     	.addClass('this')
@@ -203,7 +163,7 @@ $(document).ready(function() {
     var transition = $('html').hasClass('csstransitions');
     var cssable = transforms && transition;
     // image zoom on hover
-    $('.zoom').hover(function() {
+    $('.zoom').on('mouseenter', function() {
     	if(cssable) {
     		$(this)
     			.find('.cell-back')
@@ -220,7 +180,8 @@ $(document).ready(function() {
 	    			},1500);
     	}
     	// console.log('in');
-    }, function() {
+    });
+    $('.zoom').on('mouseleave', function() {
     	if(cssable) {
     		$(this)
     			.find('.cell-back')

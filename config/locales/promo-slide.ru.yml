@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    models:
+      promo_slide: Красный слайнер на главной
+    attributes:
+      promo_slide:
+        title: Заголовок
+        text: Текст
+        url: Ссылка

@@ -1,0 +1,34 @@
+.l-centered.left.section-container
+  = render 'shared/header'
+  .row.content-section.typo-main.typo-dealer
+    .col-xs-8.col-xs-offset-1
+      h1.cont-head.nooffice-header
+        ="Увы, в вашем городе "
+        - if session[:user_city] != 'none'
+          a.red-black href="#"
+            =' session[:user_city]
+        |пока нет дилеров
+      .cont-head-caption.in-nooffice
+        |Но вы можете заказать лестницу по вашим параметрам напрямую
+        br
+        = "с центрального офиса в Москве. Доставка "
+        - if session[:user_city] != 'none'
+            ="до #{session[:user_city]} "
+        |бесплатная!
+      a.btn.red.in-nooffice href="#"
+        |Заказть проект онлайн
+      .right-wider.nooffice-imgwrap
+        =image_tag 'no-office-img.jpg', class: 'img-response'
+        .nooffice-caption
+          .nooffice-head
+            |Мы активно ищем
+            br
+            |партнеров-дилеров
+            br
+            - if session[:user_city] != 'none'
+              ="в городе "
+              =session[:user_city]
+
+          a.nooffice-link href="/dealers"
+            |Как стать нашим дилером
+

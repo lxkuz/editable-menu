@@ -1,0 +1,116 @@
+.l-centered.left.section-container
+  = render 'shared/header'
+
+  .row.content-section.p-top.typo-cont.typo-main
+    .col-xs-7.col-xs-offset-1.clear-wrap
+      h1.cont-head.cur-office-head
+        |Московские лестницы
+        br
+        .inline-block-mb *editable_in_place_data(@office, :name)
+          = @office.name
+      .contof-left
+        .plike
+          .inline-block.bold *editable_in_place_data(@office, :manager)
+            = @office.manager.to_s
+          =", "
+          =link_to @office.city, '#', class: 'red-black bold'
+        .plike
+          .inline-block *editable_in_place_data(@office, :postindex)
+            = @office.postindex
+          =", "
+          .inline-block *editable_in_place_data(@office, :city)
+            = @office.city
+          =", "
+          .inline-block *editable_in_place_data(@office, :street_address)
+            = @office.street_address
+
+        -if @office.work_hours.present?
+          .inline-block *editable_in_place_data(@office, :work_hours, :textarea)
+            = @office.work_hours.html_safe
+
+        .stair-count-wrap
+          b
+            |Мы уже продали
+            span.stair-count
+              -Settings.total_stairs_sold.to_s.split("").each do |num|
+                span.stair-count-item=num
+            |лестниц
+
+      .contof-right
+        .plike
+          =link_to 'Распечатать контакты', '#', onclick: 'window.print();return false;', class: 'to-print cont-print'
+        - if @office.phone_numbers.present?
+          .plike
+            .inline-block *editable_in_place_data(@office, :phone_numbers, :textarea)
+              = @office.phone_numbers.html_safe
+        .plike
+          ="Электронная почта: "
+          =mail_to @office.email, @office.email, class:"red-black"
+        .social-set.in-contacts.dark
+          =link_to '', @office.fb_url, class:"social-icon fb", target: :blank if @office.fb_url.present?
+          =link_to '', @office.tw_url, class:"social-icon tw", target: :blank if @office.tw_url.present?
+          =link_to '', @office.vk_url, class:"social-icon vk", target: :blank if @office.vk_url.present?
+          =link_to '', @office.insta_url, class:"social-icon insta", target: :blank if @office.insta_url.present?
+    .col-xs-1
+      .rate
+        .rate-num *editable_in_place_data(@office, :rating)
+          =@office.rating
+        |рейтинг
+      .rate-caption
+        |Средняя оценка
+        br
+        ="из "
+        .inline-block *editable_in_place_data(@office, :total_votes)
+          =@office.total_votes
+      - if @office.certificate.present?
+        =link_to @office.certificate.url(:zoomed), class:'sert-photo', 'data-gallery' => '' do
+          =image_tag @office.certificate.url(:thumb)
+
+  .row.typo-main.no-print.slider-row
+    .col-xs-8.col-xs-offset-1
+      - if @office.office_slides.any?
+      .cont-slider-wrap.right-wider
+        #cont-slider.cont-slider.royalSlider
+          - @office.office_slides.each do |slide|
+            .cont-slide.item *{style: "width:#{slide.width}px;"}
+              = image_tag slide.image.url(:slider), class: 'img-response'
+
+
+      .plike *editable_in_place_data(@office, :description, :textarea)
+        = @office.description.html_safe if @office.description.present?
+      .cont-map-wrap.right-wider
+        iframe width="100%" height="555" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAYI2MXaa2ouQYzyYb2m8fsJi7BDimb8Ys&q=#{[@office.postindex, @office.city, @office.street_address ].join(', ')}"
+
+  .row.typo-main.only-print
+    .col-xs-8.col-xs-offset-1
+      img src="http://maps.google.com/maps/api/staticmap?center=#{[@office.postindex, @office.city, @office.street_address ].join(', ')}&maptype=roadmap&zoom=15&size=800x500&markers=#{[@office.postindex, @office.city, @office.street_address ].join(', ')}" alt="">
+
+
+  .row.typo-path.path-section
+    .col-xs-8.col-xs-offset-1
+      .plike *editable_in_place_data(@office, :directions, :textarea)
+        = @office.directions.html_safe if @office.directions.present?
+    .delimeter
+
+  - if @office.reviews.any?
+    .row.static-rev-section
+      .col-xs-8.col-xs-offset-1
+        .reviews-wrap
+          h2.rev-head
+            |Отзывы покупателей
+          - @office.reviews.each_with_index do |review, i|
+            .rev-item.clear-wrap
+              .rev-photo
+                .rev-photo-wrap style="background: url(#{review.avatar.url(:thumb)}) no-repeat 50% 50%;">
+              .rev-text.typo-main
+                .inline-block *editable_in_place_data(@office, :body, :textarea, :reviews_attributes, review.id, i)
+                  = review.body.html_safe
+                .plike.person-name *editable_in_place_data(@office, :author, nil, :reviews_attributes, review.id, i)
+                  = review.author
+
+  /.row.complaint-section
+  /  .col-xs-8.col-xs-offset-1
+  /    .complaint-wrap
+  /      .btn.in-complaint
+  /        |Пожаловаться на дилера
+  /      |Наболело? Напишите о некорректных или неверных данных дилера.

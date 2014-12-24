@@ -1,6 +1,7 @@
 .inline-admin-attributes {
   margin-top: 15px;
   border: 1px solid #6e6e6e;
+  clear: both;
   >div {
     padding: 10px;
   }
@@ -38,4 +39,8 @@
     border-radius: 2px;
     margin-bottom: 15px;
   }
+}
+.ckeditable[data-type=textarea] {
+  overflow: auto;
+  width: 100%
 }

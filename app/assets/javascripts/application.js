@@ -12,18 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.min
 //= require jquery.remotipart
-//= require jquery-ui
 //= require jquery.modal
 //= require modernizr-2.6.2-respond-1.1.0.min
 //= require jquery.royalslider.min
 //= require jquery.scrollTo.min
 //= require jquery.autocomplete
 //= require jquery.validate.min
-//= require jquery-ui
+//= require pnotify.core
 
 //= require ckeditor/init
-//= require owl.carousel-min
+//= require owl.carousel.min
+//= require jquery.blueimp-gallery.min
+//= require spectrum
+//= require jquery.blockUI
 
 //= require underscore
 //= require underscore.string
@@ -48,3 +51,9 @@
 //= require page-all
 //= require icons-editing
 //= require inline-editor
+//= require promo-slider
+//= require front_page_banners
+//= require text_banners
+//= require contacts
+//= require become-dealer
+//= require global-notifications

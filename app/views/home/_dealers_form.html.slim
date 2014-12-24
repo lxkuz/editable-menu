@@ -1,0 +1,30 @@
+.dealer-form-wrap.js-dealer-form-wrap
+  = form_for(@dealer_request, html: { id: 'dealer-form', class: 'js-dealer-form become-dealer-form field-std clear-wrap' }) do |f|
+    h4 class="cell-order-head small" *editable_in_place_data(Settings, :dealers_form_title, nil, nil, nil, nil, admin_settings_update_in_place_path())
+      = Settings.dealers_form_title.try(:html_safe) || 'Отправьте заявку на дилерство'
+    .cell-order-caption.small *editable_in_place_data(Settings, :dealers_form_subtitle, nil, nil, nil, nil, admin_settings_update_in_place_path())
+      = Settings.dealers_form_subtitle.try(:html_safe) || 'Ответим в ближайшее время'
+
+    .form-col.left
+      = f.text_field :name, class:'js-focus plh', placeholder: 'ФИО'
+      = f.text_field :email, class:'plh', placeholder: 'Ваш e-mail'
+      .order-psw-wrap
+        = f.text_field :phone, class:'plh', placeholder: 'Номер телефона'
+        .order-file-btn
+          = f.file_field :file_attachment, class: 'is-hidden1'
+
+    .form-col.right
+      = f.text_field :city, class:'plh', placeholder: 'Город'
+      = f.text_area :description, class:'plh', cols:'30', rows:'10', placeholder: 'Описание деятельности компании'
+    input type="submit" value="Отправить заявку"
+
+  dealer-form-success.js-form-success.is-hidden
+    h4 class="cell-order-head small in-success"
+      |Спасибо!
+      br
+      | Ваша заявка на дилерство принята
+    .close-form-wrap
+      span class="close-count js-close-counter" data-start="5"
+        |5
+      span class="close-form js-close-form"
+        |Закрыть

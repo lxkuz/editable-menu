@@ -1,0 +1,23 @@
+ru:
+  activerecord:
+    models:
+      office: Филиал
+    attributes:
+      office:
+        name: Название
+        postindex: Почтовый индекс
+        city: Город
+        phone: Телефон
+        street_address: Адресc
+        manager: Менеджер
+        description: Подробности
+        directions: Как добраться
+        work_hours: Время работы
+        phone_numbers: Номера телефонов
+        email: Email
+        fb_url: Faceebook аккаунт
+        vk_url: Вконтакте аккаунт
+        tw_url: Твиттер аккаунт
+        insta_url: Инмтаграм аккаунт
+        rating: Рейтинг
+        total_votes: Всего голосов

@@ -15,6 +15,16 @@
 #
 
 class Office < ActiveRecord::Base
+  mount_uploader :certificate, CertificateUploader
+
+  has_many :reviews
+  accepts_nested_attributes_for :reviews,  allow_destroy: true
+
+  has_many :office_slides
+  accepts_nested_attributes_for :office_slides,  allow_destroy: true
+
+  scope :active, -> { where(active:true)}
+
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? }
   after_validation :set_user_request_recipients, on: [ :create, :update ]

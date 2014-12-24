@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205215505) do
+ActiveRecord::Schema.define(version: 20141208110928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20141205215505) do
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "menu_title"
+    t.boolean  "active",         default: true
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug", using: :btree
@@ -87,7 +88,20 @@ ActiveRecord::Schema.define(version: 20141205215505) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "content"
+    t.string   "subtitle"
     t.string   "menu_title"
+    t.boolean  "active",      default: true
+  end
+
+  create_table "dealer_requests", force: true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "city"
+    t.string   "file_attachment"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -102,6 +116,19 @@ ActiveRecord::Schema.define(version: 20141205215505) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "front_page_banners", force: true do |t|
+    t.string   "image"
+    t.string   "title"
+    t.string   "name"
+    t.string   "url"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "valign"
+    t.string   "font_size"
+    t.string   "font_color"
+  end
 
   create_table "menu_items", force: true do |t|
     t.integer  "target_id"
@@ -127,9 +154,18 @@ ActiveRecord::Schema.define(version: 20141205215505) do
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "custom_url"
+    t.boolean  "active",      default: true
   end
 
   add_index "news_items", ["slug"], name: "index_news_items_on_slug", unique: true, using: :btree
+
+  create_table "office_slides", force: true do |t|
+    t.string   "image"
+    t.integer  "office_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "width"
+  end
 
   create_table "offices", force: true do |t|
     t.string   "name"
@@ -141,8 +177,39 @@ ActiveRecord::Schema.define(version: 20141205215505) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "user_request_recipients"
-    t.string   "phone"
+    t.string   "manager"
+    t.text     "description"
+    t.text     "directions"
+    t.text     "work_hours"
+    t.text     "phone_numbers"
+    t.string   "email"
+    t.string   "fb_url"
+    t.string   "vk_url"
+    t.string   "tw_url"
+    t.string   "insta_url"
+    t.float    "rating"
+    t.integer  "total_votes"
+    t.string   "certificate"
     t.boolean  "active",                  default: true
+    t.string   "phone"
+  end
+
+  create_table "promo_slides", force: true do |t|
+    t.string   "title",        null: false
+    t.string   "text"
+    t.string   "url"
+    t.boolean  "title_italic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "office_id"
+    t.text     "body"
+    t.string   "author"
+    t.string   "avatar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "settings", force: true do |t|
@@ -164,6 +231,18 @@ ActiveRecord::Schema.define(version: 20141205215505) do
   end
 
   add_index "snippets", ["name"], name: "index_snippets_on_name", unique: true, using: :btree
+
+  create_table "text_banners", force: true do |t|
+    t.string   "image"
+    t.string   "name"
+    t.string   "v_align"
+    t.string   "bg"
+    t.text     "body"
+    t.string   "url"
+    t.boolean  "all_block_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_requests", force: true do |t|
     t.string   "email"

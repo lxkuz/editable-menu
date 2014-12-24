@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    PNotify.prototype.options.styling = "jqueryui";
 
     // search field
     $('.js-search-field').focus(function() {
@@ -105,8 +105,10 @@ $(document).ready(function() {
     if (window.location.hash) {
       setTimeout(function() {
         var $target = $('[name=' + window.location.hash.replace('#', '') + ']')
-        var scroll_to = $target.offset().top - fixed_top_offset;
-        $.scrollTo({top: scroll_to, left: 0});
+        if($target.length) {
+            var scroll_to = $target.offset().top - fixed_top_offset;
+            $.scrollTo({top: scroll_to, left: 0});
+        }
       }, 500);
     }
 

@@ -38,11 +38,11 @@ $(document).ready(function() {
             enabled: false,
             delay: 4000,
             pauseOnHover: true,
-            stopAtAction: false,
+            stopAtAction: false
         },
         sliderDrag: true,
         sliderTouch: true,
-        navigateByClick: false,
+        navigateByClick: false
     }).data('royalSlider');
     $('.js-slider-count-wrap')
         .append('<span class="left-helper"></span>');
@@ -51,14 +51,14 @@ $(document).ready(function() {
 
     // popular
     $("#popular-slider").owlCarousel({
-        pagination: false,
+        dots: false,
         items : 2,
-        itemsDesktop : [1199,2],
-        itemsDesktopSmall : [1100,2],
-        itemsTablet: [768,2],
-        itemsMobile : [479,2],
-        navigation: true,
-        navigationText: ["",""],
+//        itemsDesktop : [1199,2],
+//        itemsDesktopSmall : [1100,2],
+//        itemsTablet: [768,2],
+//        itemsMobile : [479,2],
+        nav: true,
+        navText: ["",""],
         responsiveRefreshRate: 50,
         slideSpeed: 200,
         rewindNav: false,
@@ -69,14 +69,14 @@ $(document).ready(function() {
 
     // reccomend reviews slider
     $("#rec-rev-slider").owlCarousel({
-        pagination: false,
+        dots: false,
         items : 1,
-        itemsDesktop : [1199,1],
-        itemsDesktopSmall : [1100,1],
-        itemsTablet: [768,1],
-        itemsMobile : [479,1],
-        navigation: true,
-        navigationText: ["",""],
+//        itemsDesktop : [1199,1],
+//        itemsDesktopSmall : [1100,1],
+//        itemsTablet: [768,1],
+//        itemsMobile : [479,1],
+        nav: true,
+        navText: ["",""],
         responsiveRefreshRate: 50,
         slideSpeed: 200,
         rewindNav: true,

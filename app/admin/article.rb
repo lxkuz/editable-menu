@@ -4,6 +4,7 @@ ActiveAdmin.register Article do
                 :title,
                 :title_translit,
                 :menu_title,
+                :active,
                 :description,
                 :keywords,
                 :content,
@@ -21,6 +22,24 @@ ActiveAdmin.register Article do
   config.sort_order = 'position_asc'
   config.filters = false
 
+  action_item only: :show do
+    link_to('Смотреть на сайте', url_for(resource))
+  end
+
+  batch_action 'Активировать' do |selection|
+    Article.find(selection).each do |article|
+      article.activate!
+    end
+    redirect_to collection_path
+  end
+
+  batch_action 'Дективировать' do |selection|
+    Article.find(selection).each do |article|
+      article.deactivate!
+    end
+    redirect_to collection_path
+  end
+
   index do
     selectable_column
 
@@ -34,6 +53,7 @@ ActiveAdmin.register Article do
       article.content
     end
     column 'Позиция', :position
+    column 'Активировано', :active
     column 'Опубликовано', :published_at
 
     actions
@@ -46,9 +66,8 @@ ActiveAdmin.register Article do
       row :menu_title
       row :description
       row :keywords
-      row :content do
-        raw article.content_formated
-      end
+      row :content
+      row :active
       row :position
       row :published_at
       row 'Статья на сайте' do
@@ -61,7 +80,8 @@ ActiveAdmin.register Article do
     f.inputs do
       f.input :title, label: 'Заголовок'
       f.input :title_translit, label: 'URL'
-      f.input :menu_title, label: 'Заголовок для меню'
+      f.input :active, label: 'Активировано'
+      f.input :menu_title, label: 'Название пункта меню'
       # TODO: Limit html attributes later
       f.input :content, as: :ckeditor # , commands: [ :link ], blocks: [ :h3, :p]
 
@@ -86,7 +106,7 @@ ActiveAdmin.register Article do
     if request.xhr?
       article = Article.find(params[:id])
       if article.update_attributes(permitted_params[:article])
-        render :json => {:url => article_url(article)}
+        render :json => {:url => article_url(article), :notice => 'Статья успешно обновлена'}
       end
     end
   end

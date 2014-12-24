@@ -22,10 +22,11 @@ class ContentPage < ActiveRecord::Base
   has_search_by_like_for :name, :menu_title
 
   include HasMenuItems
-  include HasSnippets
 
   has_many :chapters, dependent: :destroy
   accepts_nested_attributes_for :chapters, allow_destroy: true
+
+  scope :active, -> { where(active:true)}
 
   validates :content, presence: true
   validates :page_url, presence: true, uniqueness: true
@@ -38,7 +39,20 @@ class ContentPage < ActiveRecord::Base
     page_url
   end
 
+  def activate!
+    self.update_columns(active: true)
+  end
+
+  def deactivate!
+    self.update_columns(active: false)
+  end
+
   def to_s
     menu_title.present? ? menu_title : name
   end
+
+  def page_is?(kind)
+    !new_record? && slug == kind
+  end
+
 end
