@@ -10,8 +10,10 @@ module TextBannerHelper
 
   def text_banner_specific_link_class(banner)
     case banner.name
-      when 't', 'bl' then 'h-3'
-      when 'cl', 'cr', 'br' then 'h-4'
+      when 't' then 'h-3'
+      when 'cl', 'cr' then 'h-4'
+      when 'bl' then 'h-3 cell-hits'
+      when 'br' then 'cell-credit h-4'
     end
   end
 
