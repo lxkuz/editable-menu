@@ -102,7 +102,7 @@ CKEDITOR.editorConfig = function( config )
     config.toolbar_RichText =[
         { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
         { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
-        { name: 'paragraph', groups: [ 'indent', 'blocks', 'align', 'bidi' ], items: ['Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'] },
+        { name: 'paragraph', groups: [ 'indent', 'blocks', 'align', 'bidi'], items: ['Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'CreateDiv'] },
         { name: 'styles', items: [ 'Styles', 'Format', 'TextColor', 'FontSize' ] }
 
 
