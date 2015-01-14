@@ -4,8 +4,9 @@
     .col-xs-8.col-xs-offset-1
       h1.cont-head *{name: (@dealers_page.name if @dealers_page.chapters.present?)}.merge(editable_in_place_data(@dealers_page, :name))
         = @dealers_page.name
-      h2 *editable_in_place_data(@dealers_page, :subtitle)
-        = @dealers_page.subtitle
+      .typo-main.dealer-top-text
+        p.note *editable_in_place_data(@dealers_page, :subtitle)
+          = @dealers_page.subtitle.html_safe if @dealers_page.subtitle.present?
       - if can? :edit, @dealers_page
         p
           = link_to 'Редактировать', edit_admin_content_page_path(@dealers_page)
