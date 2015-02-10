@@ -94,7 +94,7 @@ CKEDITOR.editorConfig = function( config )
         ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote', 'CreateDiv'],
         ['Format'],
         [ 'Link','Unlink','Anchor' ],
-        [ 'Image','Table', 'Source', 'Templates']
+        [ 'Image','Table', 'Source', 'Templates', 'Snippet']
     ];
     config.toolbar_Poor =[
         ['Cut','Copy','Paste'], ['Undo','Redo']
@@ -110,6 +110,6 @@ CKEDITOR.editorConfig = function( config )
     config.allowedContent = true;
     config.forcePasteAsPlainText = true;
 
-    config.extraPlugins = 'image2';
+    config.extraPlugins = 'image2,snippet';
     config.removePlugins =  'image';
 }
