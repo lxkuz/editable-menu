@@ -10,12 +10,18 @@ class HomeController < ApplicationController
   end
 
   def about
-    @about_page = ContentPage.find_or_create_by(page_url: 'about');
+    @about_page = ContentPage.find_or_create_by(page_url: 'about')
+    set_meta_tags title:       Settings.about_title,
+                  description: Settings.about_subtitle,
+                  keywords:    Settings.about_keywords
   end
 
   def dealers
-    @dealers_page = ContentPage.find_or_create_by(page_url: 'dealers');
+    @dealers_page = ContentPage.find_or_create_by(page_url: 'dealers')
     @dealer_request = DealerRequest.new
+    set_meta_tags title:       Settings.dealers_form_title,
+                  description: Settings.dealers_form_subtitle,
+                  keywords:    Settings.dealers_form_keywords
   end
 
   def contacts

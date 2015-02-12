@@ -52,9 +52,58 @@ ActiveAdmin.register_page "Settings" do
               label 'Подзаголовок'
               f.input :name => "data[dealers_form_subtitle]", :type => 'text', :value => Settings.dealers_form_subtitle
             end
+            li do
+              label 'Keywords'
+              f.textarea :name => "data[dealers_form_keywords]" do
+                Settings.dealers_form_keywords
+              end
+            end
           end
         end
       end
+
+      panel "О компании" do
+        fieldset do
+          ol do
+            li do
+              label 'Заголовок'
+              f.input :name => "data[about_title]", :type => 'text', :value => Settings.about_title
+            end
+            li do
+              label 'Подзаголовок'
+              f.input :name => "data[about_subtitle]", :type => 'text', :value => Settings.about_subtitle
+            end
+            li do
+              label 'Keywords'
+              f.textarea :name => "data[about_keywords]" do
+                Settings.about_keywords
+              end
+            end
+          end
+        end
+      end
+
+      panel "О лестницах" do
+        fieldset do
+          ol do
+            li do
+              label 'Заголовок'
+              f.input :name => "data[articles_title]", :type => 'text', :value => Settings.articles_title
+            end
+            li do
+              label 'Подзаголовок'
+              f.input :name => "data[articles_subtitle]", :type => 'text', :value => Settings.articles_subtitle
+            end
+            li do
+              label 'Keywords'
+              f.textarea :name => "data[articles_keywords]" do
+                Settings.articles_keywords
+              end
+            end
+          end
+        end
+      end
+
 
       f.input :type => 'submit', :value => 'Add'
     end

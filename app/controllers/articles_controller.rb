@@ -4,6 +4,9 @@ class ArticlesController < ResourcesController
   def index
     @articles_page = Article.find_or_create_by(title_translit: 'articles');
     @articles = collection
+    set_meta_tags title:       Settings.articles_title,
+                  description: Settings.articles_subtitle,
+                  keywords:    Settings.articles_keywords
   end
 
   def show
