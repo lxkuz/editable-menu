@@ -1,6 +1,13 @@
 module ApplicationHelper
   def display_meta_tags_with_defaults
-    display_meta_tags(:site => 'МЛ', :reverse => true)
+    display_meta_tags(
+          {
+              :title       => Settings.default_title,
+              :description => Settings.default_description,
+              :keywords    => Settings.default_keywords
+          }
+    )
+
   end
 
   def editable_in_place_data object, attribute, type=nil, nested_for=nil, nested_id=nil, nested_index=nil, url=nil

@@ -52,33 +52,6 @@ ActiveAdmin.register_page "Settings" do
               label 'Подзаголовок'
               f.input :name => "data[dealers_form_subtitle]", :type => 'text', :value => Settings.dealers_form_subtitle
             end
-            li do
-              label 'Keywords'
-              f.textarea :name => "data[dealers_form_keywords]" do
-                Settings.dealers_form_keywords
-              end
-            end
-          end
-        end
-      end
-
-      panel "О компании" do
-        fieldset do
-          ol do
-            li do
-              label 'Заголовок'
-              f.input :name => "data[about_title]", :type => 'text', :value => Settings.about_title
-            end
-            li do
-              label 'Подзаголовок'
-              f.input :name => "data[about_subtitle]", :type => 'text', :value => Settings.about_subtitle
-            end
-            li do
-              label 'Keywords'
-              f.textarea :name => "data[about_keywords]" do
-                Settings.about_keywords
-              end
-            end
           end
         end
       end
@@ -98,6 +71,28 @@ ActiveAdmin.register_page "Settings" do
               label 'Keywords'
               f.textarea :name => "data[articles_keywords]" do
                 Settings.articles_keywords
+              end
+            end
+          end
+        end
+      end
+
+
+      panel "Мета-данные по умолчанию" do
+        fieldset do
+          ol do
+            li do
+              label 'Заголовок'
+              f.input :name => "data[default_title]", :type => 'text', :value => Settings.default_title
+            end
+            li do
+              label 'Подзаголовок'
+              f.input :name => "data[default_description]", :type => 'text', :value => Settings.default_description
+            end
+            li do
+              label 'Keywords'
+              f.textarea :name => "data[default_keywords]" do
+                Settings.default_keywords
               end
             end
           end

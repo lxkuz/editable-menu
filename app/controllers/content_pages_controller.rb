@@ -4,9 +4,6 @@ class ContentPagesController < ResourcesController
 
   def show
     @chapters = @content_page.chapters
-    set_meta_tags title:       @content_page.title,
-                  description: @content_page.description,
-                  keywords:    @content_page.keywords
-
+    fill_meta_info @content_page
   end
 end

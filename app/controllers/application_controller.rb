@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :auto_select_office
 
+
   rescue_from ActionController::RedirectBackError do
     redirect_to root_path
   end
@@ -46,4 +47,28 @@ class ApplicationController < ActionController::Base
       session[:previous_url] || root_path
     end
   end
+
+  protected
+
+  def try_to_set_meta_tags obj
+    obj.map do |key, value|
+      unless value.blank?
+        opts = {}
+        opts[key] = value
+        set_meta_tags opts
+      end
+    end
+  end
+
+
+  def fill_meta_info obj
+    [:title, :description, :keywords].each do |field|
+      unless obj.try(field).blank?
+        opts = {}
+        opts[field] = obj.try(field)
+        set_meta_tags opts
+      end
+    end
+  end
+
 end

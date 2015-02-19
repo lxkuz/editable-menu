@@ -5,9 +5,7 @@ class NewsItemsController < ResourcesController
     super do
       @last_news = NewsItem.active.last_news(params[:id]).decorate
       @news_item = @news_item.decorate
-      set_meta_tags title:       @news_item.title,
-                    description: @news_item.description,
-                    keywords:    @news_item.keywords
+      fill_meta_info @news_item
     end
   end
 

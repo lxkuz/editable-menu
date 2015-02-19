@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @news_items = @news_items.active.limit(4).newest.decorate
     @user_request = UserRequest.new
-    set_meta_tags title:       Settings.home_page_meta_title,
+    try_to_set_meta_tags title: Settings.home_page_meta_title,
                   description: Settings.home_page_meta_description,
                   keywords:    Settings.home_page_keywords
 
@@ -11,17 +11,13 @@ class HomeController < ApplicationController
 
   def about
     @about_page = ContentPage.find_or_create_by(page_url: 'about')
-    set_meta_tags title:       Settings.about_title,
-                  description: Settings.about_subtitle,
-                  keywords:    Settings.about_keywords
+    fill_meta_info @about_page
   end
 
   def dealers
     @dealers_page = ContentPage.find_or_create_by(page_url: 'dealers')
     @dealer_request = DealerRequest.new
-    set_meta_tags title:       Settings.dealers_form_title,
-                  description: Settings.dealers_form_subtitle,
-                  keywords:    Settings.dealers_form_keywords
+    fill_meta_info @dealers_page
   end
 
   def contacts
@@ -36,4 +32,5 @@ class HomeController < ApplicationController
     @city_name = session[:user_city]
     @contacts_page = ContentPage.find_or_create_by(page_url: 'contacts_nooffice')
   end
+
 end
